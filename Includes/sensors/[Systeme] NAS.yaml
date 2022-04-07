@@ -1,0 +1,7 @@
+
+
+platform: command_line
+name: 'NAS Iomega'
+command: response=$(curl -LIk -m 3 http://192.168.1.251 -o /dev/null -w "%{http_code}\n" -s); test "$response" -ge 200 && echo "En ligne" || echo "Hors ligne" 
+scan_interval: 90
+value_template: '{{ value }}'

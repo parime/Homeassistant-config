@@ -1,0 +1,42 @@
+###### BONJOUR MESSAGE
+platform: template
+sensors:
+  bonjour:
+    friendly_name: Bonjour
+
+    value_template: >-
+      {% if is_state("sun.sun", "above_horizon") -%} 
+        {% set heure = states('sensor.time') %}
+        {% if heure > '05:00' and heure <= '11:45' -%}
+             Bonne matinée ☕️️
+        {% elif heure > '11:45' and heure < '13:30' -%}
+            Bon appétit 🍔
+        {% elif heure >= '13:30' and heure < '19:00' -%}
+            Bon après-midi ☕️
+        {% elif  heure >= '19:00' and heure < '23:00' -%}
+             Bonsoir ✨      
+        {% elif  heure > '23:00'  -%}
+             Bonne nuit 💤
+        {% elif  heure < '04:00'  -%}
+             Bonne nuit 💤
+        {% else %}
+            Salut 👋🏼
+        {% endif %}
+      {% elif is_state("sun.sun", "below_horizon") -%}
+        {% set heure = states('sensor.time') %}
+        {% if heure >= '05:00' and heure <= '11:45' -%}
+             Bonne matinée ☕️️
+        {% elif heure > '11:45' and heure < '13:30' -%}
+            Bon appétit 🍔
+        {% elif heure >= '13:30' and heure < '18:00' -%}
+            Bon après-midi ☕️
+        {% elif  heure >= '18:00' and heure < '23:00' -%}
+             Bonne soirée ✨      
+        {% elif  heure > '23:00'  -%}
+             Bonne nuit 💤
+        {% elif  heure < '05:00'  -%}
+             Bonne nuit 💤
+        {% else %}
+            Salut 👋🏼
+        {% endif %}
+      {% endif %}

@@ -1,0 +1,20 @@
+###### ANNIVERSAIRES
+platform: template
+sensors:
+  anniversaire:
+    friendly_name: Anniversaire
+    value_template: >-    
+          {% if is_state("sensor.date_simple_v2", "28 Mars") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Vincent ! </i>
+          {% elif is_state("sensor.date_simple_v2", "10 Décembre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Patricia ! </i> 
+          {% elif is_state("sensor.date_simple_v2", "3 Ocotobre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Ambre ! </i> 
+          {% elif is_state("sensor.date_simple_v2", "13 Janvier") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Emma ! </i>
+
+
+
+          {% else %}
+            Aucun
+          {%- endif %}

@@ -1,0 +1,2 @@
+system_log:
+  max_entries: 50

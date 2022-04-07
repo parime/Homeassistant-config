@@ -1,0 +1,11 @@
+---
+# L'intégration de la configuration par défaut.
+#
+# https://www.home-assistant.io/integrations/default_config
+#
+#
+# Cette intégration n'est qu'une méta-intégration. Tout seul, il ne fait rien,
+# cependant, cela dépend de beaucoup d'intégrations qui doivent être chargées par
+# défaut.
+
+default_config:

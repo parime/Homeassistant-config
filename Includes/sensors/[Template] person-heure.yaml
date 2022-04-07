@@ -1,0 +1,18 @@
+platform: template
+sensors:  
+      vincent_heure:
+        friendly_name: Vincent heure
+        value_template: >-      
+          {{ as_timestamp(states.person.vincent.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}
+      patricia_heure:    
+        friendly_name: patricia heure
+        value_template: >-      
+          {{ as_timestamp(states.person.patricia.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}
+      emma_heure:    
+        friendly_name: emma heure
+        value_template: >-      
+          {{ as_timestamp(states.person.emma.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}
+      nanou_heure:    
+        friendly_name: nanou heure
+        value_template: >-      
+          {{ as_timestamp(states.person.nanou.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}

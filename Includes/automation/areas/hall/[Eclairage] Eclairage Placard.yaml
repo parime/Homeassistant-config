@@ -1,0 +1,30 @@
+- id: '1643033557268'
+  alias: '[Eclairage] Eclairage Placard'
+  description: '[Eclairage] Eclairage Placard'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.door_placard_on_off
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.door_placard_on_off
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 100
+        target:
+          area_id: placard
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.door_placard_on_off
+        state: 'off'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          area_id: placard
+    default: []
+  mode: single

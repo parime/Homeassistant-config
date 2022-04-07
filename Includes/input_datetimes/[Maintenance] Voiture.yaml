@@ -1,0 +1,7 @@
+
+# Suivre la date du dernier entretien de la voiture
+#
+last_maintenance_date_car:
+  name: Date de la dernière révision de la voiture
+  has_date: true
+  has_time: false

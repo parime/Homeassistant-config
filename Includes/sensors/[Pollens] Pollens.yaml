@@ -1,0 +1,10 @@
+   ############################################################
+   ##                        SENSOR                          ##
+   ############################################################
+platform: rest
+name: Pollens
+resource: https://www.pollens.fr/risks/thea/counties/44
+json_attributes:
+  - risks
+  - riskLevel
+value_template: '{{ value_json.riskLevel }}'

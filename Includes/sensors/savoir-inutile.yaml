@@ -1,0 +1,9 @@
+##############################
+#Sensor Savoir inutile 
+##############################
+
+platform: scrape
+resource: https://www.savoir-inutile.com/
+scan_interval: 3600
+name: Savoir scrape
+select: "#phrase"

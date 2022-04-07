@@ -1,0 +1,12 @@
+platform: template
+sensors:
+  moon_phases:
+    friendly_name: 'Lune'
+    value_template: >-
+          {% set phases = {'first_quarter': 'Premier quartier', 'full_moon': 'Pleine lune',
+                           'last_quarter': 'Dernier quartier', 'new_moon': 'Nouvelle lune',
+                           'waning_crescent': 'Dernier croissant', 'waning_gibbous': 'Gibbeuse décroissante',
+                           'waxing_crescent': 'Premier croissant', 'waxing_gibbous': 'Gibbeuse croissante'} %}
+          {% set phase = states('sensor.moon') %}
+          {{ phases[phase] if phase in phases.keys() else 'Error' }}
+    entity_picture_template: /local/lovelace/images/moon_phases/{{ states('sensor.moon') }}.png  

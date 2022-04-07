@@ -1,0 +1,75 @@
+
+recorder:
+  # gere les donnees sauvegardees en DB
+  auto_purge: true
+  purge_keep_days: 15 # durée de conservation des données
+  commit_interval: 30
+
+
+#Si ni Include ni exclude : tout est enregistré ( comportement par défaut )
+#Si seul include est renseigné : Seuls les enregistrements spécifiés seront enregistrés
+#Si seul Exclude est spécifié : Tout est enregistrés sauf ceux spécifiés dans exclude
+
+  include:  #permet d inclure des domaines ou des entités
+    domains: # filtrage par domaine,permet de choisir un domaine d entités , par exemple le domaine light , regroupe toutes les entités de type lumière.
+
+      - sensor
+ 
+  exclude: # permet d'exclure tous les éléments listé ci-dessous de votre base de données
+    domains: # filtrage par domaine,permet de choisir un domaine d entités , par exemple le domaine light , regroupe toutes les entités de type lumière.
+
+      - automation
+      - button
+      - camera
+      - device_tracker
+      - light
+      - media_player
+      - scene
+      - script
+      - select
+      - siren
+      - switch
+      - timer
+
+
+    entities:
+      - sensor.date  # sensor date
+      - sensor.time  # sensor time - peut générer une entree à chaque seconde
+
+    entity_globs: #Permets de sélectionner un groupe d entité en fonction d un modèle . Par exemple le modèle : sensor.ups_* sélectionnera toutes les entités commençant par « sensor.ups_«
+
+
+
+
+    event_types: #Uniquement pour exclure , permet de désactiver les enregistrements liés aux événement. Par exemple call_service va désactiver tous les événement généré par les appels de service.
+
+      - call_service # Don't record service calls
+      - automation_triggered
+      - script_started
+      - home_assistant_start
+      - home_assistant_stop
+      - service_removed
+      - service_executed
+      - platform_discovered
+
+
+
+
+
+
+# pour récupérer les domaines, Allez dans le menu Outil de développement / modèle et coller le code ci-dessous
+      
+#{%- set unique_domains = states | map(attribute='domain') |list | unique | list -%}
+#{%- for domain in unique_domains -%}
+#- {{domain + "\n"}}
+#{%- endfor -%}
+
+
+
+# pour récupérer les entitées, Allez dans le menu Outil de développement / modèle et coller le code ci-dessous
+#Liste des entitées:{{ "\n"}}
+#{%- for state in states -%}
+#- {{state.entity_id + "\n"}}
+#{%- endfor -%}
+
+

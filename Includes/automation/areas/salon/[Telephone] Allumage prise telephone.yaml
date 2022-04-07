@@ -1,0 +1,57 @@
+- id: '1634364363248'
+  alias: '[Telephone] Allumage prise telephone'
+  description: '[Telephone] Allumage prise telephone'
+  trigger:
+  - platform: time
+    at: 07:40
+  - platform: time
+    at: '20:30'
+  - platform: time
+    at: 09:00
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: '7:00:00'
+        before: 08:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.prise_telephonique
+    - conditions:
+      - condition: time
+        after: '20:00'
+        before: '20:40'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.prise_telephonique
+    - conditions:
+      - condition: time
+        after: 08:30
+        before: 09:30
+        weekday:
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.prise_telephonique
+  mode: single

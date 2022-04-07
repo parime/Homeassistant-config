@@ -1,0 +1,5 @@
+Media-salon_cuisine:
+  name: Media-salon_cuisine
+  entities:
+      - media_player.echo_cuisine
+      - media_player.echo_salon

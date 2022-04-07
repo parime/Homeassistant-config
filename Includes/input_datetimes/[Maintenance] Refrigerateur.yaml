@@ -1,0 +1,7 @@
+
+# Suivez la date du dernier entretien du réfrigérateur de cuisine
+#
+kitchen_fridge_last_maintenance_date:
+  name: Date du dernier nettoyage du Frigo de la cuisine
+  has_date: true
+  has_time: false

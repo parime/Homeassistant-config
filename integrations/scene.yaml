@@ -1,0 +1,9 @@
+---
+# Ajouter la prise en charge des scènes
+#
+# https://www.home-assistant.io/integrations/scene
+#
+
+# Cette inclusion concerne l'éditeur de scène / l'interface utilisateur
+scene: !include ../scenes.yaml
+scene split: !include_dir_list ../Includes/scenes/

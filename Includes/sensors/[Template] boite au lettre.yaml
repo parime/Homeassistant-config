@@ -1,0 +1,12 @@
+###### BOITE AUX LETTRES          
+platform: template
+sensors:
+    boite_aux_lettres:
+        friendly_name: Boite aux lettre          
+        value_template: >-
+          {% if is_state("binary_sensor.boite_aux_lettres", "on") -%}
+            <font color='lightgrey'><b>Ouverte le {{ as_timestamp(states.binary_sensor.boite_aux_lettres.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}</b>
+          {% elif is_state("binary_sensor.boite_aux_lettres", "off") -%}
+            <font color='grey'>Fermée le {{ as_timestamp(states.binary_sensor.boite_aux_lettres.last_changed) | timestamp_custom("%d/%m à %Hh%M") }}
+          {% else %}
+          {%- endif %}  

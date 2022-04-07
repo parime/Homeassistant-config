@@ -1,0 +1,9 @@
+---
+# input_select pour définir le mode maison : Normal ou vacances
+#
+house_mode:
+  name: Mode de la maison
+  options:
+    - Normal
+    - Vacances
+  icon: mdi:home-map-marker

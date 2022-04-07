@@ -1,0 +1,84 @@
+
+   ############################################################
+   ##                        SENSOR                          ##
+   ############################################################
+platform: template
+sensors:
+  pollens_risks_tilleul:
+    friendly_name: Tilleul
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][0]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_ambroisie:
+    friendly_name: Ambroisie
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][1]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_olivier:
+    friendly_name: Olivier
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][2]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_plantain:
+    friendly_name: Plantain
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][3]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_noisetier:
+    friendly_name: Noisetier
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][4]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_aulne:
+    friendly_name: Aulne
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][5]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_armoise:
+    friendly_name: Armoise
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][6]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_chataignier:
+    friendly_name: Châtaignier
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][7]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_urticacees:
+    friendly_name: Urticacées
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][8]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_oseille:
+    friendly_name: Oseille
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][9]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_graminees:
+    friendly_name: Graminées
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][10]["level"] }}'
+    icon_template: mdi:flower
+  pollens_risks_chene:
+    friendly_name: Chêne
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][11]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_platane:
+    friendly_name: Platane
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][12]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_bouleau:
+    friendly_name: Bouleau
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][13]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_charme:
+    friendly_name: Charme
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][14]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_peuplier:
+    friendly_name: Peuplier
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][15]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_frene:
+    friendly_name: Frêne
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][16]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_saule:
+    friendly_name: Saule
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][17]["level"] }}'
+    icon_template: mdi:tree
+  pollens_risks_cypres:
+    friendly_name: Cyprès
+    value_template: '{{ states.sensor.Pollens.attributes["risks"][18]["level"] }}'
+    icon_template: mdi:flower
+  # Request every 12 hours
+scan_interval: 400

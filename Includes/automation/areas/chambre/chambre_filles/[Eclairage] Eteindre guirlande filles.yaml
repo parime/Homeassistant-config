@@ -1,0 +1,14 @@
+- id: '164140889629021'
+  alias: '[Eclairage] Éteindre guirlande filles'
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:50'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.guirlande_fille
+  mode: single
+

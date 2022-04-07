@@ -1,0 +1,46 @@
+aspirateur_play:
+  alias: '[Aspirateur] Play'
+  sequence:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.roborock_vacuum_a10_mop_attached
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.roborock_vacuum_a10_water_box_attached
+        state: 'on'
+      sequence:
+      - service: vacuum.start
+        data: {}
+        target:
+          entity_id: vacuum.roborock_vacuum_a10
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.roborock_vacuum_a10_mop_attached
+        state: 'off'
+      sequence:
+      - service: vacuum.stop
+        data: {}
+        target:
+          entity_id: vacuum.roborock_vacuum_a10
+      - service: notify.alexa_media
+        data:
+          message: La serpillère n'est pas mise
+          data:
+            type: tts
+          target: media_player.echo_salon
+      - service: notify.alexa_media
+        data:
+          message: La serpillère n'est pas mise
+          data:
+            type: tts
+          target: media_player.echo_cuisine
+      - service: notify.alexa_media
+        data:
+          message: La serpillère n'est pas mise
+          data:
+            type: tts
+          target: media_player.echo_sdb
+    default: []
+  mode: single
+  icon: mdi:play

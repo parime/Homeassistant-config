@@ -1,0 +1,12 @@
+- id: '1629584642418'
+  alias: '[Eclairage] Eteindre Aquarium'
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.aquarium
+  mode: single

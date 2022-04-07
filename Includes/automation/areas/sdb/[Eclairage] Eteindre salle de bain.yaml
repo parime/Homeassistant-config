@@ -1,0 +1,23 @@
+
+- id: '1649267157593'
+  alias: '[Eclairage] Eteindre salle de bain'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_sdb_bg_zone
+  - platform: state
+    entity_id: binary_sensor.motion_sdb_hd_zone
+  condition:
+  - condition: state
+    entity_id: binary_sensor.motion_sdb_bg_zone
+    state: 'off'
+  - condition: state
+    state: 'off'
+    entity_id: binary_sensor.motion_sdb_hd_zone
+  action:
+  - service: light.turn_off
+    data:
+      transition: 13
+    target:
+      area_id: sdb
+  mode: single

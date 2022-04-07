@@ -1,0 +1,6 @@
+
+'1634558044538':
+  alias: Clear Log
+  sequence:
+  - service: shell_command.clear_log
+  mode: single

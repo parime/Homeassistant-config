@@ -1,0 +1,11 @@
+platform: template
+sensors:
+  vacances_scolaires_demain:
+    friendly_name: "Vacances Scolaires demain"
+    value_template: |-
+          {% set demain = (as_timestamp(now()) + (24*3600)) | timestamp_custom('%Y-%m-%d', True) %}
+          {% if demain < states.sensor.vacances_scolaires.attributes["start_date"] or demain > states.sensor.vacances_scolaires.attributes["end_date"] %} 
+          false
+          {% else %} 
+          true
+          {% endif %}

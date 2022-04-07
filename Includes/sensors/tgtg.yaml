@@ -1,0 +1,49 @@
+platform: tgtg
+username: !secret login_tgtg
+access_token: !secret access_token_tgtg
+refresh_token: !secret refresh_token_tgtg
+user_id: !secret user_id_tgtg
+scan_interval: 450
+
+item:
+
+    # Finistesrestes29 à La Chapelle Sur Erdre (Grand panier de légumes)
+    -  650549
+    # Promocash - Nantes (Grand Panier)
+    -  463772
+    # Promocash - Nantes (Panier gros format )
+    -  589190
+    # E.Leclerc Express - Saint-Herblain (Panier Mixte  )
+    -  535550
+    # Un Amour de Fruit
+    -  26885
+    # Carrefour Express - Nantes, bd de Doulon
+    -  32317
+    # E.Leclerc Drive - Atlantis (Petit panier mixte )
+    -  43996
+    # E.Leclerc - Atlantis (Panier Mixte 12 €)
+    -  675527
+    # E.Leclerc - Atlantis (Panier Rotisserie 18 €)
+    -  673260
+    # E.Leclerc - Atlantis (Panier Fruits et Légumes )
+    -  535537
+    # E.Leclerc - Atlantis (Panier Mixte 18€)
+    -  675537
+    # E.Leclerc - Atlantis (Panier repas snacking)
+    -  533150
+    # E.Leclerc - Atlantis (Panier Poissonnerie )
+    -  535534
+    # Biocoop - Saint-Herblain
+    -  40248
+    # Les Fleurs de Canelle
+    -  32201
+    # Bio Nant - Rond point de Rennes
+    -  35059
+    # Le Petit Casino - Nantes, Berlioz
+    -  462445
+    # Carrefour City - Nantes, Yvernogeau
+    -  428999
+    # Intermarché Hyper - Nantes Eraudière  (Panier à 12 euros )
+    -  218528
+    # Intermarché Hyper - Nantes Eraudière  (Panier à 20 euros)
+    -  213680

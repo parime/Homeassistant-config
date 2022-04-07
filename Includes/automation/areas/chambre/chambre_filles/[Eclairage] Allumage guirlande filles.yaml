@@ -1,0 +1,14 @@
+- id: '1640626199752'
+  alias: '[Eclairage] Allumage Guirlande filles'
+  description: '[Eclairage] Allumage Guirlande filles'
+  trigger:
+  - platform: time
+    at: '16:30'
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.guirlande_fille
+  mode: single
+

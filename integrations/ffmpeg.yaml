@@ -1,0 +1,4 @@
+#permet à Home Assistant de traiter les flux vidéo et audio.
+#https://www.home-assistant.io/integrations/ffmpeg/
+
+ffmpeg:

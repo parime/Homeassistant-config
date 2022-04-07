@@ -1,0 +1,175 @@
+###### METEO
+platform: template
+sensors:  
+      weather_temperature:
+        friendly_name: Weather Température
+        value_template: "{{ state_attr('weather.maison' , 'temperature') }}°"    
+      weather_alert_inondation:
+        friendly_name: Alerte Inondation
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Inondation') }}"
+      weather_alert_grand_froid:
+        friendly_name: Alerte Grand-froid
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Grand-froid') }}"
+      weather_alert_orages:
+        friendly_name: Alerte Orages
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Orages') }}"
+      weather_alert_pluie_inondation:
+        friendly_name: Alerte Pluie-inondation
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Pluie-inondation') }}"
+      weather_alert_vent_violent:
+        friendly_name: Alerte Vent violent
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Vent violent') }}"       
+      weather_alert_neige_verglas:
+        friendly_name: Alerte Neige-verglas
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Neige-verglas') }}"
+          
+      weather_conditions:
+        value_template: >-
+          {% set temperature = states('sensor.weather_temperature') | round %}
+          {% set precip = states('sensor.nantes_rain_chance') | round %}
+          {% set snow = states('sensor.nantes_snow_chance') | round %}
+          {% set ressenti = states('sensor.weather_ressenti') | round %}
+          {% set weather_state = states('weather.nantes') 
+            | replace('rainy', 'Pluvieux')
+            | replace('partlycloudy', 'Un peu nuageux')
+            | replace('cloudy', 'Nuageux')
+            | replace('clear-night', 'Nuit claire')
+            | replace('fog', 'Brouillard')
+            | replace('hail', 'Grêle')
+            | replace('lightning-rainy', 'Pluie orageuse')
+            | replace('lightning', 'Orages') 
+            | replace('pourring', 'Fortes pluies')
+            | replace('snowy-rainy', 'Neigeux')
+            | replace('snowy', 'Neigeux')
+            | replace('sunny', 'Ensoleillé')
+            | replace('windy-variant', 'Venteux')
+            | replace('windy', 'Venteux')
+            | replace('exceptional', 'Exceptionel') %}
+          
+          {% if not state_attr('weather.maison', 'temperature') == 'Indisponible' -%}
+            {% if states('weather.nantes') == 'lightning-rainy' -%}
+              Pluies orageuses
+            {% elif states.sensor.nantes_rain_chance.state | float > 0 -%}
+              {{ weather_state }}
+            {% else -%}
+              {{ weather_state }}
+            {% endif -%}
+          {% else -%}
+            Pas d'info...
+          {% endif -%} 
+          
+      weather_icon:
+        value_template: >-
+          {% set weather_icon = states('weather.nantes') 
+            | replace('rainy', '☔️')
+            | replace('partlycloudy', '⛅️')
+            | replace('cloudy', '☁️')
+            | replace('clear-night', '✨')
+            | replace('fog', '🌀')
+            | replace('hail', '🌧')
+            | replace('lightning-rainy', '⛈')
+            | replace('lightning', '⚡️') 
+            | replace('pourring', '️☔️')
+            | replace('snowy-rainy', '❄️️')
+            | replace('snowy', '❄️')
+            | replace('sunny', '☀️')
+            | replace('windy-variant', '💨')
+            | replace('windy', '💨')
+            | replace('exceptional', '⚠️') %}     
+          {% if not state_attr('weather.maison', 'temperature') == 'Indisponible' -%}
+            {% if states('weather.nantes') == 'lightning-rainy' -%}
+              ⛈
+            {% else -%}
+            {{ weather_icon }}
+            {% endif -%}
+          {% else -%}
+          {% endif -%}
+      weather_conditions_pluie:
+        value_template: >-          
+          {% set precip = states('sensor.nantes_rain_chance') | round %}
+          {% if states.sensor.nantes_rain_chance.state | float > 0 -%}
+            <font color='grey'><font size='2'><ha-icon icon="mdi:weather-rainy"></ha-icon> {{ precip }}%</font>
+          {% else -%}
+          {% endif -%}    
+          
+      weather_conditions_neige:
+        value_template: >-          
+          {% set snow = states('sensor.nantes_snow_chance') | round %}
+          {% if states.sensor.nantes_snow_chance.state | float > 0 -%}
+             <font color='grey'><font size='2'><ha-icon icon="mdi:snowflake"></ha-icon> {{ snow }}%</font>
+          {% else -%}
+          {% endif -%}  
+          
+      weather_conditions_ciel:
+        value_template: >-        
+          {% set ciel = states('sensor.nantes_cloud_cover') | round -%}
+          {% if states.sensor.nantes_cloud_cover.state | float > 10 -%}
+            <font color='grey'><font size='2'><ha-icon icon="mdi:weather-cloudy"></ha-icon> {{ ciel }}%</font>
+          {% else -%}
+          {% endif -%}          
+      weather_vent:
+        friendly_name: "Weather vent"
+        value_template: 
+          "{{ state_attr('weather.nantes' , 'wind_speed') }}"
+
+      weather_conditions_vent:
+        value_template: >-        
+          {% set vent = states('sensor.weather_vent') | round -%}
+          {% if states.sensor.weather_vent.state | float > 5 -%}
+            <font color='grey'><font size='2'><ha-icon icon="mdi:weather-windy"></ha-icon> {{ vent }}Km/h</font>
+          {% else -%}
+          {% endif -%}
+          
+      weather_conditions_uv:
+        value_template: >-        
+          {% set uv = states('sensor.nantes_uv') | round -%}
+          {% if states.sensor.nantes_uv.state | float > 4 -%}
+            <font color='grey'><font size='2'><ha-icon icon="mdi:sunglasses"></ha-icon> UV{{ uv }}</font>
+          {% else -%}
+          {% endif -%}  
+      weather_alerte_couleur:
+        friendly_name: Alerte météo couleur
+        value_template: >-
+          {% if is_state("sensor.44_weather_alert", "Jaune") -%}
+             <br><font color='gold'>⚠️ Jaune  
+          {% elif is_state("sensor.44_weather_alert", "Orange") -%}
+             <br><font color='orange'>⚠️ Orange 
+          {% elif is_state("sensor.44_weather_alert", "Rouge") -%}
+             <br><font color='red'>⚠️ Rouge 
+          {%- endif %}
+        
+      weather_alerte:
+        friendly_name: Alerte météo
+        value_template: >-        
+          {% if is_state("sensor.weather_alert_grand_froid", "Jaune") -%} 🥶 Grand froid {%- endif %}  {% if is_state("sensor.weather_alert_neige_verglas", "Jaune") -%} ❄️ Neige / Verglas{%- endif %}  {% if is_state("sensor.weather_alert_inondation", "Jaune") -%} ☔️ Inondation{%- endif %}  {% if is_state("sensor.weather_alert_orages", "Jaune") -%} ⚡️ Orages{%- endif %}  {% if is_state("sensor.weather_alert_vent_violent", "Jaune") -%} 💨 Vent violent{%- endif %}  {% if is_state("sensor.weather_alert_pluie_inondation", "Jaune") -%} 🌧 Pluie / Inondation{%- endif %}
+          {% if is_state("sensor.weather_alert_grand_froid", "Orange") -%} 🥶 Grand froid {%- endif %}  {% if is_state("sensor.weather_alert_neige_verglas", "Orange") -%} ❄️ Neige / Verglas{%- endif %}  {% if is_state("sensor.weather_alert_inondation", "Orange") -%} ☔️ Inondation{%- endif %}  {% if is_state("sensor.weather_alert_orages", "Orange") -%} ⚡️ Orages{%- endif %}  {% if is_state("sensor.weather_alert_vent_violent", "Orange") -%} 💨 Vent violent{%- endif %}  {% if is_state("sensor.weather_alert_pluie_inondation", "Orange") -%} 🌧 Pluie / Inondation{%- endif %}
+          {% if is_state("sensor.weather_alert_grand_froid", "Rouge") -%} 🥶 Grand froid {%- endif %}  {% if is_state("sensor.weather_alert_neige_verglas", "Rouge") -%} ❄️ Neige / Verglas{%- endif %}  {% if is_state("sensor.weather_alert_inondation", "Rouge") -%} ☔️ Inondation{%- endif %}  {% if is_state("sensor.weather_alert_orages", "Rouge") -%} ⚡️ Orages{%- endif %}  {% if is_state("sensor.weather_alert_vent_violent", "Rouge") -%} 💨 Vent violent{%- endif %}  {% if is_state("sensor.weather_alert_pluie_inondation", "Rouge") -%} 🌧 Pluie / Inondation{%- endif %}
+        
+      weather_soleil:
+        friendly_name: Soleil          
+        value_template: >-
+          {% if is_state("sun.sun", "above_horizon") -%}
+            🌙{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }} - ☀️{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}
+          {% else %}
+            ☀️{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}  - 🌙{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }}
+          {% endif %}
+      temp_max:
+        friendly_name: Température max du jour
+        value_template: "{{ states.weather.nantes.attributes.forecast[0].temperature|float|round(2) }}°"  
+        
+        
+      nantes_temperature_maximale_pour_demain:
+        friendly_name: Prévision température maximale
+        value_template: >-
+            {% set start = (now().replace(hour=0,minute=0,second=0)) %}
+            {% set end = (start + timedelta(days=2)) %}
+            {{ state_attr('weather.nantes', 'forecast') | selectattr('datetime', '>', start) | selectattr('datetime','<=', end) | map(attribute='temperature') | list | max }}     
+        unit_of_measurement: '°C'      
+
+      nantes_temperature_minimale_pour_demain:
+        friendly_name: Prévision température minimale
+        value_template: >-
+            {% set start = (now().replace(hour=0,minute=0,second=0)) %}
+            {% set end = (start + timedelta(days=2)) %}
+            {{ state_attr('weather.nantes', 'forecast') | selectattr('datetime', '>=', start) | selectattr('datetime','<=', end) | map(attribute='templow') | list | max }} 
+        unit_of_measurement: '°C'      

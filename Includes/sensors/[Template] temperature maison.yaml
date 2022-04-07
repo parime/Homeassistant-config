@@ -1,0 +1,37 @@
+###### TEMPERATURES 
+platform: template
+sensors:
+###### TEMPERATURES 
+
+      temp_maison:
+        friendly_name: "Tempertaures moyennes de la maison"
+        value_template: >-
+          {{( states('sensor.temperature') )}}°
+
+      hum_maison:
+        friendly_name: "humidite moyennes de la maison"
+        value_template: >-
+          {{"( states('sensor.humidity') | round(2) )"}}%
+
+      lum_moyenne:
+        friendly_name: "Luminosité moyenne salon et cuisine"
+        value_template: >-
+          
+          {% set moyenne = [states('sensor.illuminance_salon_illuminance')| float,states('sensor.illuminance_cuisine_illuminance')|float] %} 
+          {{ moyenne | sum / moyenne | count }}lux
+
+      temperature:
+        friendly_name: "Tempertaures"
+        value_template: >-
+          {% set moyenne = [states('sensor.weather_salon_temperature') | float , states('sensor.weather_cuisine_temperature') | float , states('sensor.weather_couloir_temperature') | float ,
+          states('sensor.weather_ch_parents_temperature') | float , states('sensor.weather_ch_filles_temperature') | float , states('sensor.weather_sdb_temperature') | float ,
+          states('sensor.weather_toiette_temperature') | float , states('sensor.weather_placard_temperature') | float ] %} 
+          {{ moyenne | sum / moyenne | count }}
+
+      humidity:
+        friendly_name: "humidity"
+        value_template: >-
+          {% set moyenne = [states('sensor.weather_bureau_humidity') | float , states('sensor.weather_cuisine_humidity') | float , states('sensor.weather_couloir_humidity') | float ,
+          states('sensor.weather_couloir_humidity') | float , states('sensor.weather_ch_parents_humidity') | float , states('sensor.weather_ch_filles_humidity') | float ,
+          states('sensor.weather_sdb_humidity') | float , states('sensor.weather_toiette_humidity') | float ] %} 
+          {{ moyenne | sum / moyenne | count }}

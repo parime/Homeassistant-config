@@ -1,0 +1,8 @@
+
+# Suivre la date du dernier entretien de la chaudière domestique
+#
+
+last_maintenance_chaudiere:
+  name: Date de la dernière maintenance de la chaudiere
+  has_date: true
+  has_time: false

@@ -1,0 +1,8 @@
+
+
+platform: scrape
+resource: https://astro.rtl.fr/horoscope-jour-gratuit/vierge
+name: Vierge
+select: 'div[class="col card__body__header__resume"]'
+value_template: '{{ (value.split(">")[0].split(".")[0]) | truncate(255) }}'
+scan_interval: 21600

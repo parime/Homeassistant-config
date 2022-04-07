@@ -1,0 +1,12 @@
+#                _                        _   _
+#     /\        | |                      | | (_)
+#    /  \  _   _| |_ ___  _ __ ___   __ _| |_ _  ___  _ __
+#   / /\ \| | | | __/ _ \| '_ ` _ \ / _` | __| |/ _ \| '_ \
+#  / ____ \ |_| | || (_) | | | | | | (_| | |_| | (_) | | | |
+# /_/    \_\__,_|\__\___/|_| |_| |_|\__,_|\__|_|\___/|_| |_|
+# Cela gère le chargement de mes automatisations
+#
+# https://www.home-assistant.io/docs/automation/
+#
+automation: !include ../automations.yaml
+automation old: !include_dir_merge_list ../Includes/automation/

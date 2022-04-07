@@ -1,0 +1,37 @@
+   
+   ############################################################
+   ##                                                        ##
+   ##                           Light                        ##
+   ##                                                        ##
+   ############################################################
+
+all_light:
+  name: all light
+  entities:
+      - light.salon_1
+      - light.salon_2
+      - light.salon_3
+      - light.ambiance_tele
+      
+      - light.cuisine
+      - light.color_temperature_light_2
+      - light.color_dimmable_light_3
+      
+
+      - light.entrer
+      - light.led_couloir
+      - light.couloir
+      
+
+      - light.toilette
+     
+
+      - light.chambre_parentale
+      - light.led_lit
+      
+      - light.placard
+
+      - light.chambre_fille
+
+      - light.led_sdb
+      

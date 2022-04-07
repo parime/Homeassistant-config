@@ -1,0 +1,41 @@
+###### STATUT PERSON ET GPS POSITION
+platform: template
+sensors:
+      vincent_gps:
+        friendly_name: Vincent GPS
+        value_template: >-      
+          {% if states.person.vincent.state == "home" %}
+            Maison
+          {% elif states.person.vincent.state == "Travail" %}
+            Travail            
+          {% elif states.person.vincent.state == "not_home" %}
+            Absent    
+          {%- else -%}
+            Absent
+          {%- endif %} 
+          
+      patricia_gps:
+        friendly_name: patricia GPS
+        value_template: >-      
+          {% if states.person.patricia.state == "home" %}
+            Maison
+          {% elif states.person.patricia.state == "Travail" %}
+            Travail          
+          {% elif states.person.patricia.state == "not_home" %}
+            Absent    
+          {%- else -%}
+            Absent
+          {%- endif %}   
+
+      emma_gps:
+        friendly_name: emma GPS
+        value_template: >-      
+          {% if states.person.emma.state == "home" %}
+            Maison
+          {% elif states.person.emma.state == "Travail" %}
+            Travail          
+          {% elif states.person.emma.state == "not_home" %}
+            Absent    
+          {%- else -%}
+            Absent
+          {%- endif %}   

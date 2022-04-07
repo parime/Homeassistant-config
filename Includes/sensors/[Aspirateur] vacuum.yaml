@@ -1,0 +1,37 @@
+platform: template
+sensors:
+
+
+    # Sensors for roborock card.
+    roborock_battery:
+      friendly_name: "Roborock Battery"
+      value_template: "{{state_attr('vacuum.roborock_vacuum_a10', 'battery_level')}}"
+      unit_of_measurement: "%"
+      device_class: battery
+    
+    roborock_lifetime_cleaned_area:
+      friendly_name: "Lifetime Cleaned Area"
+      value_template: "{{ states('sensor.roborock_vacuum_a10_total_clean_area')|round(0, 'floor') }}"
+      unit_of_measurement: ㎡
+
+   # Used for the Main Brush maintenance card
+    roborock_s6_main_brush_hrs_remaining:
+        friendly_name: "Main Brush Remaining Hours"
+        value_template: "{{( states('sensor.roborock_vacuum_a10_main_brush_left') | int /86400) | round(1)}}"
+
+    # Used for the Sensors maintenance card
+    roborock_s6_sensors_hrs_remaining:
+        friendly_name: "Sensors Remaining Hours"    
+        value_template: "{{( states('sensor.roborock_vacuum_a10_sensor_dirty_left') | int /86400) | round(1)}}"
+
+    # Used for the Side Brush maintenance card
+    roborock_s6_side_brush_hrs_remaining:
+        friendly_name: "Side Brush Remaining Hours"    
+        value_template: "{{( states('sensor.roborock_vacuum_a10_side_brush_left') | int /86400) | round(1)}}"
+
+    # Used for the Filter maintenance card
+    roborock_s6_filter_hrs_remaining:
+        friendly_name: "Filter Remaining Hours"
+        value_template: "{{( states('sensor.roborock_vacuum_a10_filter_left') | int /86400) | round(1)}}"
+
+    

@@ -1,0 +1,8 @@
+aspirateur_pause:
+  alias: '[Aspirateur] Pause'
+  sequence:
+  - service: vacuum.pause
+    target:
+      entity_id: vacuum.roborock_vacuum_a10
+  mode: single
+  icon: mdi:pause

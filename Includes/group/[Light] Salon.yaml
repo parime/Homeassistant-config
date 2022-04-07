@@ -1,0 +1,14 @@
+   ############################################################
+   ##                                                        ##
+   ##                           Light_salon                  ##
+   ##                                                        ##
+   ############################################################
+
+Light_salon:
+  name: Light_salon
+  entities:
+      - light.salon_1
+      - light.salon_2
+      - light.salon_3
+      - light.ambiance_tele
+

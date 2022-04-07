@@ -1,0 +1,9 @@
+---
+# Utilisé pour l'automatisation envoyant un message audio lorsque la pluie arrive
+#
+# 
+#
+stop_rain_notification:
+  name: "Arêter les notifications pour la pluie"
+  initial: false
+  icon: mdi:weather-pouring

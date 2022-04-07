@@ -1,0 +1,24 @@
+platform: template
+
+sensors:
+  ###### HEURE ET DATE
+  heure:
+    friendly_name: "heure"
+    value_template: >-
+      {{now().hour }}h{{now().minute }}
+
+  date_simple:
+    friendly_name: "Date du jour"
+    icon_template: mdi:calendar-today
+    value_template: >
+      {% set months = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"] %}
+      {% set days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]  %}
+      {{ days[now().weekday()] + ' ' + now().day | string + ' ' + months[now().month-1] }}
+
+
+  date_simple_v2:
+    friendly_name: "Date du jour sans le nom du jour"
+    icon_template: mdi:calendar-today
+    value_template: >
+      {% set months = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"] %}
+      {{  now().day | string + ' ' + months[now().month-1] }}    

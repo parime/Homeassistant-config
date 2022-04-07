@@ -1,0 +1,22 @@
+
+- id: '1649101004981'
+  alias: '[Eclairage] Eteindre salon bouton'
+  description: ''
+  trigger:
+  - device_id: 243f2728002c2d913caeed486b4db4fc
+    domain: hue
+    platform: device
+    type: long_release
+    subtype: 1
+    unique_id: b724d70e-2729-4ec2-b247-eeae587da5e1
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      transition: 8
+    target:
+      entity_id:
+      - light.salon_2
+      - light.salon_1
+      - light.salon_3
+  mode: single

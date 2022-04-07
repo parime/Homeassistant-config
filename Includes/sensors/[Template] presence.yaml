@@ -1,0 +1,41 @@
+###### PERSONNES PRESENTES
+
+
+platform: template
+sensors:       
+      compteur_home:
+        friendly_name: Compteur Personnes à la maison         
+        value_template: >-
+          {% set pers = [
+           states.person.vincent,
+           states.person.patricia,
+           states.person.emma,   
+           states.person.nanou,            
+           ] %}
+          {{ pers | selectattr('state','eq','home') | list | count }}
+          
+      compteur_person_home:
+        friendly_name: Compteur Personnes à la maison (carte alarme)
+        value_template: >-       
+         {% if states('sensor.compteur_home') | float > 0  -%}
+           {% set pers_home = states | selectattr('entity_id', 'in', state_attr('group.person','entity_id')) | selectattr('state','in',['on','home']) | map(attribute='name') | list %}
+           {% if pers_home | length == 1 %} 
+           1 à la maison :
+           {% else %}
+           {{ states('sensor.compteur_home') }} à la maison :
+           {% endif %}  
+         {% else %}
+         {% endif %}
+      person_home:
+        friendly_name: Personnes à la maison
+        value_template: >-       
+         {% if states('sensor.compteur_home') | float > 0  -%}
+           {% set pers_home = states | selectattr('entity_id', 'in', state_attr('group.person','entity_id')) | selectattr('state','in',['on','home']) | map(attribute='name') | list %}
+           {% if pers_home | length == 1 %} 
+           🏠 {{ states('sensor.compteur_home') }} à la maison : {{ pers_home[0] }}
+           {% else %}
+           🏠 {{ states('sensor.compteur_home') }} à la maison : {{ pers_home[:-1] | join(' , ') }}{{' ,' if pers_home | length > 2 else ' '}} et {{ pers_home[-1]}}
+           {% endif %}  
+         {% else %}
+         {% endif %}   
+         

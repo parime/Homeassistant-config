@@ -1,0 +1,18 @@
+'1629751778994':
+  alias: '[Alarme} Extinction lumière '
+  sequence:
+  - service: light.turn_off
+    data:
+      transition: 32
+    target:
+      area_id:
+      - chambre_fille
+      - chambre_a_coucher_parents
+      - couloir
+      - cuisine
+      - placard
+      - salon
+      - toilette
+      - sdb
+  mode: restart
+  icon: mdi:alarm-light-off

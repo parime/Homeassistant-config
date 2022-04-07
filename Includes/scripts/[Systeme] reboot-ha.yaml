@@ -1,0 +1,5 @@
+systeme_redemarrer:
+  alias: '[Systeme] Redémarrer'
+  sequence:
+  - service: homeassistant.restart
+  mode: single

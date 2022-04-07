@@ -1,0 +1,15 @@
+- id: '1626620652387'
+  alias: '[Eclairage] Eteindre Led du lit '
+  description: 'Eteindre Led du lit a des heures fixe '
+  trigger:
+  - platform: time
+    at: '9:45'
+  - platform: time
+    at: '22:45'
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.led_lit
+  mode: single

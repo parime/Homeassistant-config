@@ -1,0 +1,12 @@
+- id: '1629584727727'
+  alias: '[Eclairage] Allumage aquarium'
+  description: '[Eclairage] Allumage aquarium'
+  trigger:
+  - platform: time
+    at: '13:30'
+  condition: []
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.aquarium
+  mode: single

@@ -1,0 +1,13 @@
+#   _____
+#  / ____|
+# | (___   ___ _ __  ___  ___  _ __
+#  \___ \ / _ \ '_ \/ __|/ _ \| '__|
+#  ____) |  __/ | | \__ \ (_) | |
+# |_____/ \___|_| |_|___/\___/|_|
+# Les capteurs recueillent des informations sur les états et les conditions.
+#
+# Cela charge mes configurations de capteur
+#
+# https://www.home-assistant.io/integrations/sensor/
+#
+sensor: !include_dir_list ../Includes/sensors/

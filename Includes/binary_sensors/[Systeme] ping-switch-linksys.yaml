@@ -1,0 +1,5 @@
+platform: ping
+host: 192.168.1.18
+name: Switch linksys
+count: 8
+scan_interval: 30

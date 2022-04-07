@@ -1,0 +1,73 @@
+
+up_vol_radio:
+  alias: Up volume on Media Player
+  sequence:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: >
+          media_player.echo_salon
+        volume_level: >
+          {% set next_vol = states[media_player.echo_salon].attributes.volume_level | float + 0.02 %}
+            {{ next_vol }}
+            
+down_vol_radio:
+  alias: Down volume on Media Player
+  sequence:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: >
+          media_player.echo_salon
+        volume_level: >
+          {% set next_vol = states[media_player.echo_salon].attributes.volume_level | float - 0.02 %}
+            {{ next_vol }}
+            
+stop_radio:
+  alias: Stop Radio on Media Player
+  sequence:
+    - service: media_player.media_stop
+      data_template:
+        entity_id: >
+          media_player.echo_salon
+    - service: input_select.select_option
+      data_template:
+        entity_id: >
+          input_select.radio_station_{{ media }}
+        option: 'Aucune'
+          
+                
+start_radio:
+  alias: Play Radio on Media Player
+  sequence:
+    - service: input_select.select_option
+      data_template:
+        entity_id: >
+          input_select.radio_station_{{ media }}
+        option: '{{ radio }}'
+    - service: media_player.play_media
+      data:
+        media_content_type: custom
+        media_content_id: >
+          {% if(radio == "Skyrock") %} play Skyrock on tunein
+          {% elif(radio == "NRJ") %} play NRJ on tunein
+          {% elif(radio == "Fun") %} play Fun Radio on tunein
+          {% elif(radio == "Nostalgie") %} play Nostalgie on tunein
+          {% elif(radio == "BFM") %} play BFM Business on tunein
+          {% elif(radio == "Virgin") %} play Virgin Radio FR on tunein
+          {% elif(radio == "rireetchanson") %} play Rire & Chansons on tunein
+          {% elif(radio == "franceinfo") %} play franceinfo on tunein
+          {% elif(radio == "francebleu") %} play France Bleu Loire Ocean on tunein
+          {% endif %}
+      target:
+        entity_id: media_player.echo_salon
+
+    - service: media_player.media_pause
+      data_template:
+        entity_id: >
+          media_player.echo_salon
+    - delay: 
+        milliseconds: 800
+    - service: media_player.media_play
+      data_template:
+        entity_id: >
+          media_player.echo_salon
+        

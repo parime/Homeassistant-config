@@ -1,0 +1,92 @@
+- id: '1622552009269'
+  alias: '[Eclairage] Allumage salon avec detecteurs'
+  description: Éclairage salon avec détecteurs
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+  - platform: state
+    entity_id: binary_sensor.motion_salon_hd
+  - platform: state
+    entity_id: binary_sensor.motion_salon_bd
+  - platform: state
+    entity_id: binary_sensor.motion_salon_bg
+  condition:
+  - condition: time
+    after: 07:00
+    before: '20:30'
+  action:
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'off'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 5
+          seconds: 0
+          milliseconds: 0
+      - service: light.turn_off
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_3
+          - light.salon_2
+        data:
+          transition: 20
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '90'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        above: '110'
+      sequence:
+      - service: light.turn_off
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          transition: 10
+    default: []
+  mode: restart

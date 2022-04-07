@@ -1,0 +1,5 @@
+platform: scrape
+name: Fete du Jour - Femme
+resource: https://www.ephemeride.com/free/fete.jsp
+select: ".FeteFemme"
+scan_interval: 28800  

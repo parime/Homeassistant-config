@@ -1,0 +1,11 @@
+platform: template
+sensors:
+  vacances_scolaires_aujourdhui:
+    friendly_name: "Vacances Scolaires aujourd'hui"
+    value_template: |-
+          {% set aujourdhui = now().strftime('%Y-%m-%d')%}
+          {% if aujourdhui < states.sensor.vacances_scolaires.attributes["start_date"] or aujourdhui > states.sensor.vacances_scolaires.attributes["end_date"] %}
+          false
+          {% else %} 
+          true
+          {% endif %}

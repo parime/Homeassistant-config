@@ -1,0 +1,7 @@
+
+# Suivre la date du dernier entretien du robot aspirateur
+#
+last_maintenance_aspi:
+  name: Date de la dernière maintenance aspirateur
+  has_date: true
+  has_time: false
