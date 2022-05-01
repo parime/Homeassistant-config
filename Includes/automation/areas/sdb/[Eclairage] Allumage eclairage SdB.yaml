@@ -1,42 +1,62 @@
-- id: '1643641528454001'
-  alias: '[Eclairage] Allumage salle de bain'
+- id: '1643628454001'
+  alias: '[Eclairage] Eclairage salle de bain'
   description: ''
   trigger:
   - platform: state
-    entity_id: binary_sensor.motion_sdb_bg_zone
-  - platform: state
     entity_id: binary_sensor.motion_sdb_hd_zone
+  - platform: state
+    entity_id: binary_sensor.motion_sdb_bg_zone
   condition: []
   action:
   - choose:
     - conditions:
-      - condition: and
-        conditions:
-        - condition: state
-          entity_id: binary_sensor.motion_sdb_bg_zone
-          state: 'off'
-        - condition: state
-          entity_id: binary_sensor.motion_sdb_hd_zone
-          state: 'off'
-      sequence:
-      - service: light.turn_off
-        data: {}
-        target:
-          entity_id: light.led_sdb
-    - conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_sdb_hd_zone
+        state: 'on'
       - condition: or
         conditions:
-        - condition: state
+        - type: is_motion
+          condition: device
+          device_id: b3e3ba3f4ae4ee65ce2a39bf7d8fc271
           entity_id: binary_sensor.motion_sdb_hd_zone
-          state: 'on'
-        - condition: state
+          domain: binary_sensor
+        - type: is_motion
+          condition: device
+          device_id: c789e839ac3a4583280cd9cb3a97b191
           entity_id: binary_sensor.motion_sdb_bg_zone
-          state: 'on'
+          domain: binary_sensor
       sequence:
-      - type: turn_on
-        device_id: 59b47fe4000098e533f9e97b2c58a03e
-        entity_id: light.led_sdb
-        domain: light
-        brightness_pct: 95
+      - service: light.turn_on
+        target:
+          entity_id: light.led_sdb
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    - conditions:
+      - condition: and
+        conditions:
+        - type: is_no_motion
+          condition: device
+          device_id: c789e839ac3a4583280cd9cb3a97b191
+          entity_id: binary_sensor.motion_sdb_bg_zone
+          domain: binary_sensor
+        - type: is_no_motion
+          condition: device
+          device_id: b3e3ba3f4ae4ee65ce2a39bf7d8fc271
+          entity_id: binary_sensor.motion_sdb_hd_zone
+          domain: binary_sensor
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 15
+          milliseconds: 0
+      - service: light.turn_off
+        target:
+          entity_id: light.led_sdb
+        data:
+          transition: 23
     default: []
-  mode: single
+  mode: restart

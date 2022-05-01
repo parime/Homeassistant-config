@@ -1,0 +1,48 @@
+- id: '1650370145786900'
+  alias: '[Absence] Lancement diffuseur'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: person.vincent
+    to: not_home
+  - platform: state
+    entity_id: person.patricia
+    to: not_home
+  condition:
+  - condition: time
+    after: '15:00:00'
+    before: '18:00:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
+  - condition: state
+    entity_id: person.vincent
+    state: not_home
+  - condition: state
+    entity_id: person.patricia
+    state: not_home
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.spray
+  - delay:
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.spray
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.led
+  mode: single
+

@@ -27,4 +27,4 @@
         target:
           area_id: placard
     default: []
-  mode: single
+  mode: restart

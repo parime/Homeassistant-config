@@ -1,0 +1,58 @@
+
+   ############################################################
+   ##                                                        ##
+   ##                 CHANGEMENT DE THÈME                    ##
+   ##                                                        ##
+   ############################################################
+
+- alias: "[Theme] Thème clair après le lever du soleil"
+  initial_state: on 
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    - service: frontend.set_theme
+      data:
+# Remplacez-le par le nom de votre thème clair
+        name: clear
+
+- alias: "[Theme] Thème sombre après le coucher du soleil"
+  initial_state: on 
+  trigger:
+    platform: sun
+    event: sunset
+  action:
+    - service: frontend.set_theme
+      data:
+# Remplacez-le par le nom de votre thème sombre
+        name: slate
+
+- alias: '[Theme] Thème clair après redémarrage en journée'
+  initial_state: on 
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
+  action:
+    service: frontend.set_theme
+    data:
+# Remplacez-le par le nom de votre thème clair
+      name: clear
+
+- alias: '[Theme] Thème sombre après redémarrage dans la nuit'
+  initial_state: on 
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+  action:
+    service: frontend.set_theme
+    data:
+# Remplacez-le par le nom de votre thème sombre
+      name: slate

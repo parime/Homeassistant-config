@@ -14,4 +14,4 @@
       area_id: cuisine
     data:
       transition: 26
-  mode: single
+  mode: restart

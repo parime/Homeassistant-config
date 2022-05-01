@@ -7,7 +7,7 @@ json_attributes:
   - end_date
   - description
 resource_template: |-
-  {% set location = 'Limoges' %}
+  {% set location = 'Nantes' %}
   {% set rows = '1'%}
   {% set aujourdhui = now().strftime('%Y-%m-%d')%}
   {% set dayOfYear =  now().strftime('%j') %}

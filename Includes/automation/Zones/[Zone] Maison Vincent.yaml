@@ -1,0 +1,20 @@
+
+- id: '1627983208146'
+  alias: '[Zone] Maison Vincent'
+  description: '[Zone] Maison Vincent'
+  trigger:
+  - platform: zone
+    entity_id: person.vincent
+    zone: zone.home
+    event: enter
+  condition:
+  - condition: state
+    entity_id: person.patricia
+    state: not_home
+  action:
+  - device_id: 7d075243cfb5c7c3a54268d5ccfbf091
+    domain: mobile_app
+    type: notify
+    message: Vincent arrive à la maison
+    title: Vincent localisation
+  mode: single

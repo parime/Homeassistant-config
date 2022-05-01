@@ -6,9 +6,26 @@
     entity_id: binary_sensor.motion_couloir_bd_zone
   - platform: state
     entity_id: binary_sensor.motion_couloir_hg_zone
-  condition: []
+  condition:
+  - condition: time
+    after: '18:30:00'
+    before: 06:59:00
   action:
   - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          device_id: e6a726a09489772ded77bdae8e4db7cb
     - conditions:
       - condition: and
         conditions:
@@ -22,32 +39,6 @@
       - service: light.turn_off
         data: {}
         target:
-          area_id: couloir
-          entity_id: light.led_couloir_on_off
-    - conditions:
-      - condition: time
-        after: '18:00:00'
-        before: 09:00:00
-        weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-      - condition: or
-        conditions:
-        - condition: state
-          entity_id: binary_sensor.motion_couloir_bd_zone
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.motion_couloir_hg_zone
-          state: 'on'
-      sequence:
-      - type: turn_on
-        device_id: e6a726a09489772ded77bdae8e4db7cb
-        entity_id: light.led_couloir_on_off
-        domain: light
+          device_id: e6a726a09489772ded77bdae8e4db7cb
     default: []
-  mode: single
+  mode: restart

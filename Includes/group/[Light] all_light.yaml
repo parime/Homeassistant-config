@@ -12,19 +12,16 @@ all_light:
       - light.salon_2
       - light.salon_3
       - light.ambiance_tele
-      
+      - light.led
+
       - light.cuisine
-      - light.color_temperature_light_2
-      - light.color_dimmable_light_3
-      
+      - light.led_cuisine
 
       - light.entrer
       - light.led_couloir
       - light.couloir
-      
 
       - light.toilette
-     
 
       - light.chambre_parentale
       - light.led_lit

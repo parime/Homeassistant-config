@@ -1,0 +1,16 @@
+- id: '1651155324995'
+  alias: '[Zone] Depart travail Vincent'
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.vincent
+    zone: zone.travail
+    event: leave
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_a515f
+    data:
+      title: 'Vincent localisation '
+      message: Vincent depart Du travail
+  mode: single
+

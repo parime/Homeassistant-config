@@ -1,0 +1,19 @@
+###### surveillance
+
+
+platform: template
+sensors:  
+    systeme_sidebar:
+        friendly_name: Surveillance systeme sidebar
+        value_template: >-    
+            {%- if is_state('sensor.systeme', '⚠️ AVERTISSEMENT') -%}
+            {% else -%}
+            Aucun
+            {% endif -%}
+              {%- if states('sensor.disk_use_percent')| float > 70.0 -%}
+              Espace DD {{states('sensor.disk_use_percent')}}%<br>
+              {% endif -%}
+              {%- if states('vacuum.roborock.vacuum.a10')  == 'unavailable'  -%}
+                Aspirateur indisponible<br>
+              {% endif -%}
+

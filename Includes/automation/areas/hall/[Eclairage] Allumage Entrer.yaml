@@ -5,31 +5,66 @@
   - platform: state
     entity_id: binary_sensor.door_entrer
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: binary_sensor.motion_couloir_bd_zone
-    state: 'on'
+  condition: []
   action:
-  - service: light.turn_on
-    target:
-      area_id: couloir
-      entity_id:
-      - light.entrer
-      - light.couloir
-      - light.led_couloir
-    data:
-      brightness: '{% if (now().hour < 8) %} 10 {% elif (now().hour < 10) %} 20 {%
-        elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 30 {% elif (now().hour
-        < 23) or ((now().hour == 23) and (now().minute < 45)) %} 10 {% else %} 0 {%
-        endif%}'
-  - delay:
-      hours: 0
-      minutes: 1
-      seconds: 10
-      milliseconds: 0
-  - service: light.turn_off
-    target:
-      area_id: couloir
-    data:
-      transition: 19
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.couloir_motion_sensor_2
+          state: 'off'
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 20
+        target:
+          entity_id:
+          - light.couloir
+          - light.led_couloir_on_off
+          - light.entrer
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.couloir_motion_sensor_2
+          state: 'on'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.couloir
+          - light.led_couloir_on_off
+          - light.entrer
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        above: '110'
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 10
+        target:
+          entity_id:
+          - light.led_couloir_on_off
+          - light.couloir
+          - light.entrer
+    default: []
   mode: restart

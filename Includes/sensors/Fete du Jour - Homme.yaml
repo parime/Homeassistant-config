@@ -1,5 +1,0 @@
-platform: scrape
-name: Fete du Jour - Homme
-resource: https://www.ephemeride.com/free/fete.jsp
-select: ".FeteHomme"
-scan_interval: 28800

@@ -8,35 +8,35 @@ sensors:
       {% if is_state("sun.sun", "above_horizon") -%} 
         {% set heure = states('sensor.time') %}
         {% if heure > '05:00' and heure <= '11:45' -%}
-             Bonne matinée ☕️️
+           ☕️️ Bonne matinée
         {% elif heure > '11:45' and heure < '13:30' -%}
-            Bon appétit 🍔
+           🍔 Bon appétit
         {% elif heure >= '13:30' and heure < '19:00' -%}
-            Bon après-midi ☕️
+           ☕️ Bon après-midi
         {% elif  heure >= '19:00' and heure < '23:00' -%}
-             Bonsoir ✨      
+           ✨ Bonsoir
         {% elif  heure > '23:00'  -%}
-             Bonne nuit 💤
+           💤 Bonne nuit
         {% elif  heure < '04:00'  -%}
-             Bonne nuit 💤
+           💤 Bonne nuit
         {% else %}
-            Salut 👋🏼
+           👋🏼 Salut
         {% endif %}
       {% elif is_state("sun.sun", "below_horizon") -%}
         {% set heure = states('sensor.time') %}
         {% if heure >= '05:00' and heure <= '11:45' -%}
-             Bonne matinée ☕️️
+           ☕️️ Bonne matinée
         {% elif heure > '11:45' and heure < '13:30' -%}
-            Bon appétit 🍔
+           🍔  Bon appétit
         {% elif heure >= '13:30' and heure < '18:00' -%}
-            Bon après-midi ☕️
+           ☕️ Bon après-midi
         {% elif  heure >= '18:00' and heure < '23:00' -%}
-             Bonne soirée ✨      
+           ✨ Bonne soirée
         {% elif  heure > '23:00'  -%}
-             Bonne nuit 💤
+            💤 Bonne nuit
         {% elif  heure < '05:00'  -%}
-             Bonne nuit 💤
+            💤 Bonne nuit
         {% else %}
-            Salut 👋🏼
+            👋🏼 Salut
         {% endif %}
       {% endif %}

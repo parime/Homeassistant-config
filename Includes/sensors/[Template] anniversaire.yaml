@@ -12,7 +12,20 @@ sensors:
             <font color='lightgrey'><i>🎉 Joyeux anniversaire Ambre ! </i> 
           {% elif is_state("sensor.date_simple_v2", "13 Janvier") -%}
             <font color='lightgrey'><i>🎉 Joyeux anniversaire Emma ! </i>
-
+          {% elif is_state("sensor.date_simple_v2", "22 Mai") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Hughuette ! </i>
+          {% elif is_state("sensor.date_simple_v2", "29 Decembre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Fabien ! </i>
+          {% elif is_state("sensor.date_simple_v2", "2 Octobre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Sylvain ! </i>
+          {% elif is_state("sensor.date_simple_v2", "6 Novembre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Celine et Thierry ! </i>
+          {% elif is_state("sensor.date_simple_v2", "20 Novembre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Philippe ! </i>
+          {% elif is_state("sensor.date_simple_v2", "12 Avril") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Salome ! </i>
+          {% elif is_state("sensor.date_simple_v2", "7 Octobre") -%}
+            <font color='lightgrey'><i>🎉 Joyeux anniversaire Anaelle ! </i>
 
 
           {% else %}

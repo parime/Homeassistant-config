@@ -1,0 +1,30 @@
+
+arret_alarme_2:
+  alias: '[Alarme] Arrêt alarme'
+  sequence:
+  - service: media_player.media_stop
+    target:
+      entity_id:
+      - media_player.echo_cuisine
+      - media_player.echo_salon
+      - media_player.echo_sdb
+      - media_player.echo_parents
+      - media_player.echo_filles
+      - media_player.maison
+    data: {}
+  - service: script.turn_off
+    target:
+      entity_id: script.1628781631025256
+    data: {}
+  - service: siren.turn_off
+    data: {}
+    target:
+      entity_id: siren.sirene_siren
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.2
+    target:
+      entity_id: media_player.partout
+  mode: restart
+  icon: mdi:ear-hearing-off
+

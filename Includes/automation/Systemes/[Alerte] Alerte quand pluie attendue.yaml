@@ -1,0 +1,62 @@
+- id: '304584411870242130003'
+  alias: ' [Alerte] Alerte quand pluie attendue'
+  description: Envoie des notifications quand la pluie est attendue dans l'heure
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 7d5b28c6b7944628781410dbf3e5f48a
+    entity_id: binary_sensor.openclose_13
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 6c823cbf6b95e433318019fdf27cdd73
+    entity_id: binary_sensor.openclose_17
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 0f65a6fa68219605180143ee0a1d27da
+    entity_id: binary_sensor.openclose_16
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 2b0e52880a8159f021fe698879471536
+    entity_id: binary_sensor.openclose_14
+    domain: binary_sensor
+  condition:
+  - condition: time
+    after: 09:30
+    before: '19:00'
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: state_attr('sensor.nantes_next_rain', '1_hour_forecast["5
+          min"]')
+      - condition: state
+        entity_id: input_boolean.stop_rain_notification
+        state: 'off'
+      sequence:
+      - service: tts.google_say
+        data:
+          entity_id: media_player.salon_3
+          message: Chers résidents, la pluie est attendue à {{ as_timestamp(states('sensor.nantes_next_rain'))                           |
+            timestamp_custom('%H:%M', True) }}, veuillez fermer les fenètres.
+          language: fr
+      - service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.stop_rain_notification
+    - conditions:
+      - condition: state
+        entity_id: sensor.nantes_next_rain
+        state: unknown
+      sequence:
+#      - service: tts.google_say
+#        data:
+#          entity_id: media_player.salon_3
+#          message: Chers résidents, Il n'y a plus de pluie attendue dans la prochaine heure.
+#          language: fr
+      - service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.stop_rain_notification
+    default: []
+  mode: single

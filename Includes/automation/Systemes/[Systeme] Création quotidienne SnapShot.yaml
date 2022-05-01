@@ -1,0 +1,23 @@
+- id: '162867424939098'
+  alias: '[Systeme] Création quotidienne SnapShot'
+  trigger:
+  - platform: time
+    at: 03:00:00
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
+    after: 02:00:00
+    before: 04:00:00
+  action:
+  - service: hassio.backup_full
+    data:
+      name: Sauvegarde Automatique {{now().strftime('%Y-%m-%d')}}
+  initial_state: 'on'
+  mode: restart

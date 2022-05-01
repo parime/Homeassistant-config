@@ -1,0 +1,31 @@
+platform: template
+sensors:
+      tous_les_capteurs_ouvrants:
+        friendly_name_template  : >
+          {% set domain = 'binary_sensor' %}
+          {% set state = 'on' %}
+          {# Définition du `namespace` afin de pouvoir récupérer la valeur définie dans la boucle #}
+          {% set binary_sensor = namespace(is_binary_sensor=0, is_on=0) %}
+          {%- set entities = (states[domain]| map(attribute='entity_id') | list ) -%}
+          {%- for entity in entities -%}
+            {% if ( is_state_attr(entity,'device_class','opening') or is_state_attr(entity,'device_class','door') or is_state_attr(entity,'device_class','window')) %}
+              {% set binary_sensor.is_binary_sensor = binary_sensor.is_binary_sensor + 1 %}
+              {% if is_state(entity,'on') %}
+                {% set binary_sensor.is_on = binary_sensor.is_on + 1 %}
+              {%- endif %}
+            {%- endif %}
+          {%- endfor -%}
+          {{binary_sensor.is_on}}/{{binary_sensor.is_binary_sensor}}
+        value_template: >
+          {% set domain = 'binary_sensor' %}
+          {% set state = 'on' %}
+          {%- set entities = (states[domain] | selectattr('state','eq', state) | map(attribute='entity_id') | list ) -%}
+          {%- for entity in entities -%}
+              {% if ( is_state_attr(entity,'device_class','opening') or is_state_attr(entity,'device_class','door') or is_state_attr(entity,'device_class','window')) %}
+              {%- if loop.first or loop.last %}
+                  {{ state_attr(entity,'friendly_name') }}
+              {% else %}
+                  {{ state_attr(entity,'friendly_name') }},
+              {%- endif %}
+              {%- endif %}
+          {%- endfor -%}

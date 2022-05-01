@@ -1,0 +1,19 @@
+---
+# FR: Alerte au redemarrage de HA core
+# EN: Notification on HA core reboot
+#
+
+- id: 75093260-3086-11eb-8655-7fbd7c468bda
+  alias: '[Alerte] Alerte au redemarrage de Home Assistant'
+  description: Envoie une notification à chaque redemarrage de HA core
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - device_id: 3ee8ced9245f1f155942a5da51188d7d
+    domain: mobile_app
+    type: notify
+    title: ⚠️ Reboot de Home Assistant ⚠️
+    message: ⚠️ Home Assitant a redémarré ! ⚠️
+
