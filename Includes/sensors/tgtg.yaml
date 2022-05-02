@@ -3,5 +3,5 @@ username: !secret login_tgtg
 access_token: !secret access_token_tgtg
 refresh_token: !secret refresh_token_tgtg
 user_id: !secret user_id_tgtg
-scan_interval: 300
+scan_interval: 500
 

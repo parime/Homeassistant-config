@@ -1,0 +1,9 @@
+alarme_activation_alarme:
+  alias: '[Alarme] Activation alarme'
+  sequence:
+  - service: alarm_control_panel.alarm_arm_away
+    data: {}
+    target:
+      entity_id: alarm_control_panel.eufy
+  mode: single
+  icon: mdi:alarm-panel

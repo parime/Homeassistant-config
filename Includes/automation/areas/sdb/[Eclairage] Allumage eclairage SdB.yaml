@@ -10,21 +10,14 @@
   action:
   - choose:
     - conditions:
-      - condition: state
-        entity_id: binary_sensor.motion_sdb_hd_zone
-        state: 'on'
       - condition: or
         conditions:
-        - type: is_motion
-          condition: device
-          device_id: b3e3ba3f4ae4ee65ce2a39bf7d8fc271
-          entity_id: binary_sensor.motion_sdb_hd_zone
-          domain: binary_sensor
-        - type: is_motion
-          condition: device
-          device_id: c789e839ac3a4583280cd9cb3a97b191
+        - condition: state
           entity_id: binary_sensor.motion_sdb_bg_zone
-          domain: binary_sensor
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_sdb_hd_zone
+          state: 'on'
       sequence:
       - service: light.turn_on
         target:
@@ -37,16 +30,12 @@
     - conditions:
       - condition: and
         conditions:
-        - type: is_no_motion
-          condition: device
-          device_id: c789e839ac3a4583280cd9cb3a97b191
+        - condition: state
           entity_id: binary_sensor.motion_sdb_bg_zone
-          domain: binary_sensor
-        - type: is_no_motion
-          condition: device
-          device_id: b3e3ba3f4ae4ee65ce2a39bf7d8fc271
+          state: 'off'
+        - condition: state
           entity_id: binary_sensor.motion_sdb_hd_zone
-          domain: binary_sensor
+          state: 'off'
       sequence:
       - delay:
           hours: 0
