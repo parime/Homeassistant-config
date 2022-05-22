@@ -1,22 +1,50 @@
-
 - id: '1649101004981'
   alias: '[Eclairage] Eteindre salon bouton'
   description: ''
   trigger:
-  - device_id: 243f2728002c2d913caeed486b4db4fc
+  - device_id: 6d93c781dbbbe8c42f23b66ad2504e04
     domain: hue
     platform: device
     type: long_release
     subtype: 1
-    unique_id: b724d70e-2729-4ec2-b247-eeae587da5e1
+    unique_id: 65488311-40b9-4c2e-8df8-b0ea999a3e6a
   condition: []
   action:
-  - service: light.turn_off
-    data:
-      transition: 8
-    target:
-      entity_id:
-      - light.salon_2
-      - light.salon_1
-      - light.salon_3
-  mode: single
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: switch.led_photo
+          state: 'on'
+        - condition: state
+          entity_id: switch.switch_lumiere_ambiance
+          state: 'on'
+        - condition: state
+          entity_id: light.light_canape
+          state: 'on'
+        - condition: state
+          entity_id: switch.aquarium
+          state: 'on'
+        - condition: state
+          entity_id: light.led
+          state: 'on'
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+          - switch.led_photo
+          - switch.switch_lumiere_ambiance
+          - switch.spray
+          - switch.aquarium
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.led
+          - light.aquarium
+          - light.light_canape
+          - light.light_lumiere_ambiance
+    default: []
+  mode: restart

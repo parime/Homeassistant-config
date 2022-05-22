@@ -1,0 +1,34 @@
+- id: '1649011178330'
+  alias: '[Eclairage] Led du lit bouton'
+  description: ''
+  trigger:
+  - device_id: a7ce42651db16f2b577bd69618e55a62
+    domain: hue
+    platform: device
+    type: long_release
+    subtype: 1
+    unique_id: 2b8be753-97da-4e60-92c8-2360b5e7e96e
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.led_lit
+        state: 'on'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.led_lit
+    - conditions:
+      - condition: state
+        entity_id: light.led_lit
+        state: 'off'
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 37
+        target:
+          entity_id: light.led_lit
+    default: []
+  mode: restart

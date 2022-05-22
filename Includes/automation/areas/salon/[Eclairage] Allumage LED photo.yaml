@@ -1,10 +1,10 @@
-- id: '1642067489065'
+- id: '164206748459065'
   alias: '[Eclairage] Allumage LED photo'
   description: '[Eclairage] Allumage LED photo'
   trigger:
   - platform: time_pattern
     hours: '07'
-    minutes: '21'
+    minutes: '41'
   - platform: time_pattern
     hours: 09
     minutes: '30'
@@ -19,12 +19,13 @@
   - choose:
     - conditions:
       - condition: time
-        after: 07:20
-        before: 07:24
+        after: 07:40
+        before: 07:44
       sequence:
       - service: switch.turn_on
         target:
           entity_id: switch.led_photo
+        data: {}
     - conditions:
       - condition: time
         after: 09:29
@@ -33,6 +34,7 @@
       - service: switch.turn_off
         target:
           entity_id: switch.led_photo
+        data: {}
     - conditions:
       - condition: time
         after: '18:42'
@@ -40,7 +42,10 @@
       sequence:
       - service: switch.turn_on
         target:
-          entity_id: switch.led_photo
+          entity_id:
+          - switch.led_photo
+          - switch.switch_lumiere_ambiance
+        data: {}
     - conditions:
       - condition: time
         after: '23:10'
@@ -48,6 +53,9 @@
       sequence:
       - service: switch.turn_off
         target:
-          entity_id: switch.led_photo
+          entity_id:
+          - switch.led_photo
+          - switch.switch_lumiere_ambiance
+        data: {}
     default: []
   mode: single

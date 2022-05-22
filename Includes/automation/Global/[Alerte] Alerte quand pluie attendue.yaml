@@ -1,0 +1,54 @@
+- id: 30f4e5a8-df44-11ea-87d0-0242ac130003
+  alias: '[Alerte] Alerte quand pluie attendue'
+  description: Envoie des notifications quand la pluie est attendue dans l'heure
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.rain_next_hour
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.windows_ch_filles_on_off
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_ch_parents_on_off
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_cuisine_on_off
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_salon
+      state: 'on'
+  - condition: time
+    after: 09:30:00
+    before: '19:00:00'
+    weekday:
+    - mon
+    - wed
+    - tue
+    - thu
+    - fri
+    - sat
+    - sun
+  - condition: state
+    entity_id: sensor.rain_next_hour
+    state: 'on'
+  action:
+  - service: notify.alexa_media_echo_salon
+    data:
+      message: Chers résidents, Il n'y a plus de pluie attendue dans la prochaine
+        heure et des fenêtres sont encore ouvertes       {{states('sensor.tous_les_capteurs_ouvrants')}}.
+      data:
+        type: tts
+  - service: notify.alexa_media_echo_chambre_filles
+    data:
+      message: Chers résidents, Il n'y a plus de pluie attendue dans la prochaine
+        heure et des fenêtres sont encore ouvertes       {{states('sensor.tous_les_capteurs_ouvrants')}}.
+      data:
+        type: tts
+  - delay:
+      hours: 0
+      minutes: 20
+      seconds: 0
+      milliseconds: 0

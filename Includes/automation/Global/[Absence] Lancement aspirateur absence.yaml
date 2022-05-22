@@ -3,9 +3,9 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: person.vincent
-  - platform: state
-    entity_id: person.patricia
+    entity_id:
+    - person.vincent
+    - person.patricia
   condition:
   - condition: and
     conditions:
@@ -32,7 +32,7 @@
     target:
       entity_id: vacuum.roborock_vacuum_a10
   - delay:
-      hours: 4
+      hours: 2
       minutes: 0
       seconds: 0
       milliseconds: 0

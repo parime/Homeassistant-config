@@ -1,0 +1,70 @@
+- id: '1652350453770'
+  alias: '[Eclairage] Led du lit horaires'
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:45:00
+  - platform: time
+    at: '22:40:00'
+  - platform: time
+    at: 08:20:00
+  - platform: time
+    at: '19:00:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: time
+          after: 09:40:00
+          before: 09:55:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: '22:35:00'
+          before: '22:45:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          device_id: 1b296ede17b54d2320e298966cb58846
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: time
+          after: 08:15:00
+          before: 08:25:00
+        - condition: time
+          after: '18:55:00'
+          before: '19:10:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 26
+        target:
+          entity_id: light.led_lit
+    default: []
+  mode: restart

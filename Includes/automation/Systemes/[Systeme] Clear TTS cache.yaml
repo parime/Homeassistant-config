@@ -3,7 +3,7 @@
   description: Clear TTS cache 
   trigger:
   - platform: time
-    at: '02:00:00'
+    at: '21:00:00'
   condition: []
   action:
   - service: tts.clear_cache

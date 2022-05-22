@@ -18,8 +18,8 @@ all_light:
       - light.led_cuisine
 
       - light.entrer
-      - light.led_couloir
       - light.couloir
+      - light.led_couloir_on_off
 
       - light.toilette
 

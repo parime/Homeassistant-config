@@ -7,40 +7,40 @@
       - media_player.echo_cuisine
       - media_player.echo_salon
       - media_player.echo_sdb
-      - media_player.echo_parents
-      - media_player.echo_filles
+      - media_player.echo_chambre_filles
+      - media_player.maison
+      - media_player.echo_chambre_parentale
     data:
       volume_level: 1
   - repeat:
       until:
       - condition: device
-        device_id: e0905f0a67b1cf9d8fbff16e225aea70
+        device_id: 218be6c39841dd2ad86b6ff3141db80b
         domain: alarm_control_panel
         entity_id: alarm_control_panel.alarmo
         type: is_disarmed
       sequence:
-      - service: notify.alexa_media
+      - service: notify.alexa_media_maison
         data:
           message: Vous n'êtes pas autorisé à être ici, les autorités vont être alerté  d'une
             intrusion! saisissez votre code pour désactiver l'alarme!
           data:
-            type: tts
-          target: media_player.maison
+            type: announce
+            method: all
       - delay:
           hours: 0
           minutes: 0
           seconds: 18
           milliseconds: 0
-      - service: notify.alexa_media
+      - service: notify.alexa_media_maison
         data:
           message: <audio src="soundbank://soundlibrary/scifi/amzn_sfx_sirens_01"/>
-          target: media_player.maison
           data:
-            type: tts
-      - service: siren.turn_on
-        data:
-          volume_level: 1
+            type: announce
+            method: all
+      - service: switch.turn_on
+        data: {}
         target:
-          entity_id: siren.sirene_siren
+          entity_id: switch.sirene
   mode: restart
   icon: mdi:alarm-light

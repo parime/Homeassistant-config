@@ -1,4 +1,3 @@
-
 arret_alarme_2:
   alias: '[Alarme] Arrêt alarme'
   sequence:
@@ -6,25 +5,30 @@ arret_alarme_2:
     target:
       entity_id:
       - media_player.echo_cuisine
-      - media_player.echo_salon
-      - media_player.echo_sdb
-      - media_player.echo_parents
-      - media_player.echo_filles
       - media_player.maison
+      - media_player.echo_chambre_parentale
+      - media_player.echo_chambre_filles
+      - media_player.echo_sdb
+      - media_player.salon
     data: {}
   - service: script.turn_off
-    target:
-      entity_id: script.1628781631025256
-    data: {}
-  - service: siren.turn_off
     data: {}
     target:
-      entity_id: siren.sirene_siren
+      entity_id: script.1628781631026
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.sirene
   - service: media_player.volume_set
     data:
       volume_level: 0.2
     target:
-      entity_id: media_player.partout
+      entity_id:
+      - media_player.echo_salon
+      - media_player.echo_sdb
+      - media_player.echo_cuisine
+      - media_player.echo_chambre_parentale
+      - media_player.echo_chambre_filles
+      - media_player.maison
   mode: restart
   icon: mdi:ear-hearing-off
-

@@ -11,10 +11,6 @@ slate:
       app-toolbar {
         background: none !important;
       }
-
-
-
-
   # Custom
   radial-icon-size: 40px
   radial-menu-item-color: '#41aae0'

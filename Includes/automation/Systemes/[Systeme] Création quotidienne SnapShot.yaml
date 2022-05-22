@@ -2,7 +2,7 @@
   alias: '[Systeme] Création quotidienne SnapShot'
   trigger:
   - platform: time
-    at: 03:00:00
+    at: '21:30'
   condition:
   - condition: time
     weekday:
@@ -13,11 +13,11 @@
     - fri
     - sat
     - sun
-    after: 02:00:00
-    before: 04:00:00
+    after: '20:00'
+    before: '22:30'
   action:
   - service: hassio.backup_full
     data:
-      name: Sauvegarde Automatique {{now().strftime('%Y-%m-%d')}}
+      name: Sauvegarde Automatique {{now().strftime('%Y-%m-%d')}} HA version {{ states('sensor.current_version') }}
   initial_state: 'on'
   mode: restart

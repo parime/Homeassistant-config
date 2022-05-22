@@ -3,9 +3,9 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: person.vincent
-  - platform: state
-    entity_id: person.patricia
+    entity_id:
+    - person.vincent
+    - person.patricia
   condition:
   - condition: and
     conditions:
@@ -15,17 +15,17 @@
     - condition: state
       entity_id: person.vincent
       state: not_home
-    - condition: time
-      after: 09:00:00
-      before: '20:00:00'
-      weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sun
-      - sat
+  - condition: time
+    after: 09:00
+    before: '18:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
   action:
   - service: switch.turn_on
     data: {}
@@ -33,7 +33,7 @@
       entity_id: switch.spray
   - delay:
       hours: 0
-      minutes: 2
+      minutes: 15
       seconds: 0
       milliseconds: 0
   - service: switch.turn_off

@@ -240,3 +240,12 @@ sensors:
         friendly_name: Température min du jour
         value_template: "{{ states.weather.nantes.attributes.forecast[0].templow|float|round(0) }}°"        
         
+
+      rain_next_hour:
+        friendly_name: "Rain Next Hour"
+        value_template: >-
+          {% if 'rain' in state_attr('weather.maison', 'forecast')[0].condition  %}
+            on
+          {% else %}
+            off
+          {% endif %}
