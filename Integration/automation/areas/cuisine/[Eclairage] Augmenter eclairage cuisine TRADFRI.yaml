@@ -1,0 +1,17 @@
+- id: '1659283404455'
+  alias: '[Eclairage] Augmenter eclairage cuisine TRADFRI'
+  description: ''
+  trigger:
+  - device_id: 4332068512276d4a30b33a83a17e9260
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: dim_up
+  condition: []
+  action:
+  - device_id: d988d14be69397d11a38f9e03d73da27
+    domain: light
+    entity_id: light.cuisine
+    type: brightness_increase
+  mode: single
+

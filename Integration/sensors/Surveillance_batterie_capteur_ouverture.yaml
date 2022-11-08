@@ -1,0 +1,27 @@
+###### surveillance
+platform: template
+sensors:
+  surveillance_batterie_capteur_ouverture:
+    friendly_name: Surveillance_batterie_capteur_ouverture
+    value_template: >-
+
+
+      {%- if states('sensor.door_entrer_battery_level')| float < 16 -%}
+       Le capteur d'ouverture porte d'entrer est à {{ states('sensor.door_entrer_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.door_placard_battery_level')| float < 16 -%}
+       Le capteur d'ouverture porte placard est à {{ states('sensor.door_placard_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.sensor_magnet_ch_battery_level')| float < 16 -%}
+       Le capteur d'ouverture chambre fille est à {{ states('sensor.sensor_magnet_ch_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.windows_ch_parents_battery_level')| float < 16 -%}
+       Le capteur d'ouverture chambre parents est à {{ states('sensor.windows_ch_parents_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.windows_salon_battery_level')| float < 16 -%}
+       Le capteur d'ouverture salon est à {{ states('sensor.windows_salon_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.windows_cuisine_battery_level')| float < 16 -%}
+       Le capteur d'ouverture Cuisine est à {{ states('sensor.windows_cuisine_battery_level') }}%<br>
+      {%- endif -%}
+

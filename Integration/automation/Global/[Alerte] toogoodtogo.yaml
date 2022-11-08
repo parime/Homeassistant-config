@@ -1,0 +1,37 @@
+- id: e8259323-1ece-4eb4-94be-390751f22b86
+  alias: Notification - TooGoodToGo
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_boucherie_volaille_16eur
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_e_leclerc_drive_nantes_paridis_produits_frais
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_promocash_nantes_grand_panier
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_promocash_nantes_panier_gros_format
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_charcuterie_traiteur_12eur
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_mixte_18eur
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.tgtg_chronodrive_orvault_panier_mixte
+    above: '0'
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_a536b
+    data:
+      message: '{{ name }}, # {{ stock }}, {{ price }} €'
+  - service: notify.mobile_app_sm_vincent
+    data:
+      message: '{{ name }}, # {{ stock }}, {{ price }} €'
+  variables:
+    stock: '{{ states(trigger.to_state.entity_id) }}'
+    available: '{{ state_attr(trigger.to_state.entity_id, ''stock_available'') }}'
+    price: '{{ state_attr(trigger.to_state.entity_id, ''price'') }}'
+    name: '{{ state_attr(trigger.to_state.entity_id, ''friendly_name'') }}'

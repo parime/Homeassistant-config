@@ -1,0 +1,43 @@
+- id: '16473845327241187'
+  alias: '[Eclairage] Extinction couloir mouvement '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.motion_couloir_bd_zone
+    - binary_sensor.motion_couloir_hg_zone
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.motion_couloir_hg_zone
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.motion_couloir_bd_zone
+      state: 'off'
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: light.turn_off
+    data:
+      transition: 16
+    target:
+      area_id: couloir
+  - service: automation.turn_off
+    data: {}
+    target:
+      entity_id:
+      - automation.eclairage_couloir_halloween
+      - automation.eclairage_couloir_fete_national
+      - automation.rainbow_strip_led
+      - automation.automation_0
+  - service: light.turn_off
+    data: {}
+    target:
+      area_id: couloir
+
+  mode: restart
+  

@@ -1,0 +1,52 @@
+- id: '16286704939098'
+  alias: '[Alerte] Alerte fenêtre ouverte'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - alarm_control_panel.alarmo
+    - alarm_control_panel.eufy
+    - person.vincent
+    - person.patricia
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.windows_salon
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_cuisine_on_off
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.door_entrer
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_ch_parents_on_off
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.windows_ch_filles_on_off
+      state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: person.vincent
+      state: not_home
+    - condition: state
+      entity_id: person.patricia
+      state: not_home
+  action:
+  - service: notify.mobile_app_sm_vincent
+    data:
+      title: ALERTE
+      message: '    Le capteur suivant est actif     {{states(''sensor.tous_les_capteurs_ouvrants'')}}.'
+  - service: notify.mobile_app_sm_a536b
+    data:
+      message: '    Le capteur suivant est actif     {{states(''sensor.tous_les_capteurs_ouvrants'')}}.'
+      title: ALERTE
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  mode: queued
+  max: 20

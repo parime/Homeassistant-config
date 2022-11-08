@@ -1,0 +1,16 @@
+###### surveillance
+platform: template
+sensors:  
+    saison:
+        friendly_name: saison
+        value_template: >-    
+
+ 
+
+              {% if is_state('sensor.season', 'spring')%} 🌻 &nbsp;Printemps&nbsp; 🌻 
+              {% elif is_state('sensor.season', 'summer')%} 🌴 &nbsp;Eté&nbsp; 🌴 
+              {% elif is_state('sensor.season', 'autumn')%} 🍂 &nbsp;Automne&nbsp; 🍂  
+              {% elif is_state('sensor.season', 'winter')%} ❄️ &nbsp;Hiver&nbsp; ❄️  
+              {% else %} Erreur Saison 
+              {% endif %} <center> </b>
+

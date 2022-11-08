@@ -1,0 +1,8 @@
+all_media:
+  name: all media
+  entities:
+      - media_player.echo_cuisine
+      - media_player.echo_salon
+      - media_player.echo_chambre_parentale
+      - media_player.echo_chambre_filles
+      - media_player.echo_sdb

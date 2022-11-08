@@ -1,0 +1,100 @@
+- id: '162214294155735364'
+  alias: '[Eclairage] Allumage eclairage cuisine '
+  description: Allumage cuisine
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.motion_cuisine_hg_zone
+    - binary_sensor.motion_cuisine_bd_zone
+    - sensor.illuminance_cuisine_illuminance
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: 07:00:00
+        before: '23:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: numeric_state
+        entity_id: sensor.illuminance_cuisine_illuminance
+        below: '45'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_hg_zone
+          state: 'on'
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 10 {% elif (now().hour < 10)
+            %} 20 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 30
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 0 {% endif%}'
+        target:
+          entity_id:
+          - light.cuisine
+          - light.led_cuisine
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_bd_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_hg_zone
+          state: 'off'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.cuisine
+          - light.led_cuisine
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.illuminance_cuisine_illuminance
+        above: '65'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id:
+          - light.cuisine
+          - light.led_cuisine
+    - conditions:
+      - condition: time
+        after: '23:00:00'
+        before: 07:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_cuisine_hg_zone
+          state: 'on'
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.led_cuisine
+    default: []
+  mode: restart

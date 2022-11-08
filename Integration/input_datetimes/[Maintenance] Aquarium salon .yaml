@@ -1,0 +1,6 @@
+# Suivre la date du dernier entretien aquarium salon
+#
+last_maintenance_aquarium_salon:
+  name: Date de la dernière maintenance de l'aquarium salon
+  has_date: true
+  has_time: false

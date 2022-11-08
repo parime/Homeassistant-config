@@ -1,0 +1,26 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_capteur_ouverture_hs:
+        friendly_name: Surveillance_capteur_ouverture_HS
+        value_template: >-    
+              {%- if is_state('sensor.door_entrer_battery_level', 'unavailable') -%}
+                Le capteur d'ouverture porte d'enter est HS
+              {% endif -%}
+              {%- if is_state('sensor.door_placard_battery_level', 'unavailable') -%}
+                Le capteur d'ouverture porte placard est HS
+              {% endif -%}
+              {%- if is_state('sensor.sensor_magnet_ch_battery_level', 'unavailable') -%} 
+                Le capteur d'ouverture Chambre filles est HS
+              {% endif -%}
+              {%- if is_state('sensor.windows_ch_parents_battery_level', 'unavailable') -%}
+                Le capteur d'ouverture Chambre parents est HS
+              {% endif -%}
+              {%- if is_state('sensor.windows_salon_battery_level', 'unavailable') -%} 
+                Le capteur d'ouverture Salon est HS
+              {% endif -%}
+              {%- if is_state('sensor.windows_cuisine_battery_level', 'unavailable') -%} 
+                Le capteur d'ouverture Cuisine est HS
+              {% endif -%}
+
+

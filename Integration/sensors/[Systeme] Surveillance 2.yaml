@@ -1,0 +1,20 @@
+###### surveillance
+
+
+platform: template
+sensors:  
+      systeme_sidebar:
+        friendly_name: Surveillance systeme sidebar
+        value_template: >-  
+
+
+          {{ states('sensor.surveillance_batterie_camera') }}
+          {{ states('sensor.surveillance_camera_hs') }}
+          {{ states('sensor.surveillance_batterie_capteur_mouvement') }}
+          {{ states('sensor.surveillance_batterie_capteur_mouvement_hs') }}
+
+          {{ states('sensor.surveillance_batterie_capteur_ouverture') }}
+
+          {{ states('surveillance_batterie_capteur_temeprature') }}
+          {{ states('sensor.surveillance_capteur_temeperature_hs') }}
+          {{ states('sensor.surveillance_capteur_ouverture_hs') }}

@@ -1,0 +1,12 @@
+lancement_rtsp:
+  alias: Lancement RTSP
+  sequence:
+  - service: eufy_security.start_rtsp_livestream
+    data: {}
+    target:
+      entity_id:
+      - camera.couloir
+      - camera.cuisine
+      - camera.salon
+  mode: restart
+  icon: mdi:video

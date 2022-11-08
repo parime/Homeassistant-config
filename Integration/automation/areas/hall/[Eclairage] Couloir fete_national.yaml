@@ -1,0 +1,15 @@
+- id: '166351556569393790'
+  alias: "[Eclairage] Couloir fete_national"
+  description: Couloir 14 Juillet
+  trigger:
+  - platform: time_pattern
+    hours: '*'
+    minutes: '*'
+    seconds: /2
+    enabled: true
+  condition: []
+  action:
+  - service: script.fete_national_light
+    data:
+      entity: light.led_couloir_on_off
+  mode: single

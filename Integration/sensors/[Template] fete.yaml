@@ -1,0 +1,794 @@
+
+
+platform: template
+sensors:
+  fetes:
+    friendly_name: Fetes
+    value_template: >
+            {% if is_state("sensor.date_simple_v2", "1 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ugolin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Basile    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Geneviève   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Odilon    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Édouard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Mélaine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Raymond   </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lucien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alix    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Guillaume    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pauline    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Tatiana    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Yvette    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Nina    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rémi    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marcel    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Roseline    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Prisca   </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marius    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sébastien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Agnès    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Janvier") -%}
+                <font color='lightgrey'><i> ✨ Aujourd'hui, nous fêtons les Vincent  ✨  </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Barnard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les François    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons la Conversion de Paul    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Paule    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Angèle   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thomas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gildas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Martine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Janvier") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marcelle    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ella    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Theophane    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Guénolé   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Véronique    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Agathe   </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gaston    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Eugénie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jacqueline    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Françoise    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Arnaud   </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rosine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Justine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Beatrice    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Valentin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Claude    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Julienne    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alexis    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bernadette    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gabin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aimee    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Damien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Isabelle    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lazare   </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Modeste    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Romeo    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Nestor    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Honorine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les RoAvriln    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Février") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Augula   </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aubin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Charles    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gwenole   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Casimir    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Olive    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Colette    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Félicité    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Françoise    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Vivien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rosine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Justine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rodrigue    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Maud   </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Louise    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Benedicte    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Mars") -%}
+                <font color='lightgrey'><i> ✨ Aujourd'hui, nous fêtons les Patricia ✨   </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Cyrille   </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Joseph    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Herbet    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Clemence    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lea    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Victorien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Catherine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Humbet    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Larissa    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Habib   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gontran    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gwladys    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Amedee    </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Mars") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Benjamin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hugues    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sandrine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Richard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Isidore    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Irene    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marcellin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean-Baptiste   </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Julie   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gautier    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fulbet    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Stanislas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jules    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ida    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Maxime    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Paterne    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Benoît   </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Étienne    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Parfait    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Avril") -%}
+                <font color='lightgrey'><i> ✨ Aujourd'hui, nous fêtons les Emma ✨  </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Odette   </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Anselme    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alexandre    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Georges    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fidèle    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marc    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alida    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Zita    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Valérie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Catherine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Avril") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Robert    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Joseph    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Boris    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Philippe    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sylvain    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Judith    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Prudence    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gisèle    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Desire   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pacôme    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Solange   </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Estelle   </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Achille    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rolande    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Matthias    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Denise   </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Honore    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pascal    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Éric    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Yves    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bernardin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Constantin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Émile   </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Didier    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Donatien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sophie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bérenger    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Augustin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Germain    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aymard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ferdinand   </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Mai") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Perrine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Justin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Blandine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Charles    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Clotilde    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Igor    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Norbet    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gilbert    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Médard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Diane    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Landry    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Barnabé    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Guy    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Antoine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Élisée    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Germaine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean-François    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hervé    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Leonce    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Romuald   </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Silvère    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rodolphe   </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alban    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Audrey    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean-Baptiste    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Prosper    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Anthelme    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fernand   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Irénée    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pierre et Paul    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Juin") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Martial    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thierry    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Martinien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thomas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Florent    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Antoine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Mariette    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Raoul    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thibaud   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Amandine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ulric   </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Benoit    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Olivier   </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Joëlle   </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Camille    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Donald   </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Elvire    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Charlotte    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Frédéric    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Arsène   </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marina   </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Victor    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marie-Madeleine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Brigitte    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Christine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jacques    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Anne    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Nathalie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Samson    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marthe    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Juliette    </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Juillet") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ignace    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alphonse   </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Julien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lydie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean-Marie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Abel   </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Octavien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gaetan    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Dominique    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Amour    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Laurent    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Claire    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Clarisse    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hippolyte    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Evrard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Armel    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hyacinthe   </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hélène    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Eudes    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bernard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Christophe    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fabrice    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rose    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Barthélemy    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Louis    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Natacha    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Monique    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Augustin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sabine   </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fiacre    </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Août") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aristide    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gilles    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ingrid   </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Grégoire    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Rosalie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Raïssa    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bertrand   </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Reine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Adrien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alain    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Inès   </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Adelphe    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Apollinaire   </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aime    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lubin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Roland   </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Édith    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Renaud   </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Nadège    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Émilie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Davy    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Matthieu    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Maurice    </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Constant    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thecle    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hermann    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Damien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Vincent    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Venceslas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Michel    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Septembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jérôme    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thérèse    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Léger    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gérard   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les François    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Fleur    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bruno    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Serge    </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pélagie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Denis    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ghislain    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Firmin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Wilfrid   </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Géraud   </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Juste    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Thérèse  </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Edwige   </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Baudouin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Luc   </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les René Goupil    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lina   </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Céline    </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Elodie   </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean   </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Florentin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Crépin    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Dimitri    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Émeline   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Simon    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Narcisse    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bienvenue    </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Octobre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Quentin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Dagobert    </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les defunts    </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Hubert    </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Charles    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sylvie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Bertille    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Carine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Geoffroy   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Theodore    </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Leon   </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Martin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Christian    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Brice    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sidoine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Albert    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Marguerite    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Élisabeth    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Aude   </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Tanguy   </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Edmond    </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Albert   </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Cécile   </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Clement    </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Flora    </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Catherine    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Delphine   </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Severin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jacques   </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Saturnin   </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Novembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Andre    </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Florence   </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Viviane   </i> 
+            {% elif is_state("sensor.date_simple_v2", "3 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Xavier   </i> 
+            {% elif is_state("sensor.date_simple_v2", "4 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Barbara    </i> 
+            {% elif is_state("sensor.date_simple_v2", "5 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gerald   </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Nicolas    </i> 
+            {% elif is_state("sensor.date_simple_v2", "7 Decembre") -%}
+                <font color='lightgrey'><i> ✨ Aujourd'hui, nous fêtons les Ambre ✨  </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Elfie   </i> 
+            {% elif is_state("sensor.date_simple_v2", "9 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pierre   </i> 
+            {% elif is_state("sensor.date_simple_v2", "10 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Romaric    </i> 
+            {% elif is_state("sensor.date_simple_v2", "11 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Daniel    </i> 
+            {% elif is_state("sensor.date_simple_v2", "12 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Chantal    </i> 
+            {% elif is_state("sensor.date_simple_v2", "13 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Lucie    </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Odile    </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Ninon    </i> 
+            {% elif is_state("sensor.date_simple_v2", "16 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Alice    </i> 
+            {% elif is_state("sensor.date_simple_v2", "17 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gael    </i> 
+            {% elif is_state("sensor.date_simple_v2", "18 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Gatien    </i> 
+            {% elif is_state("sensor.date_simple_v2", "19 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Urbain    </i> 
+            {% elif is_state("sensor.date_simple_v2", "20 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Theophile   </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Pierre   </i> 
+            {% elif is_state("sensor.date_simple_v2", "22 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Xaviere   </i> 
+            {% elif is_state("sensor.date_simple_v2", "23 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Armand   </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Adele    </i> 
+            {% elif is_state("sensor.date_simple_v2", "26 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Etienne    </i> 
+            {% elif is_state("sensor.date_simple_v2", "27 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Jean    </i> 
+            {% elif is_state("sensor.date_simple_v2", "28 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Innocents    </i> 
+            {% elif is_state("sensor.date_simple_v2", "29 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les David    </i> 
+            {% elif is_state("sensor.date_simple_v2", "30 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Roger   </i> 
+            {% elif is_state("sensor.date_simple_v2", "31 Decembre") -%}
+                <font color='lightgrey'><i> Aujourd'hui, nous fêtons les Sylvestre    </i> 
+
+
+
+            {% else %}
+                Aucun
+            {%- endif %}
+
+
+  evenement:
+    friendly_name: evenement
+    value_template: >
+            {% if is_state("sensor.date_simple_v2", "1 Janvier") -%}
+                <font color='lightgrey'><i> ✨ Bonne année !! ✨  </i> 
+            {% elif is_state("sensor.date_simple_v2", "6 Janvier") -%}
+                <font color='lightgrey'><i>👑 Epiphanie 👑  </i> 
+            {% elif is_state("sensor.date_simple_v2", "2 Fevrier") -%}
+                <font color='lightgrey'><i>🥞 Chandelleur 🥞  </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Fevrier") -%}
+                <font color='lightgrey'><i> 💘 🌹 ❤️ Saint-Valentin ❤️ 🌹 💘 </i> 
+            {% elif is_state("sensor.date_simple_v2", "24 Fevrier") -%}
+                <font color='lightgrey'><i> 😾👹 Mardi Gras 😾👹 </i> 
+
+            {% elif is_state("sensor.date_simple_v2", "8 Mars") -%}
+                <font color='lightgrey'><i> 💃 Journée de la Femme 💃 </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Avril") -%}
+                <font color='lightgrey'><i> 🐟 1er avril 🐟 </i>
+
+            {% elif is_state("sensor.date_simple_v2", "1 Mai") -%}
+                <font color='lightgrey'><i> 🏭 Fête du Travail 🏭 </i> 
+            {% elif is_state("sensor.date_simple_v2", "8 Mai") -%}
+                <font color='lightgrey'><i> 💣 Fin de la Seconde Guerre Mondiale 💣 </i> 
+            {% elif is_state("sensor.date_simple_v2", "21 Juin") -%}
+                <font color='lightgrey'><i> 🎤🎶 Fête de la Musique 🎤🎶 </i> 
+            {% elif is_state("sensor.date_simple_v2", "14 Juillet") -%}
+                <font color='lightgrey'><i> ✨ Fête Nationale ✨ </i> 
+            {% elif is_state("sensor.date_simple_v2", "15 Août") -%}
+                <font color='lightgrey'><i> 😇 Assomption 😇 </i>
+            {% elif is_state("sensor.date_simple_v2", "31 Octobre") -%}
+                <font color='lightgrey'><i>🎃 Hallowen  🎃  </i> 
+            {% elif is_state("sensor.date_simple_v2", "1 Novembre") -%}
+                <font color='lightgrey'><i> 👻😇 Toussaint 👻😇 </i>
+            {% elif is_state("sensor.date_simple_v2", "11 Novembre") -%}
+                <font color='lightgrey'><i> 💣 Fin de la Première Guerre Mondiale 💣 </i> 
+
+            {% elif is_state("sensor.date_simple_v2", "24 Decembre") -%}
+                <font color='lightgrey'><i>🎄🎁🎅⛄ Réveillons de Noël - Joyeux noël  ⛄🎅🎁🎄  </i> 
+            {% elif is_state("sensor.date_simple_v2", "25 Decembre") -%}
+                <font color='lightgrey'><i>🎄🎁🎅⛄ Joyeux noël  ⛄🎅🎁🎄  </i> 
+
+
+
+
+
+
+            {% else %}
+                Aucun
+            {%- endif %}

@@ -1,0 +1,149 @@
+- id: '1652812954787'
+  alias: '[TTS] heure de coucher'
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:55:00'
+  - platform: time
+    at: '20:35:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.vacances_scolaires_aujourdhui
+        state: 'on'
+      - condition: time
+        after: '20:40:00'
+        before: '21:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.45
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+      - service: notify.alexa_media_echo_chambre_filles
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_salon
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_sdb
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.16
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: time
+          weekday:
+          - wed
+          - tue
+          - mon
+          - thu
+          - sun
+          after: '19:20:00'
+          before: '20:00:00'
+        - condition: state
+          entity_id: binary_sensor.vacances_scolaires_aujourdhui
+          state: 'off'
+      sequence:
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.45
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+      - service: notify.alexa_media_echo_chambre_filles
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_salon
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_sdb
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.16
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+    - conditions:
+      - condition: time
+        after: '20:00:00'
+        before: '21:00:00'
+        weekday:
+        - sat
+        - fri
+      - condition: state
+        entity_id: binary_sensor.vacances_scolaires_aujourdhui
+        state: 'off'
+      sequence:
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.45
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+      - service: notify.alexa_media_echo_chambre_filles
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_salon
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: notify.alexa_media_echo_sdb
+        data:
+          message: Emma, pipi et au lit
+          data:
+            type: tts
+      - service: media_player.volume_set
+        data:
+          volume_level: 0.16
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_chambre_filles
+          - media_player.echo_sdb
+    default: []
+  mode: single

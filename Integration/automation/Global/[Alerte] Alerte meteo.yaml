@@ -1,0 +1,57 @@
+- id: '162799114241300'
+  alias: '[Alerte] Alerte météo '
+  description: Envoie une notification si une alerte météo est levée par Météo-France
+  trigger:
+  - platform: state
+    entity_id: sensor.44_weather_alert
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: sensor.44_weather_alert
+          state: Jaune
+        - condition: state
+          entity_id: sensor.44_weather_alert
+          state: Orange
+        - condition: state
+          entity_id: sensor.44_weather_alert
+          state: Rouge
+      sequence:
+      - service: notify.mobile_app_sm_a536b
+        data:
+          title: Alerte météo
+          message: 'Alerte météo {{states(sensor.weather_alert)}} en cours:\n                 {%-
+            for attr in [''Vent violent'', ''Pluie-inondation'', ''Orages'', ''Inondation'',
+            ''Neige-verglas'',                 ''Canicule'', ''Grand-froid'', ''Avalanches'',
+            ''Vagues-submersion''] -%}                 {%- if state_attr(sensor.weather_alert,
+            attr) != ''Vert'' and state_attr(sensor.weather_alert, attr)                 !=
+            None %}\n                 - {{attr}} : {{state_attr(sensor.weather_alert,
+            attr)}}                 {%- endif -%}                 {% endfor -%}'
+      - service: notify.mobile_app_sm_vincent
+        data:
+          title: Alerte météo
+          message: 'Alerte météo {{states(sensor.weather_alert)}} en cours:\n                 {%-
+            for attr in [''Vent violent'', ''Pluie-inondation'', ''Orages'', ''Inondation'',
+            ''Neige-verglas'',                 ''Canicule'', ''Grand-froid'', ''Avalanches'',
+            ''Vagues-submersion''] -%}                 {%- if state_attr(sensor.weather_alert,
+            attr) != ''Vert'' and state_attr(sensor.weather_alert, attr)                 !=
+            None %}\n                 - {{attr}} : {{state_attr(sensor.weather_alert,
+            attr)}}                 {%- endif -%}                 {% endfor -%}'
+    - conditions:
+      - condition: state
+        entity_id: sensor.44_weather_alert
+        state: Vert
+      sequence:
+      - service: notify.mobile_app_sm_a536b
+        data:
+          title: Alerte météo
+          message: Fin de l'alerte météo.
+      - service: notify.mobile_app_sm_vincent
+        data:
+          title: Alerte météo
+          message: Fin de l'alerte météo.
+    default: []
+  mode: single

@@ -1,0 +1,23 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_camera_hs:
+        friendly_name: Surveillance camera HS
+        value_template: >-    
+
+
+
+              {%- if is_state('sensor.couloir_battery_level', 'unavailable') -%}
+               Caméra couloir HS<br>
+              {% endif -%}     
+
+              {%- if is_state('sensor.cuisine_battery_level', 'unavailable') -%}
+               Caméra cuisine HS<br>
+              {% endif -%}
+
+              {%- if is_state('sensor.salon_battery_level', 'unavailable') -%}
+               Caméra salon HS<br>
+              {% endif -%}
+
+
+

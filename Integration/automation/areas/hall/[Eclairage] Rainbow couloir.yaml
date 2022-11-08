@@ -1,0 +1,14 @@
+- id: '1647387tyrty241187'
+  alias: "[Eclairage] Rainbow couloir"
+  description: Rotation de couleur toute les secondes
+  trigger:
+  - hours: '*'
+    minutes: '*'
+    platform: time_pattern
+    seconds: /1
+  condition: []
+  action:
+    - service: script.rainbow_light
+      data:
+        entity: light.led_couloir_on_off
+  mode: single

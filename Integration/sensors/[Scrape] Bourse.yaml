@@ -1,0 +1,6 @@
+platform: scrape
+name: CAC 40 variation SPlit
+resource: https://www.boursedirect.fr/fr/marche/euronext-paris/cac-40-FR0003500008-PX1-EUR-XPAR/seance
+select: ".main-quotation-body > div:nth-child(2) > strong:nth-child(1)"
+value_template: '{{ value.split()[0] }}' #<- On découpe la valeur récupérer pour ne garder que le nombre
+unit_of_measurement: "%" #<- On définit l'unité ici

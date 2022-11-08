@@ -1,0 +1,63 @@
+- id: '1651689266665'
+  alias: '[TTS] Bienvenue Patricia'
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.patricia
+    zone: zone.home
+    event: enter
+  condition:
+  - condition: time
+    after: 06:00:00
+    before: '22:30:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
+  action:
+  - wait_for_trigger:
+    - type: opened
+      platform: device
+      device_id: f57e345dfd10b2fab7e4c899f133a194
+      entity_id: binary_sensor.door_entrer
+      domain: binary_sensor
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - service: media_player.volume_set
+    target:
+      entity_id:
+      - media_player.echo_salon
+      - media_player.echo_cuisine
+    data:
+      volume_level: 0.45
+  - service: notify.alexa_media_echo_salon
+    data:
+      data:
+        type: tts
+      message: ' {{ [   "Bienvenue à la maison Patricia", "Patricia tu es enfin à
+        la maison", "Ça semble différence sans toi. Tu mas manqué", "Tu nous as manqué","Patricia,
+        tu nous as tellement manqué", "Patricia, Nous sommes ravis de te voir"   ]   |
+        random }}'
+  - service: notify.alexa_media_echo_cuisine
+    data:
+      data:
+        type: tts
+      message: ' {{ [   "Bienvenue à la maison Patricia", "Patricia tu es enfin à
+        la maison", "Ça semble différence sans toi. Tu mas manqué", "Tu nous as manqué","Patricia,
+        tu nous as tellement manqué", "Patricia, Nous sommes ravis de te voir"   ]   |
+        random }}'
+  - service: media_player.volume_set
+    target:
+      entity_id:
+      - media_player.echo_salon
+      - media_player.echo_cuisine
+    data:
+      volume_level: 0.13
+  mode: single

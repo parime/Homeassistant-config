@@ -1,0 +1,20 @@
+alias: Force speedtest
+description: >-
+  Force speedtest when download unavailable for 1 minute. Fix for accidental
+    failure of the integration.
+    trigger:
+      - platform: state
+          entity_id:
+                - sensor.speedtest_download
+                    to: unavailable
+                        for:
+                              hours: 0
+                                    minutes: 1
+                                          seconds: 0
+                                          condition: []
+                                          action:
+                                            - service: homeassistant.update_entity
+                                                data: {}
+                                                    target:
+                                                          entity_id: sensor.speedtest_download
+                                                          mode: single

@@ -1,0 +1,35 @@
+###### surveillance
+platform: template
+sensors:
+  surveillance_batterie_capteur_mouvement:
+    friendly_name: Surveillance_batterie_capteur_mouvement
+    value_template: >-
+
+
+      {%- if states('sensor.motion_couloir_bd_battery_level')| float < 16 -%}
+       Le capteur de mouvement couloir bas droite est à {{ states('sensor.motion_couloir_bd_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_couloir_hg_battery_level')| float < 16 -%}
+       Le capteur de mouvement couloir haut gauche est à {{ states('sensor.motion_couloir_hg_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_cuisine_bd_battery_level')| float < 16 -%}
+       Le capteur de mouvement cuisine bas droite est à {{ states('sensor.motion_cuisine_bd_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_cuisine_hg_battery_level')| float < 16 -%}
+       Le capteur de mouvement cuisine haut gauche est à {{ states('sensor.motion_cuisine_hg_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_salon_bd_battery_level')| float < 16 -%}
+       Le capteur de mouvement salon bas droite est à {{ states('sensor.motion_salon_bd_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_salon_bg_battery_level')| float < 16 -%}
+       Le capteur de mouvement salon bas gauche est à {{ states('sensor.motion_salon_bg_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.motion_salon_hd_battery_level')| float < 16 -%}
+       Le capteur de mouvement salon haut droite est à {{ states('sensor.motion_salon_hd_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.lumi_lumi_sensor_motion_sdb_bg_battery_level')| float < 16 -%}
+       Le capteur de mouvement salle de bain bas gauche est à {{ states('sensor.lumi_lumi_sensor_motion_sdb_bg_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.lumi_lumi_sensor_motion_aq2_7ed7e507_battery_level')| float < 16 -%}
+       Le capteur de mouvement salle de bain haut droite est à {{ states('sensor.lumi_lumi_sensor_motion_aq2_7ed7e507_battery_level') }}%<br>
+      {%- endif -%}

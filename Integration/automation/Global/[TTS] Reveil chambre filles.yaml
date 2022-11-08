@@ -1,0 +1,40 @@
+- id: '1662385306283'
+  alias: '[TTS] Réveil chambre filles'
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition:
+  - condition: time
+    after: 07:00:00
+    before: 09:00:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - fri
+    - thu
+  - condition: state
+    entity_id: binary_sensor.vacances_scolaires_aujourdhui
+    state: 'off'
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.45
+    target:
+      entity_id: media_player.echo_chambre_filles
+  - service: notify.alexa_media_echo_chambre_filles
+    data:
+      data:
+        data:
+          type: tts
+      message: '" {{ [  "Il est l’heure de se réveiller les enfants. Il faut se réveiller.",  "Il         est
+        l or! L or de se réveiller! Il est l or",   "Bonjour mes amours,         il
+        est temps de se lever.",  "Bien grandir, ça commence dès le matin !"  ]         |
+        random }}"'
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.2
+    target:
+      entity_id: media_player.echo_chambre_filles
+  mode: single

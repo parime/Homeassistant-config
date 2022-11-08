@@ -1,0 +1,77 @@
+- id: '1643628454001'
+  alias: '[Eclairage] Eclairage salle de bain'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.motion_sdb_hd_zone
+    - binary_sensor.motion_sdb_bg_zone
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_sdb_bg_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_sdb_hd_zone
+          state: 'on'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id: light.led_sdb
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_sdb_bg_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_sdb_hd_zone
+          state: 'off'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 35
+          milliseconds: 0
+      - service: light.turn_off
+        target:
+          entity_id: light.led_sdb
+        data:
+          transition: 23
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_sdb_bg_zone
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id: light.led_sdb
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_sdb_hd_zone
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id: light.led_sdb
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    default: []
+  mode: restart

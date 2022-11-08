@@ -1,0 +1,56 @@
+- id: '165115213208342'
+  alias: '[Alarme] Declenchement camera '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_salon_hd
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.salon_2_motion_sensor
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.motion_salon_bd
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.motion_salon_bg
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.couloir_motion_sensor_2
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.motion_couloir_bd_zone
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.motion_couloir_hg_zone
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: person.patricia
+        state: not_home
+      - condition: state
+        entity_id: person.vincent
+        state: not_home
+    - condition: state
+      entity_id: alarm_control_panel.alarmo
+      state: armed_home
+    - condition: state
+      entity_id: alarm_control_panel.alarmo
+      state: armed_away
+    - condition: state
+      state: triggered
+      entity_id: alarm_control_panel.alarmo
+  action:
+  - service: eufy_security.start_rtsp_livestream
+    data: {}
+    target:
+      entity_id:
+      - camera.camera_salon_2
+      - camera.couloir
+  mode: restart

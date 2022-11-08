@@ -1,0 +1,16 @@
+- id: '1663449751771'
+  alias: "[Eclairage] Allumage bouton chambre parent"
+  description: ''
+  trigger:
+  - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.chambre_parentale_2
+  mode: single

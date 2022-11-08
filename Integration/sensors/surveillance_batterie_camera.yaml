@@ -1,0 +1,19 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_batterie_camera:
+        friendly_name: Surveillance batterie camera
+        value_template: >-    
+
+            {%- if states('sensor.couloir_battery_level')| float < 16 -%}
+                La camera couloir est à {{ states('sensor.couloir_battery_level') }}%<br>
+            {%- endif -%}
+
+            {%- if states('sensor.cuisine_battery_level')| float < 16 -%}
+                La camera cuisine est à {{ states('sensor.cuisine_battery_level') }}%<br>
+            {%- endif -%}
+
+
+            {%- if states('sensor.salon_battery_level')| float < 16 -%}
+                La camera salon est à {{ states('sensor.salon_battery_level') }}%<br>
+            {%- endif -%}

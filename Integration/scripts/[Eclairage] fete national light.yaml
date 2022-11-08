@@ -1,0 +1,29 @@
+fete_national_light:
+  alias: 14-juillet_light
+  mode: single
+  fields:
+    entity:
+      description: The entity that will be rainbowed
+      example: light.bathroom
+  icon: mdi:firework
+  sequence:
+  - service: light.turn_on
+    data:
+      rgb_color:  |
+        {% if now().second % 3 == 0 %}
+          [0, 0, 255]
+        {% elif now().second % 3 == 1 %}
+          [0, 0, 0]
+        {% else %}
+          [255, 0, 0]
+        {% endif %}
+      transition: 1
+      brightness_pct:
+           '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    target:
+      entity_id: '{{ entity }}'
+
+

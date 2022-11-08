@@ -1,0 +1,47 @@
+- id: '16527155567603552515'
+  alias: '[Aquarium] Eclairage'
+  description: ''
+  trigger:
+  - platform: time
+    at: '16:30:00'
+  - platform: time
+    at: '20:40:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: '16:00:00'
+        before: '17:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.aquarium_chambre
+    - conditions:
+      - condition: time
+        after: '20:30:00'
+        before: '20:50:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.aquarium_chambre
+    default: []
+  mode: single

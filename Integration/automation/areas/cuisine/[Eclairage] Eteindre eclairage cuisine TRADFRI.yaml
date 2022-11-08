@@ -1,0 +1,17 @@
+
+- id: '1659283061455'
+  alias: '[Eclairage] Eteindre eclairage cuisine TRADFRI'
+  description: ''
+  trigger:
+  - device_id: 4332068512276d4a30b33a83a17e9260
+    domain: zha
+    platform: device
+    type: remote_button_long_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      area_id: cuisine
+  mode: single

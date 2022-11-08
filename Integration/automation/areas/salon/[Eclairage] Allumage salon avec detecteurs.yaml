@@ -1,0 +1,600 @@
+- id: '1622552009269'
+  alias: '[Eclairage] Allumage salon avec detecteurs'
+  description: Éclairage salon avec détecteurs
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.detecteur_de_mouvement_salon_motion
+    - binary_sensor.motion_salon_hd
+    - binary_sensor.motion_salon_bd
+    - binary_sensor.motion_salon_bg
+    - sensor.illuminance_salon_illuminance
+    - media_player.50pus7805_12
+  - platform: time
+    at: '21:00:01'
+  - platform: time
+    at: 02:00:00
+  - platform: time
+    at: 03:00:00
+  - platform: time
+    at: 04:00:00
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'off'
+        - condition: time
+          after: 07:00:00
+          before: '20:00:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.guests
+            state: Normal
+          - condition: state
+            entity_id: input_select.guests
+            state: Invite
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: light.turn_off
+        data:
+          transition: 20
+        target:
+          entity_id:
+          - light.salon
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'off'
+        - condition: time
+          after: 07:00:00
+          before: '20:00:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: state
+          entity_id: input_select.guests
+          state: Normal
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: light.turn_off
+        data:
+          transition: 20
+        target:
+          entity_id:
+          - light.salon
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: 09:00:00
+        before: '20:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: state
+        entity_id: input_select.guests
+        state: Invite
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+          transition: 10
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: time
+        after: 09:00:00
+        before: '20:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: state
+        entity_id: input_select.guests
+        state: Travail
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          brightness_pct: 100
+          transition: 11
+          color_temp: 340
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        above: '65'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_select.guests
+          state: Invite
+        - condition: state
+          entity_id: input_select.guests
+          state: Normal
+      sequence:
+      - service: light.turn_off
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+          - light.hue_go_1
+          - light.hue_play_1
+          - light.ambiance_tele
+        data:
+          transition: 20
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: 09:00:00
+        before: '20:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: state
+        entity_id: input_select.guests
+        state: Normal
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+          transition: 10
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: '10:30:00'
+        before: '20:00:00'
+        weekday:
+        - sat
+        - sun
+      - condition: state
+        entity_id: input_select.guests
+        state: Invite
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+          transition: 10
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: 08:00:00
+        before: 09:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: state
+        entity_id: input_select.guests
+        state: Invite
+      sequence:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.sejour_detente
+        metadata: {}
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: 07:20:00
+        before: 09:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: state
+        entity_id: input_select.guests
+        state: Normal
+      sequence:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.sejour_detente
+        metadata: {}
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        below: '43'
+      - condition: time
+        after: 09:30:00
+        before: '10:30:00'
+        weekday:
+        - sat
+        - sun
+      - condition: state
+        entity_id: input_select.guests
+        state: Invite
+      sequence:
+      - service: scene.turn_on
+        target:
+          entity_id: scene.sejour_detente
+        metadata: {}
+    - conditions:
+      - condition: state
+        entity_id: input_select.guests
+        state: Normal
+      - condition: time
+        after: '20:59:58'
+        before: '21:00:03'
+        weekday:
+        - sat
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sun
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'on'
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 17
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+      - service: light.turn_on
+        data:
+          transition: 11
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: time
+          after: 01:50:00
+          before: 02:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 02:55:00
+          before: 03:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 03:55:00
+          before: 04:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      - condition: state
+        entity_id: input_select.guests
+        state: Normal
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 11
+        target:
+          entity_id:
+          - light.salon
+          - light.ambiance_tele
+          - light.hue_go_1
+          - light.hue_play_1
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: media_player.50pus7805_12_2
+            state: 'on'
+          - condition: state
+            entity_id: media_player.plex_plex_for_smart_tvs_generic
+            state: 'on'
+        - condition: state
+          entity_id: input_select.guests
+          state: Normal
+        - condition: time
+          after: '20:00:00'
+          before: 06:00:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 10
+        target:
+          entity_id:
+          - light.salon_1
+          - light.salon_2
+          - light.salon_3
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id:
+          - switch.aquarium
+          - switch.prise_telephonique
+          - switch.co2_aquarium
+      - service: media_player.media_stop
+        data: {}
+        target:
+          entity_id:
+          - media_player.echo_salon
+          - media_player.echo_cuisine
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bg
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_bd
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_salon_hd
+          state: 'off'
+        - condition: time
+          after: 07:00:00
+          before: '20:00:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: state
+          entity_id: input_select.guests
+          state: Travail
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: 100
+        target:
+          entity_id: 
+            - light.salon_1
+            - light.salon_2
+            - light.salon_3
+
+    - conditions:
+      - condition: state
+        entity_id: input_select.guests
+        state: Travail
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        above: '120'
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 23
+        target:
+          entity_id: light.salon
+  mode: restart

@@ -1,0 +1,15 @@
+- id: '1622065747873756'
+  alias: '[Zone] Arrivé à ma maison Patricia '
+  description: 'École patricia '
+  trigger:
+  - platform: zone
+    entity_id: person.patricia
+    zone: zone.home
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_vincent
+    data:
+      message: Patricia arrive à la maison
+      title: Patricia localisation
+  mode: single

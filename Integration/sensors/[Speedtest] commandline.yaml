@@ -1,0 +1,18 @@
+platform: command_line
+name: "SpeedTest CLI Data"
+unique_id: speedtest_cli_data
+  # Use the path as configured on your system
+command: "/config/3rdparty/speedtest --format=json --accept-license --accept-gdpr"
+  # Every 4 hours, 60 * 60 * 4 = 14400
+scan_interval: 14400
+command_timeout: 60
+  # Summarize results to stay below string limit and convert to JSON
+value_template: >-
+  {{ 
+    { 
+        "ping": value_json.ping.latency, 
+        "download": value_json.download.bandwidth, 
+        "upload": value_json.upload.bandwidth 
+    }
+    | to_json 
+  }}

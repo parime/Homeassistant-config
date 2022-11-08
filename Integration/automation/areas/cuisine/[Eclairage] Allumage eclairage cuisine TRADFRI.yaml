@@ -1,0 +1,18 @@
+
+- id: '1659283158589'
+  alias: '[Eclairage] Allumage eclairage cuisine TRADFRI'
+  description: ''
+  trigger:
+  - device_id: 4332068512276d4a30b33a83a17e9260
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: turn_on
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+    target:
+      area_id: cuisine
+  mode: single

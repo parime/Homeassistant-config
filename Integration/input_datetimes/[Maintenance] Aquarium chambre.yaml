@@ -1,0 +1,6 @@
+# Suivre la date du dernier entretien de l'aquarium chambre
+#
+last_maintenance_aquarium_chambre:
+  name: Date de la dernière maintenance de l'aquarium chambre
+  has_date: true
+  has_time: false

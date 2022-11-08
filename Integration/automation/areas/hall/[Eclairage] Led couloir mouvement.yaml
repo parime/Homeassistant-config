@@ -1,0 +1,171 @@
+- id: '1647387241187'
+  alias: '[Eclairage] Led couloir mouvement '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.motion_couloir_bd_zone
+    - binary_sensor.motion_couloir_hg_zone
+  condition:
+  - condition: time
+    after: '18:30:00'
+    before: 06:59:00
+  action:
+  - choose:
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: not
+          conditions:
+          - condition: and
+            conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 24 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 25 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 14 Juillet
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 31 Octobre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 11 Novembre
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.rainbow_strip_led
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'off'
+      sequence:
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id:
+          - automation.rainbow_strip_led
+          - automation.eclairage_couloir_fete_national
+          - automation.automation_0
+          - automation.eclairage_couloir_halloween
+      - service: light.turn_off
+        data:
+          transition: 16
+        target:
+          area_id: couloir
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 24 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 25 Décembre
+        - condition: not
+          conditions:
+          - condition: and
+            conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 14 Juillet
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 31 Octobre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 11 Novembre
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.automation_0
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 14 Juillet
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 11 Novembre
+        - condition: not
+          conditions:
+          - condition: and
+            conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 24 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 25 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 31 Octobre
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.eclairage_couloir_fete_national
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 31 Octobre
+        - condition: not
+          conditions:
+          - condition: and
+            conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 24 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 25 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 14 Juillet
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 11 Novembre
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.eclairage_couloir_halloween
+    default: []
+  mode: restart

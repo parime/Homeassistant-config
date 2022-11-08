@@ -1,0 +1,6 @@
+platform: scrape
+name: blague du jour (1)
+resource: https://jokes-de-papa.com/blagues-courtes/blague-du-jour/
+select: ".elementor-element-25014ec > div:nth-child(1) > p:nth-child(1)"
+scan_interval: 172800
+

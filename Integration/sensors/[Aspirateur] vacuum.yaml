@@ -1,0 +1,13 @@
+platform: template
+sensors:
+
+
+    # Sensors for roborock card.
+    roborock_battery:
+      friendly_name: "Roborock Battery"
+      value_template: "{{state_attr('vacuum.roborock_vacuum_a10', 'battery_level')}}"
+      unit_of_measurement: "%"
+      device_class: battery
+    
+
+    

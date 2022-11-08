@@ -1,0 +1,15 @@
+- id: '1650818342610254'
+  alias: '[Zone] Depart ecole Patricia '
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.patricia
+    zone: zone.ecole_emma
+    event: leave
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_vincent
+    data:
+      title: Patricia localisation
+      message: Patricia part de l'école d'Emma
+  mode: single

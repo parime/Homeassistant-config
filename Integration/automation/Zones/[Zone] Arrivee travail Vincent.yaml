@@ -1,0 +1,15 @@
+- id: '1627983328714'
+  alias: '[Zone] Arrivee travail Vincent '
+  description: '[Zone] Travail Vincent '
+  trigger:
+  - platform: zone
+    entity_id: person.vincent
+    zone: zone.travail
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_a536b
+    data:
+      message: Vincent arrive au travail
+      title: Vincent arrive au travail
+  mode: single

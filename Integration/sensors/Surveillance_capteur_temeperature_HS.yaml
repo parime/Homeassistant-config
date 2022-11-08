@@ -1,0 +1,40 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_capteur_temeperature_hs:
+        friendly_name: Surveillance_capteur_temeperature_HS
+        value_template: >-    
+              {%- if is_state('sensor.weather_bureau_battery_level', 'unavailable') -%}
+                Le capteur de température Bureau est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_ch_filLes_battery_level', 'unavailable') -%}
+                Le capteur de température Chambre filLe est HS
+              {% endif -%}
+
+
+              {%- if is_state('sensor.weather_couloir_battery_level', 'unavailable') -%}
+                Le capteur de température Couloir est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_salon_battery_level', 'unavailable') -%} 
+                Le capteur de température Salon est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_cuisine_battery_level', 'unavailable') -%} 
+                Le capteur de température Cuisine est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_placard_battery_level', 'unavailable') -%}
+                Le capteur de température Placard est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_sdb_battery', 'unavailable') -%}
+                Le capteur de température SalLe de bain est HS
+              {% endif -%}
+              {%- if is_state('sensor.weather_toiette_battery_level', 'unavailable') -%} 
+                Le capteur de température ToiLette est HS
+              {% endif -%}
+              {%- if states('sensor.disk_use_percent')| float > 70.0 -%}
+              Espace DD {{states('sensor.disk_use_percent')}}%<br>
+              {% endif -%}
+              {%- if states('sensor.roborock_battery')  == 'unavailable'  -%}
+                Aspirateur indisponible<br>
+              {% endif -%}
+
+

@@ -1,47 +1,158 @@
-#   ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗ ██╗   ██╗██████╗  █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
-#  ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝ ██║   ██║██╔══██╗██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
-#  ██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗██║   ██║██████╔╝███████║   ██║   ██║██║   ██║██╔██╗ ██║
-#  ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║██║   ██║██╔══██╗██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
-#  ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
-#   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+
+# Loads default set of integrations. Do not remove.
+default_config:
+sun:
+bluetooth:
+system_health:
+zodiac:
+usb:
+map:
 
 
+automation: !include automations.yaml
+automation old: !include_dir_merge_list Integration/automation/
+script old: !include scripts.yaml
+script: !include_dir_merge_named Integration/scripts/
+scene: !include scenes.yaml
+sensor: !include_dir_list Integration/sensors/
+binary_sensor: !include_dir_list Integration/binary_sensors
+input_boolean: !include_dir_merge_named Integration/input_booleans
+input_datetime: !include_dir_merge_named Integration/input_datetimes
+input_number: !include_dir_merge_named Integration/input_numbers
+input_select: !include_dir_merge_named Integration/input_select
+group: !include_dir_merge_named Integration/group/
+zone: !include Integration/zone/zones.yaml
 
-homeassistant:
+# Cela active le panneau Superviseur dans l'interface Home Assistant
+hassio: ~
+#permet à Home Assistant de traiter les flux vidéo et audio.
+#https://www.home-assistant.io/integrations/ffmpeg/
 
-  name: Maison
-  unit_system: metric
-  temperature_unit: C
-  time_zone: Europe/Paris
-#  external_url: !secret external_url
-  internal_url: !secret internal_url
-  media_dirs:
-    media: /media
+ffmpeg:
+frontend:
+  # We can define additional/custom themes for the frontend here.
+  themes: !include_dir_merge_named Integration/themes/
+  extra_module_url:
+    - /local/card-mod.js
+    
+# Text to speech
+tts:
+  - platform: google_translate
 
+    # Set the default voice language.
+    language: "fr"
 
-  allowlist_external_dirs: 
-    - /media
-    - /config/
+    # Cache voice files to a local storage.
+    cache: true
 
+    # Path to a location for caching the tts files.
+    cache_dir: /tmp/tts
 
-  
-  # Load packages
-  packages: !include_dir_named integrations
+    # Time to hold (in seconds) the voice data inside memory for fast play
+    # on a media player. (min 60, max 57600)
+    time_memory: 300
 
+    service_name: google_say
 
-
-#  _______        _     _                    _____  _____ _____ _____
-# |__   __|      | |   | |            /\    / ____|/ ____|_   _|_   _|
-#    | | _____  _| |_  | |_ ___      /  \  | (___ | |      | |   | |
-#    | |/ _ \ \/ / __| | __/ _ \    / /\ \  \___ \| |      | |   | |
-#    | |  __/>  <| |_  | || (_) |  / ____ \ ____) | |____ _| |_ _| |_
-#    |_|\___/_/\_\\__|  \__\___/  /_/    \_\_____/ \_____|_____|_____|
-#
-#   http://patorjk.com/software/taag/#p=display&f=Big&t=Home-Assistant
-
-
-
-
+http: #si cette balise n'existe pas, ajoutez la, sinon ajouter seulement la suite (pas de duplication)
+  server_port: 8123
 
 
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - 192.168.1.251
+    - 192.168.0.0/16
+    - 172.30.33.0/24
+    - ::1
+    - 92.128.72.55
+system_log:
+  max_entries: 50
+#  ssl_certificate: /ssl//fullchain.pem
+#  ssl_key: /ssl/privkey.pem
+#  ip_ban_enabled: false
+#  login_attempts_threshold: 5
+
+#Le composaant `history` (traduit en `historique` dans l'interface)
+# va suivre ce qui se passe dans Home Assistant et permet aux utilisateurs
+# d'explorer les enregistrements.
+
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      - sun
+
+logger:
+  default: warning
+
+  filters:
+    homeassistant:
+      # This can happen during restart having Ingress tabs open.
+      # I really don't care about it.
+      - "Error doing job: Task exception was never retrieved"
+
+    homeassistant.loader:
+      # Really? Cool... I know... I installed them...
+      - "We found a custom integration"
+
+    homeassistant.components.zeroconf:
+      # Yes I am aware, I develop on the thing, I don't rely on it...
+      # Don't bother me about it again.
+      - "instance with identical name present in the local network"
+
+    homeassistant.util.yaml.loader:
+      # I use YAML anchors and aliasses, causing duplicate keys in YAML.
+      # For this use-case, that is on purpose, as an alias is used, but
+      # with some overrides.
+      # While a good warning, I'm going to disable it.
+      - "contains duplicate key"
+
+    pychromecast.socket_client:
+      # Surpress to chatty Cast integration
+      - "Failed to connect to service ServiceInfo"
+      - "Error communicating with socket, resetting connection"
+
+spotcast:
+  sp_dc: !secret sp_dc
+  sp_key: !secret sp_key
+
+plant:
+  # fragaria_ananassa:
+  #   sensors:
+  #     moisture: sensor.xiaomi_miflora_moisture
+  #     temperature: sensor.xiaomi_miflora_temperature
+  #     conductivity: sensor.xiaomi_miflora_soil_conductivity
+  #     brightness: sensor.xiaomi_miflora_illuminance
+  dracaena_fragrans:
+    sensors:
+      moisture: sensor.flower_care_moisture
+      temperature: sensor.flower_care_temperature
+      conductivity: sensor.flower_care_conductivity
+      brightness: sensor.flower_care_illuminance
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 500
+    min_temperature: 15
+
+stream:
+  ll_hls: true
+  part_duration: 0.75
+  segment_duration: 6
+
+
+camera:
+  - platform: xiaomi_cloud_map_extractor
+    host: !secret xiaomi_vacuum_host
+    token: !secret xiaomi_vacuum_token
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    draw: ['all']
+    attributes:
+      - calibration_points
 

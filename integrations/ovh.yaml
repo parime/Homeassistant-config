@@ -1,4 +1,0 @@
-ovh:
-  domain: !secret domain_OVH
-  username: !secret username_OVH
-  password: !secret password_OVH

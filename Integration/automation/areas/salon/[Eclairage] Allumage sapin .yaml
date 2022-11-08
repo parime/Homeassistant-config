@@ -1,0 +1,65 @@
+- id: '164206748459065'
+  alias: '[Eclairage] Allumage sapin'
+  description: '[Eclairage] Allumage sapin'
+  trigger:
+  - platform: time_pattern
+    hours: '07'
+    minutes: '30'
+  - platform: time_pattern
+    hours: '09'
+    minutes: '00'
+  - platform: time_pattern
+    hours: '16'
+    minutes: '45'
+  - platform: time_pattern
+    hours: '22'
+    minutes: '00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: 07:20
+        before: 07:40
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+        data: {}
+    - conditions:
+      - condition: time
+        after: 08:55
+        before: 09:05
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+        data: {}
+    - conditions:
+      - condition: time
+        after: '16:40'
+        before: '16:50'
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+        data: {}
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+    - conditions:
+      - condition: time
+        after: '21:55'
+        before: '22:12'
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+        data: {}
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: switch.pc_sapin_de_noel_switch
+    default: []
+  mode: single

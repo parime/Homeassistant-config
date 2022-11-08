@@ -1,0 +1,15 @@
+- id: '1663519393790'
+  alias: "[Eclairage] Couloir Noel"
+  description: Couloir Noel
+  trigger:
+  - platform: time_pattern
+    hours: '*'
+    minutes: '*'
+    seconds: /5
+    enabled: true
+  condition: []
+  action:
+  - service: script.christmas_light
+    data:
+      entity: light.led_couloir_on_off
+  mode: single

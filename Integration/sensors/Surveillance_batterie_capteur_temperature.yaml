@@ -1,0 +1,43 @@
+###### surveillance
+platform: template
+sensors:
+  surveillance_batterie_capteur_temeprature:
+    friendly_name: Surveillance_batterie_capteur_temperature
+    value_template: >-
+
+
+      {%- if states('sensor.weather_bureau_battery_level')| float < 16 -%}
+       Le capteur de température bureau est à {{ states('sensor.weather_bureau_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_couloir_battery_level')| float < 16 -%}
+       Le capteur de température Couloir est à {{ states('sensor.weather_couloir_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_ch_filLes_battery_level')| float < 16 -%}
+       Le capteur de température chambre fille est à {{ states('sensor.weather_ch_filLes_battery_level') }}%<br>
+      {%- endif -%}
+
+      {%- if states('sensor.weather_salon_battery_level')| float < 16 -%}
+       Le capteur de température salon est à {{ states('sensor.weather_salon_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_cuisine_battery_level')| float < 16 -%}
+       Le capteur de température Cuisine est à {{ states('sensor.weather_cuisine_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_placard_battery_level')| float < 16 -%}
+       Le capteur de température placard est à {{ states('sensor.weather_placard_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_sdb_battery')| float < 16 -%}
+       Le capteur de température salle de bain est à {{ states('sensor.weather_sdb_battery') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.weather_toiette_battery_level')| float < 16 -%}
+       Le capteur de température salle de bain est à {{ states('sensor.weather_toiette_battery_level') }}%<br>
+      {%- endif -%}
+      {%- if states('sensor.roborock_battery')| float < 16 -%}
+       L'aspirateur est à {{ states('sensor.roborock_battery') }}%<br>
+      {%- endif -%}
+
+
+      {%- if states('sensor.weather_ch_parents_battery_level' == 'unavailable') -%}
+        Le capteur de température Chambre parents est HS
+      {%- elif states('sensor.weather_ch_parents_battery_level')| float < 16 -%}}
+              Le capteur de température chambre parents est à {{ states('sensor.weather_ch_parents_battery_level') }}%<br>
+      {%- endif -%}

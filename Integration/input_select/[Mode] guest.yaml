@@ -1,0 +1,9 @@
+# input_select pour définir le mode maison : Normal ou vacances
+#
+guests:
+  name: Invité(es)
+  options:
+    - Normal
+    - Invite
+    - Travail
+  icon: mdi:account

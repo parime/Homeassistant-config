@@ -1,0 +1,65 @@
+- id: '16580729223462'
+  alias: '[TTS] Départ école'
+  description: '[TTS] Départ école'
+  trigger:
+  - platform: time
+    at: 08:30:00
+  condition:
+  - condition: and
+    conditions:
+    - condition: time
+      after: 08:20:00
+      before: 08:40:00
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.vacances_scolaires_aujourdhui
+        state: 'off'
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.45
+    target:
+      entity_id:
+      - media_player.echo_salon
+      - media_player.echo_sdb
+      - media_player.echo_cuisine
+  - service: notify.alexa_media_echo_cuisine
+    data:
+      data:
+        type: tts
+      message: ' {{ [ "Il est 8h15, on prend son sac à dos et on commence sa     journée!",
+        "C''est l''heure du départ des troupes pour l''école!     Soyons fort!",   "Ce
+        n''est pas parce que nous nous quittons     maintenant, que nous ne nous retrouverons
+        pas mieux ce soir."   ]   | random }}'
+  - service: notify.alexa_media_echo_sdb
+    data:
+      data:
+        type: tts
+      message: ' {{ [ "Il est 8h15, on prend son sac à dos et on commence sa     journée!",    "C''est
+        l''heure du départ des troupes pour l''école!     Soyons fort!",     "Ce n''est
+        pas parce que nous nous quittons     maintenant, que nous ne nous retrouverons
+        pas mieux ce soir."  ]   | random }}'
+  - service: notify.alexa_media_echo_salon
+    data:
+      data:
+        type: tts
+      message: ' {{ [  "Il est 8h15, on prend son sac à dos et on commence sa     journée!",   "C''est
+        l''heure du départ des troupes pour l''école!     Soyons fort!",    "Ce n''est
+        pas parce que nous nous quittons maintenant, que nous ne nous retrouverons
+        pas mieux ce soir."  ]   | random }}'
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.25
+    target:
+      entity_id:
+      - media_player.echo_salon
+      - media_player.echo_sdb
+      - media_player.echo_cuisine
+  mode: single

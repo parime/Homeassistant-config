@@ -1,0 +1,33 @@
+
+- id: '1650371462898'
+  alias: '[Diffuseur] Eclairage diffuseur'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: 
+    - switch.spray
+    - light.led
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: switch.spray
+        state: 'on'
+      sequence:
+      - service: light.turn_on
+        data:
+          effect: Read
+        target:
+          entity_id: light.led
+    - conditions:
+      - condition: state
+        entity_id: switch.spray
+        state: 'off'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.led
+    default: []
+  mode: restart

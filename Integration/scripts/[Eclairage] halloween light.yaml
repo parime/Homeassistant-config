@@ -1,0 +1,22 @@
+halloween_light:
+  alias: halloween light
+  mode: single
+  fields:
+    entity:
+      description: The entity that will be rainbowed
+      example: light.bathroom
+  icon: mdi:Halloween
+  sequence:
+  - service: light.turn_on
+    data:
+      rgb_color: "{% if now().second % 2 == 0 %}\n  [255, 150, 0]\n{% else %}\n  [0,
+        255, 0]\n{% endif %}\n"
+      transition: 0.5
+      brightness_pct:
+           '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 30 {% else %} 15 {% endif%}'
+    target:
+      entity_id: '{{ entity }}'
+
