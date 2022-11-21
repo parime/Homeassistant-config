@@ -6,6 +6,7 @@
     entity_id:
     - binary_sensor.motion_couloir_bd_zone
     - binary_sensor.motion_couloir_hg_zone
+    - binary_sensor.door_entrer
   condition:
   - condition: time
     after: '18:30:00'
@@ -40,6 +41,17 @@
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 11 Novembre
+          - condition: time
+            after: '18:00:00'
+            before: '22:00:00'
+            weekday:
+            - sun
+            - sat
+            - fri
+            - thu
+            - wed
+            - tue
+            - mon
       sequence:
       - service: automation.turn_on
         data: {}
@@ -54,6 +66,7 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'off'
+
       sequence:
       - service: automation.turn_off
         data: {}
@@ -77,6 +90,7 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
+
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 24 Décembre
@@ -96,6 +110,17 @@
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 11 Novembre
+        - condition: time
+          after: '18:00:00'
+          before: '22:00:00'
+          weekday:
+          - sun
+          - sat
+          - fri
+          - thu
+          - wed
+          - tue
+          - mon
       sequence:
       - service: automation.turn_on
         data: {}
@@ -110,6 +135,7 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
+
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 14 Juillet
@@ -129,6 +155,17 @@
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 31 Octobre
+      - condition: time
+        after: '18:00:00'
+        before: '22:00:00'
+        weekday:
+        - sun
+        - sat
+        - fri
+        - thu
+        - wed
+        - tue
+        - mon
       sequence:
       - service: automation.turn_on
         data: {}
@@ -143,6 +180,7 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
+
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 31 Octobre
@@ -162,10 +200,42 @@
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 11 Novembre
+      - condition: time
+        after: '18:00:00'
+        before: '22:00:00'
+        weekday:
+        - sun
+        - sat
+        - fri
+        - thu
+        - wed
+        - tue
+        - mon
       sequence:
       - service: automation.turn_on
         data: {}
         target:
           entity_id: automation.eclairage_couloir_halloween
+    - conditions:
+      - condition: time
+        after: '22:00:00'
+        before: '6:00:00'
+        weekday:
+        - sun
+        - sat
+        - fri
+        - thu
+        - wed
+        - tue
+        - mon
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+        target:
+          entity_id: light.led_couloir_on_off
     default: []
   mode: restart

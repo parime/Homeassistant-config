@@ -399,25 +399,21 @@ button_card_templates:
             "date"
             "time"
             "bonjour"
-            "conditions_meteo"
-            "temperature"
-            "soleil"
             "fetes"  
             "event"
             "anniv"
+            "conditions_meteo"
+            "temperature"
+            "soleil"
+
             "alerte"
-            "calendrier"
-            "poubelle"
+
+
             "titre_avertissement"
             "device_hs"
             "titre_activite"
-            "rappel"
-            "mouvement"
-            "porte"
-            "lumiere"
-            "appareil"
-            "modes"
-            "app_connectes"
+
+
             "adguard"
             "enedis"
             "titre_maj"
@@ -429,7 +425,6 @@ button_card_templates:
         - overflow: hidden
       card:
         - font-family: Avenir
-        - border-color: var(--card_border)
         - border-width: 1px
       img_cell:
         - left: 38%
@@ -480,42 +475,25 @@ button_card_templates:
           - color: var(--text_on_sidebar)
           - white-space: normal
         temperature:
-          - border-left: |
-              [[[
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Jaune' )
-                  return "2px gold solid" ;
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Orange' )
-                  return "2px orange solid" ;
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Rouge' )
-                  return "2px red solid" ;
-                if (states['sensor.weather_alerte_couleur'].state == 'unknown')
-                  return '';
-                return "2px steelblue solid" ;
-              ]]]
-          - padding: 0px 0px 0px 0px
+          - border-left: 2px steelblue solid
           - padding-left: 8px
-          - color: var(--text_on_info_sidebar)
-          - font-size: 80%
+          - padding: 15px 8px 0px 8px
+          - font-size: 85%
+          - font-weight: bold
+          - line-height: null
           - justifiy-self: start
           - text-align: left
+          - color: var(--text_on_sidebar)
           - white-space: normal
         soleil:
-          - border-left: |
-              [[[
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Jaune' )
-                  return "2px gold solid" ;
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Orange' )
-                  return "2px orange solid" ;
-                if (states['sensor.weather_alerte_couleur'].state == 'Vigilance Rouge' )
-                  return "2px red solid" ;
-                return "2px steelblue solid" ;
-              ]]]
-          - padding: 0px 0px 0px 0px
+          - border-left: 2px steelblue solid
           - padding-left: 8px
-          - color: var(--text_on_info_sidebar)
-          - font-size: 80%
+          - font-size: 85%
+          - font-weight: bold
+          - line-height: null
           - justifiy-self: start
           - text-align: left
+          - color: var(--text_on_sidebar)
           - white-space: normal
         meteo:
           - padding: 05px 0px 0px 0px
@@ -544,7 +522,7 @@ button_card_templates:
               [[[
                 if (states['sensor.fetes'].state == 'Aucun')
                   return '';
-                return '2px tomato solid';
+                return '2px limegreen solid';
               ]]]
           - padding: 8px 8px 0px 8px
           - padding-left: 8px
@@ -560,7 +538,7 @@ button_card_templates:
               [[[
                 if (states['sensor.evenement'].state == 'Aucun')
                   return '';
-                return '2px tomato solid';
+                return '2px limegreen solid';
               ]]]
           - padding-left: 8px
           - justifiy-self: start
@@ -575,39 +553,13 @@ button_card_templates:
               [[[
                 if (states['sensor.anniversaire'].state == 'Aucun')
                   return '';
-                return '2px tomato solid';
+                return '2px limegreen solid';
               ]]]
           - padding: 0px 0px 0px 0px
           - padding-left: 8px
           - justifiy-self: start
           - text-align: left
           - color: var(--text_on_info_sidebar)
-          - white-space: normal
-        calendrier:
-          - border-left: 2px tomato solid
-          - padding: 0px 0px 0px 0px
-          - padding-left: 8px
-          - color: |
-              [[[
-                if (states['sensor.calendar_famille'].state == 'Aucun évènement')
-                  return 'var(--text_off_sidebar)';
-                return 'var(--text_on_info_sidebar)';
-              ]]]
-          - justifiy-self: start
-          - text-align: left
-          - white-space: normal
-        poubelle:
-          - border-left: 2px tomato solid
-          - padding: 0px 0px 0px 0px
-          - padding-left: 8px
-          - color: |
-              [[[
-                if (states['sensor.calendar_poubelles'].state == 'Aucun rappel')
-                  return 'var(--text_off_sidebar)';
-                return 'var(--text_on_info_sidebar)';
-              ]]]
-          - justifiy-self: start
-          - text-align: left
           - white-space: normal
         titre_avertissement:
           - padding: |
@@ -622,12 +574,8 @@ button_card_templates:
           - color: Orange
         device_hs:
           - border-left: 2px red solid
-          - padding: |
-              [[[
-                if (states['sensor.systeme_sidebar'].state == '' )
-                  return "0px 0px 0px 0px" ;
-                return "0px 0px 0px 08px" ;
-              ]]]
+          - padding: 15px 0px 01px 0px
+          - padding-left: 8px
           - justifiy-self: start
           - color: red
           - white-space: normal
@@ -651,42 +599,6 @@ button_card_templates:
                   return 'var(--text_off_sidebar)';
                 return 'var(--text_on_info_sidebar)';
               ]]]
-        lumiere:
-          - border-left: 2px grey solid
-          - padding: 0px 0px 0px 08px
-          - justifiy-self: start
-          - color: |
-              [[[
-                if (states['light.tout'].state == 'off')
-                  return 'var(--text_off_sidebar)';
-                return 'var(--text_on_info_sidebar)';
-              ]]]
-          - white-space: normal
-          - text-align: left
-        mouvement:
-          - border-left: 2px grey solid
-          - padding: 0px 0px 0px 08px
-          - justifiy-self: start
-          - text-align: left
-          - color: |
-              [[[
-                if (states['binary_sensor.mouvements'].state == 'off')
-                  return 'var(--text_off_sidebar)';
-                return 'var(--text_on_info_sidebar)';
-              ]]]
-          - white-space: normal
-        porte:
-          - border-left: 2px grey solid
-          - padding: 0px 0px 0px 08px
-          - justifiy-self: start
-          - text-align: left
-          - color: |
-              [[[
-                if (states['binary_sensor.portes'].state == 'off')
-                  return 'var(--text_off_sidebar)';
-                return 'var(--text_on_info_sidebar)';
-              ]]]
-          - white-space: normal
         rappel:
           - border-left: 2px grey solid
           - padding: 0px 0px 0px 08px
@@ -699,20 +611,6 @@ button_card_templates:
                   return 'var(--text_off_sidebar)';
                 return 'var(--text_on_info_sidebar)';
               ]]]
-        modes:
-          - border-left: 2px grey solid
-          - padding: 0px 0px 0px 08px
-          - justifiy-self: start
-          - text-align: left
-          - color: var(--text_on_info_sidebar)
-          - white-space: normal
-        app_connectes:
-          - border-left: 2px grey solid
-          - padding: 0px 0px 0px 08px
-          - justifiy-self: start
-          - text-align: left
-          - color: var(--text_on_info_sidebar)
-          - white-space: normal
         adguard:
           - border-left: 2px grey solid
           - padding: 0px 0px 0px 08px
@@ -741,7 +639,7 @@ button_card_templates:
           - text-align: left
           - color: |
               [[[
-                if (states['sensor.maj'].state == 'Aucune')
+                if (states['sensor.systeme_surveillance_maj'].state == '')
                   return "var(--text_off)" ;
                 return "var(--text_on_info_sidebar)" 
               ]]]
@@ -792,8 +690,7 @@ button_card_templates:
                  <ha-icon
             icon="mdi:weather-sunny"
             style="width: 15px; height: 15px; color: gold; margin-right: -3px;">
-            </ha-icon><span> ${states['sensor.weather_leve_soleil'].state}</span>          
-          `
+            </ha-icon><span> ${states['sensor.weather_leve_soleil'].state}</span>                `
         ]]]
       alerte: |
         [[[
@@ -836,19 +733,27 @@ button_card_templates:
           if (states['switch.adguard_protection'].state == 'on')
           return `<ha-icon
             icon="mdi:shield-check"
-            style="width: 18px; color: red; height: 18px; margin-right: 2px;">
+            style="width: 18px; color: green; height: 18px; margin-right: 2px;">
             </ha-icon><span> AdGuard activé</span>`
           if (states['switch.adguard_protection'].state == 'off')
           return `<ha-icon
             icon="mdi:shield-off"
-            style="width: 18px; color: green; height: 18px; margin-right: 2px;">
+            style="width: 18px; color: red; height: 18px; margin-right: 2px;">
             </ha-icon><span> AdGuard désactivé</span>`
         ]]]
       titre_maj: |
-        [[[ return "Mise à jour" 
+
+        [[[
+          if (states['sensor.systeme_surveillance_maj'].state == '')
+            return "" 
+          return "Mise à jour" ;
         ]]]
       maj: |
-        [[[ return states['sensor.maj'].state ;
+
+        [[[
+          if (states['sensor.systeme_surveillance_maj'].state != '')
+            return states['sensor.systeme_surveillance_maj'].state ;
+
         ]]]
       saison: |
         [[[ return states['sensor.saison'].state ;
@@ -1459,11 +1364,6 @@ views:
                     entity: media_player.50pus7805_12
                     name: TV Phillips
                     icon_color: indigo
-                  - type: custom:mushroom-entity-card
-                    entity: switch.pc_sapin_de_noel_switch
-                    tap_action:
-                      action: toggle
-                    name: Sapin Noel
             type: vertical-stack
         type: vertical-stack
       - type: vertical-stack
@@ -1730,13 +1630,13 @@ views:
                     template: vide
                   - type: custom:button-card
                     template: vide
-                  - entity: sensor.weather_toiette_temperature
+                  - entity: sensor.weather_toilette_temperature
                     name: Temperature
                     type: custom:button-card
                     template:
                       - temp_hum
                       - temperature
-                  - entity: sensor.weather_toiette_humidity
+                  - entity: sensor.weather_toilette_humidity
                     type: custom:button-card
                     name: Humidite
                     template:
@@ -1783,7 +1683,6 @@ views:
                     cards:
                       - type: custom:mushroom-vacuum-card
                         entity: vacuum.roborock_vacuum_a10
-                        hide_state: false
                         commands:
                           - start_pause
                           - stop
@@ -1791,6 +1690,8 @@ views:
                           - locate
                         name: Aspirateur
                         layout: vertical
+                        icon_animation: true
+                        fill_container: true
                       - type: vertical-stack
                         cards:
                           - type: horizontal-stack
@@ -2128,14 +2029,14 @@ views:
               - type: custom:mini-graph-card
                 entities:
                   - type: attribute
-                    entity: sensor.weather_toiette_temperature
+                    entity: sensor.weather_toilette_temperature
                 name: Temperature
                 line_color: green
                 line_width: 2
                 font_size: 75
               - type: custom:mini-graph-card
                 entities:
-                  - sensor.weather_toiette_humidity
+                  - sensor.weather_toilette_humidity
                 name: Humidité
                 line_color: '#e74c3c'
                 line_width: 2
@@ -3101,14 +3002,6 @@ views:
               - header
           - type: custom:mushroom-entity-card
             entity: sensor.cac_40_variation_split
-          - type: custom:button-card
-            name: Sapin de noel
-            template:
-              - header
-          - type: custom:mushroom-entity-card
-            entity: switch.pc_sapin_de_noel_switch
-            tap_action:
-              action: toggle
       - type: vertical-stack
         cards:
           - type: custom:button-card
@@ -3236,18 +3129,14 @@ views:
                   - tgtg
                 type: custom:button-card
   - theme: Backend-selected
-    title: 'Caméra '
+    title: 'Camera '
     path: camera
     icon: mdi:video
     visible:
       - user: 9b144cacffe2461babcefd46b46f3f61
       - user: 07b9552c7f0c4ede8e5301f34b654e91
       - user: c55ab7f969ff49d2bae763c5e3a363c9
-    badges:
-      - entity: script.lancement_rtsp
-      - entity: camera.192_168_1_29_3
-      - entity: camera.192_168_1_29_2
-      - entity: camera.192_168_1_29
+    badges: []
     cards:
       - type: vertical-stack
         cards:
@@ -3426,151 +3315,78 @@ views:
             name: LANCEMENT DU DIRECT
             template:
               - header
-          - type: conditional
-            conditions:
-              - entity: script.lancement_rtsp
-                state: 'off'
-            card:
-              type: custom:mushroom-template-card
-              icon: mdi:video
-              tap_action:
-                action: call-service
-                service: script.lancement_rtsp
-                service_data:
-                  entity_id:
-                    - camera.192_168_1_29
-                    - camera.192_168_1_29_2
-                    - camera.192_168_1_29_3
-              icon_color: grey
-              layout: vertical
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.salon_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA SALON
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.salon_streaming_sensor
-                state: 'True'
-            card:
-              camera_view: auto
-              type: picture-glance
-              title: Salon
-              entities: []
-              camera_image: camera.192_168_1_29
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.couloir_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA HALL
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.couloir_streaming_sensor
-                state: 'True'
-            card:
-              camera_view: auto
-              type: picture-glance
-              title: Hall
-              entities: []
-              camera_image: camera.192_168_1_29_2
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.cuisine_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA CUISINE
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.cuisine_streaming_sensor
-                state: 'True'
-            card:
-              camera_view: auto
-              type: picture-glance
-              title: Cuisine
-              entities: []
-              camera_image: camera.192_168_1_29_3
-      - type: vertical-stack
-        cards:
+          - type: custom:mushroom-template-card
+            icon: mdi:video
+            tap_action:
+              action: call-service
+              service: camera.turn_on
+              data: {}
+              target:
+                entity_id:
+                  - camera.couloir_1
+                  - camera.couloir_2
+                  - camera.cuisine_1
+                  - camera.cuisine_2
+                  - camera.salon_1
+                  - camera.salon_2
+            icon_color: grey
+            layout: vertical
+            hold_action:
+              action: call-service
+              service: camera.turn_on
+              data: {}
+              target:
+                entity_id:
+                  - camera.couloir_1
+                  - camera.couloir_2
+                  - camera.cuisine_1
+                  - camera.salon_2
+                  - camera.salon_1
+                  - camera.cuisine_2
+                  - camera.salon_2
+            double_tap_action:
+              action: call-service
+              service: camera.turn_on
+              data: {}
+              target:
+                entity_id:
+                  - camera.couloir_2
+                  - camera.couloir_1
+                  - camera.cuisine_1
+                  - camera.cuisine_2
+                  - camera.salon_1
+                  - camera.salon_2
+            multiline_secondary: true
           - type: custom:button-card
-            name: LANCEMENT DU DIRECT
+            name: CAMERA SALON
             template:
               - header
-          - type: conditional
-            conditions:
-              - entity: script.lancement_rtsp
-                state: 'off'
-            card:
-              type: custom:mushroom-template-card
-              icon: mdi:video
-              tap_action:
-                action: call-service
-                service: script.lancement_rtsp
-                service_data:
-                  entity_id:
-                    - camera.192_168_1_29
-                    - camera.192_168_1_29_2
-                    - camera.192_168_1_29_3
-              icon_color: grey
-              layout: vertical
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.salon_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA SALON
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.salon_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:webrtc-camera
-              entity: camera.192_168_1_29
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.couloir_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA HALL
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.couloir_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:webrtc-camera
-              entity: camera.192_168_1_29_2
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.cuisine_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:button-card
-              name: CAMERA CUISINE
-              template:
-                - header
-          - type: conditional
-            conditions:
-              - entity: binary_sensor.cuisine_streaming_sensor
-                state: 'True'
-            card:
-              type: custom:webrtc-camera
-              entity: camera.192_168_1_29_3
+          - type: horizontal-stack
+            cards:
+              - type: custom:webrtc-camera
+                entity: camera.salon_1
+              - type: custom:webrtc-camera
+                entity: camera.salon_2
+          - type: custom:button-card
+            name: CAMERA HALL
+            template:
+              - header
+          - type: horizontal-stack
+            cards:
+              - type: custom:webrtc-camera
+                entity: camera.couloir_1
+              - type: custom:webrtc-camera
+                entity: camera.couloir_2
+          - type: custom:button-card
+            name: CAMERA CUISINE
+            template:
+              - header
+          - type: horizontal-stack
+            cards:
+              - type: custom:webrtc-camera
+                entity: camera.cuisine_1
+              - type: custom:webrtc-camera
+                entity: camera.cuisine_2
   - title: Floorplan
     path: floorplan
     icon: mdi:floor-plan
@@ -3972,7 +3788,7 @@ views:
               width: 5%
               padding: 9px
           - type: state-label
-            entity: sensor.weather_toiette_temperature
+            entity: sensor.weather_toilette_temperature
             style:
               top: 8%
               left: 22%
@@ -4120,40 +3936,30 @@ views:
               font-size: 9px
               color: white
           - type: image
-            entity: camera.cuisine
+            entity: camera.cuisine_1
             image: /local/lovelace/images/icon/camera/camera.png
             tap_action:
               action: fire-dom-event
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Caméra Cuisine
+                  title: Caméra Cuisine 1
                   content:
                     type: vertical-stack
                     cards:
                       - type: custom:webrtc-camera
-                        url: rtsp://192.168.1.29/live3
-                        title: Cuisine
-                        muted: false
+                        entity: camera.cuisine_1
                         ui: true
                         shortcuts:
                           top: 0
                           left: 0
                           orientation: vertical
                           services:
-                            - name: Live
+                            - name: Play
                               icon: mdi:play
-                              service: eufy_security.start_rtsp_livestream
+                              service: camera.turn_on
                               service_data:
-                                entity_id:
-                                  - camera.couloir
-                                  - camera.salon
-                                  - camera.cuisine
-                        webrtc: true
-              hold_action:
-                service: eufy_security.start_rtsp_livestream
-                service_data:
-                  entity_id: camera.cuisine
+                                entity_id: camera.cuisine_1
             style:
               top: 28%
               left: 56%
@@ -4162,40 +3968,62 @@ views:
               border: 2px solid red
               border-radius: 10%
           - type: image
-            entity: camera.couloir
+            entity: camera.cuisine_2
             image: /local/lovelace/images/icon/camera/camera.png
             tap_action:
               action: fire-dom-event
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Caméra Hall
+                  title: Caméra Cuisine 2
                   content:
                     type: vertical-stack
                     cards:
                       - type: custom:webrtc-camera
-                        url: rtsp://192.168.1.29/live1
-                        title: Hall
-                        muted: false
+                        entity: camera.cuisine_2
                         ui: true
                         shortcuts:
                           top: 0
                           left: 0
                           orientation: vertical
                           services:
-                            - name: Live
+                            - name: Play
                               icon: mdi:play
-                              service: eufy_security.start_rtsp_livestream
+                              service: camera.turn_on
                               service_data:
-                                entity_id:
-                                  - camera.couloir
-                                  - camera.salon
-                                  - camera.cuisine
-                        webrtc: true
-              hold_action:
-                service: eufy_security.start_rtsp_livestream
-                service_data:
-                  entity_id: camera.couloir
+                                entity_id: camera.cuisine_2
+            style:
+              top: 82%
+              left: 56%
+              width: 2%
+              transform: rotate(1.5turn)
+              border: 2px solid red
+              border-radius: 10%
+          - type: image
+            entity: camera.couloir_1
+            image: /local/lovelace/images/icon/camera/camera.png
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Caméra Couloir 1
+                  content:
+                    type: vertical-stack
+                    cards:
+                      - type: custom:webrtc-camera
+                        entity: camera.couloir_1
+                        ui: true
+                        shortcuts:
+                          top: 0
+                          left: 0
+                          orientation: vertical
+                          services:
+                            - name: Play
+                              icon: mdi:play
+                              service: camera.turn_on
+                              service_data:
+                                entity_id: camera.couloir_1
             style:
               top: 15%
               left: 66%
@@ -4204,44 +4032,98 @@ views:
               border: 2px solid red
               border-radius: 10%
           - type: image
-            entity: camera.salon
+            entity: camera.salon_1
             image: /local/lovelace/images/icon/camera/camera.png
             tap_action:
               action: fire-dom-event
               browser_mod:
                 service: browser_mod.popup
                 data:
-                  title: Caméra Salon
+                  title: Caméra Salon 1
                   content:
                     type: vertical-stack
                     cards:
                       - type: custom:webrtc-camera
-                        url: rtsp://192.168.1.29/live0
-                        title: Salon
-                        muted: false
+                        entity: camera.salon_1
                         ui: true
                         shortcuts:
                           top: 0
                           left: 0
                           orientation: vertical
                           services:
-                            - name: Live
+                            - name: Play
                               icon: mdi:play
-                              service: eufy_security.start_rtsp_livestream
+                              service: camera.turn_on
                               service_data:
-                                entity_id:
-                                  - camera.couloir
-                                  - camera.salon
-                                  - camera.cuisine
-                        webrtc: true
-              hold_action:
-                service: eufy_security.start_rtsp_livestream
-                service_data:
-                  entity_id: camera.salon
+                                entity_id: camera.salon_1
             style:
               top: 5%
               left: 82%
               width: 2%
+              border: 2px solid red
+              border-radius: 10%
+          - type: image
+            entity: camera.salon_2
+            image: /local/lovelace/images/icon/camera/camera.png
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Caméra Salon 2
+                  content:
+                    type: vertical-stack
+                    cards:
+                      - type: custom:webrtc-camera
+                        entity: camera.salon_2
+                        ui: true
+                        shortcuts:
+                          top: 0
+                          left: 0
+                          orientation: vertical
+                          services:
+                            - name: Play
+                              icon: mdi:play
+                              service: camera.turn_on
+                              service_data:
+                                entity_id: camera.salon_2
+            style:
+              top: 82%
+              left: 90%
+              width: 2%
+              transform: rotate(1.5turn)
+              border: 2px solid red
+              border-radius: 10%
+          - type: image
+            entity: camera.couloir_2
+            image: /local/lovelace/images/icon/camera/camera.png
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: Caméra Couloir 2
+                  content:
+                    type: vertical-stack
+                    cards:
+                      - type: custom:webrtc-camera
+                        entity: camera.couloir_2
+                        ui: true
+                        shortcuts:
+                          top: 0
+                          left: 0
+                          orientation: vertical
+                          services:
+                            - name: Play
+                              icon: mdi:play
+                              service: camera.turn_on
+                              service_data:
+                                entity_id: camera.couloir_2
+            style:
+              top: 20%
+              left: 20%
+              width: 2%
+              transform: rotate(0.75turn)
               border: 2px solid red
               border-radius: 10%
   - theme: Backend-selected
@@ -4596,6 +4478,32 @@ views:
                               legend: true
                               line: true
                               name_adaptive_color: true
+          - type: custom:button-card
+            name: MISE A JOUR
+            template:
+              - header
+          - type: markdown
+            content: >-
+              {% if is_state('sensor.hacs', '0') or
+
+              is_state('sensor.hacs','unknown') %} Aucune mise à jour {% else %}
+
+              {{states('sensor.hacs') }} {{ 'mise à jour disponible' if
+
+              is_state('sensor.hacs', '1') else 'mises à jour disponibles' }}
+              {{'\U0001f389' }}
+
+
+              {% for repo in state_attr('sensor.hacs', 'repositories') %} -
+
+              {{repo.display_name }} - New: {{ repo.available_version }} /
+              Current: {{repo.installed_version }}
+
+              https://github.com/{{ repo.name }}/releases 
+
+              {% endfor %} 
+
+              {% endif %}
           - type: grid
             columns: 2
             square: false
@@ -5406,7 +5314,6 @@ views:
             cards:
               - type: custom:mushroom-vacuum-card
                 entity: vacuum.roborock_vacuum_a10
-                hide_state: false
                 commands:
                   - start_pause
                   - stop
@@ -5414,6 +5321,8 @@ views:
                   - locate
                 name: Aspirateur
                 layout: vertical
+                icon_animation: true
+                fill_container: true
               - type: vertical-stack
                 cards:
                   - type: horizontal-stack
@@ -6205,235 +6114,7 @@ views:
           - entity: sensor.last_boot
           - entity: sensor.home_assistant_log_size
           - entity: sensor.home_assistant_v2_db_size
-      - type: grid
-        cards:
-          - type: custom:button-card
-            name: fliping
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: flip 1s infinite
-            extra_styles: |
-              @keyframes flip {
-                  0% {transform: scaleX(1)}
-                  49.99% {transform: scaleX(1)}
-                  50% {transform: scaleX(-1)}
-                  99.99% {transform: scaleX(-1)}
-                  100% {transform: scaleX(-1)}
-                  }
-          - type: custom:button-card
-            name: rotating
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation:
-                    - rotating 3s infinite alternate
-          - type: custom:button-card
-            name: Slide In
-            icon: mdi:fire
-            styles:
-              card:
-                - height: 100%
-              icon:
-                - animation: slidein 3s infinite
-            extra_styles: |
-              @keyframes slidein {
-                from { margin-left: 150%;}
-                to { margin-left:0%;}
-          - type: custom:button-card
-            name: Slide
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: slide 3s infinite
-            extra_styles: |
-
-              @keyframes slide {
-                from { margin-left: 50%;}
-                to { margin-left:0%;}
-          - type: custom:button-card
-            name: bounce
-            icon: mdi:fire
-            show_entity_picture: true
-            styles:
-              icon:
-                - animation: bounce 3s ease infinite
-            extra_styles: |
-              @keyframes bounce{
-                   from {top: 0%;}
-                   50%  {top: 100%;}
-                   to   {top: 0%;}
-              }
-                  
-          - type: custom:button-card
-            name: Background
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: background 3s infinite
-            extra_styles: |
-              @keyframes background {
-                from {background-color: red;}
-                50% {background-color: yellow;}
-                to {background-color: red;}
-              }
-          - type: custom:button-card
-            name: icon color
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: icon-color 3s infinite
-            extra_styles: |
-              @keyframes icon-color {
-                from {color: red;}
-                50% {color: yellow;}
-                to {color: red;}
-              }
-          - type: custom:button-card
-            name: Fade
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: fade-out 3s infinite
-            extra_styles: |
-              @keyframes fade-out {
-                0% { opacity:1; }
-                50% { opacity:0; }
-                100% { opacity:1; }
-              }
-          - type: custom:button-card
-            name: Fade-out
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: fade-out 3s infinite
-            extra_styles: |
-              @keyframes fade-out {
-                from { opacity:1; }
-                to { opacity:0; }
-              }
-          - type: custom:button-card
-            name: Rotation X
-            icon: mdi:fire
-            show_entity_picture: true
-            styles:
-              icon:
-                - color: var(--state-icon-active-color)
-                - animation: rotation_x 5s infinite
-            extra_styles: |
-              @keyframes rotation_x{
-                0% {transform: scalex(-1)}
-                50% {transform: scalex(1)}
-                100% {transform: scalex(-1)}
-              }
-          - type: custom:button-card
-            name: Rotation Y
-            icon: mdi:fire
-            show_entity_picture: true
-            styles:
-              icon:
-                - color: var(--state-icon-active-color)
-                - animation: rotation_y 5s infinite
-            extra_styles: |
-              @keyframes rotation_y{
-                from {transform: scaley(1)}
-                50% {transform: scaley(-1)}
-                to {transform: scaley(1)}
-              }
-          - type: custom:button-card
-            name: Flame
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: flame 1.5s infinite
-            extra_styles: |
-              @keyframes flame {
-                0% {filter: blur(0px);transform: translate3d(0%, 0, 0); opacity:1; }
-                50% {filter: blur(1px) ;transform: rotate(2deg) translate3d(1%, 0, 0); opacity:.60; }
-                100% {filter: blur(0px);transform:  rotate(-1deg) translate3d(0%, 1%, 0); opacity:1;}
-              }
-          - type: custom:button-card
-            name: Shake
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: shake 0.82s infinite
-                - transform: translate3d(0, 0, 0)
-            extra_styles: |
-              @keyframes shake {
-                10%, 90% {
-                  transform: translate3d(-1%, 0, 0);
-                }
-                
-                20%, 80% {
-                  transform: translate3d(2%, 0, 0);
-                }
-
-                30%, 50%, 70% {
-                  transform: translate3d(-4%, 0, 0);
-                }
-
-                40%, 60% {
-                  transform: translate3d(4%, 0, 0);
-                }
-              }
-          - type: custom:button-card
-            name: Blur
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: blur 5s infinite
-            extra_styles: |
-              @keyframes blur {
-                0% { filter: blur(0px);}
-                50% { filter: blur(6px);}
-                100% { filter: blur(0px);}
-              }
-          - type: custom:button-card
-            name: drop-shadow
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: drop-shadow 5s infinite alternate
-            extra_styles: |
-              @keyframes drop-shadow {
-                from { filter: drop-shadow(1.95rem 0 0 pink);}
-                to { filter: drop-shadow(0 0 0.95rem chartreuse);}
-              }
-          - type: custom:button-card
-            name: skew x
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: skewX 5s infinite alternate
-            extra_styles: |
-              @keyframes skewX {
-                from { transform: skewX(50deg);}
-                to { transform: skewX(-50deg);}
-              }
-          - type: custom:button-card
-            name: skew y
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: skewY 5s infinite alternate
-            extra_styles: |
-              @keyframes skewY {
-                from { transform: skewY(0deg);}
-                to { transform: skewY(-180deg);}
-              }
-          - type: custom:button-card
-            name: scale
-            icon: mdi:fire
-            styles:
-              icon:
-                - animation: scale 5s infinite alternate
-            extra_styles: |
-              @keyframes scale {
-                from { transform: scale(0);}
-                to { transform: scale(1);}
-              }
-        square: false
+          - entity: sensor.zigbee_db_size
       - type: picture-elements
         image: local/lovelace/images/icon/Air/ap_4.png
         title: Master Bedroom Air Purifier
@@ -6819,301 +6500,44 @@ views:
                   text-align: center
                   font-size: 90%
                   color: rgb(255, 128, 0)
-      - type: vertical-stack
-        cards:
-          - type: custom:mushroom-title-card
-            title: |2-
-                         {%- if now().hour < 12 -%}Morning
-                         {%- elif now().hour < 18 -%}Afternoon
-                         {%- else -%}Evening{%- endif -%}, {{user}}
-            subtitle: >-
-              ♻️ {{state_attr('calendar.bins', 'message')}} on {{
-              as_timestamp(state_attr("calendar.bins","start_time") |
-              default(now(),true) )| timestamp_custom('%-d %b') }}
-          - type: horizontal-stack
-            cards:
-              - type: custom:mushroom-chips-card
-                card_mod:
-                  style: |
-                    :host {
-                      padding-top: 10px;
-                      padding-left: 10px;
-                      padding-bottom: 25px;
-                      --ha-card-background: white;
-                    }
-                chips:
-                  - type: action
-                    icon_color: red
-                    tap_action:
-                      action: navigate
-                      navigation_path: media-control
-                    icon: mdi:remote
-                    hold_action:
-                      action: none
-                    double_tap_action:
-                      action: none
-                  - type: action
-                    icon_color: blue
-                    tap_action:
-                      action: navigate
-                      navigation_path: audio
-                    icon: mdi:radio
-                  - type: action
-                    icon_color: blue-grey
-                    icon: ios:hifispeaker-fill
-                    tap_action:
-                      action: navigate
-                      navigation_path: media-settings
-                  - type: action
-                    icon_color: amber
-                    hold_action:
-                      action: none
-                    double_tap_action:
-                      action: none
-                    icon: mdi:lightbulb-group
-                    tap_action:
-                      action: navigate
-                      navigation_path: all-lights
-                  - type: action
-                    icon_color: green
-                    icon: mdi:timeline-clock
-                    hold_action:
-                      action: none
-                    double_tap_action:
-                      action: none
-                    tap_action:
-                      action: navigate
-                      navigation_path: automations
-                alignment: justify
-          - type: horizontal-stack
-            cards:
-              - type: custom:mushroom-person-card
-                card_mod:
-                  style: |
-                    :host {
-                      padding-left:10px;
-                      --ha-card-background: #292929;
-                    }
-                entity: person.dan
-                fill_container: true
-                icon: mdi:face-man
-                tap_action:
-                  action: navigate
-                  navigation_path: dan
-                hold_action:
-                  action: none
-                double_tap_action:
-                  action: none
-              - type: custom:mushroom-person-card
-                card_mod:
-                  style: |
-                    :host {
-                      padding-left:10px;
-                      --ha-card-background: #292929;
-                    }
-                entity: device_tracker.chloe
-                fill_container: true
-                icon: mdi:face-woman
-        card_mod:
-          style: |
-            ha-card {
-              background: #1c1c1c;
-              padding-left: 25px;
-              padding-right: 25px;
-              padding-bottom: 25px;
-            }
-      - type: custom:layout-card
-        layout_type: masonry
-        layout:
-          width: 350
-        cards:
-          - type: horizontal-stack
-            cards:
-              - camera_view: auto
-                type: picture-glance
-                title: Cuisine
-                entities:
-                  - entity: alarm_control_panel.alarmo
-                  - entity: binary_sensor.cuisine_global_motion_sensor
-                  - entity: script.lancement_rtsp
-                camera_image: camera.cuisine
-                aspect_ratio: 1/1
-              - camera_view: auto
-                type: picture-glance
-                title: Salon
-                entities:
-                  - entity: alarm_control_panel.alarmo
-                  - entity: binary_sensor.salon_global_motion_sensor
-                  - entity: script.lancement_rtsp
-                camera_image: camera.salon
-                aspect_ratio: 1/1
-          - type: alarm-panel
-            states:
-              - arm_away
-              - arm_home
-              - arm_night
-            entity: alarm_control_panel.eufy
-      - type: custom:button-card
-        entity: sensor.flower_care
-        name: Plante salon
-        icon: mdi:flower
-        label: |
-          [[[ return "Dracaena" ]]]
-        show_label: true
-        show_last_changed: false
-        template:
-          - carte_jauge
-        styles:
-          img_cell:
-            - background-color: |
-                [[[
-                  if (states['sensor.flower_care_moisture'].state < 5) return 'dodgerblue'
-                  else return 'var(--pastille_off)';
-                ]]]
-          icon:
-            - color: |
-                [[[
-                  if (states['sensor.flower_care_moisture'].state < 5) return 'var(--icon_on)'
-                  else return 'var(--icon_off)';
-                ]]]
-          custom_fields:
-            info1:
-              - '--text-color-sensor': |
-                  [[[
-                    if (states['sensor.flower_care_temperature'].state == "unavailable")
-                     return 'transparent'
-                    if (states['sensor.flower_care_temperature'].state < 5)
-                     return 'dodgerblue'
-                    return 'lightgrey';
-                  ]]]
-            info2:
-              - '--text-color-sensor': |
-                  [[[
-                    if (states['sensor.flower_care_moisture'].state == "unavailable")
-                     return 'transparent'
-                    if (states['sensor.flower_care_moisture'].state < 5)
-                     return 'dodgerblue'
-                    return 'lightgrey'
-                  ]]]
-            info3:
-              - '--text-color-sensor': |
-                  [[[
-                    if (states['sensor.flower_care_illuminance'].state == "unavailable" )
-                     return 'transparent'
-                    if (states['sensor.flower_care_illuminance'].state < 5)
-                     return 'dodgerblue'
-                    return 'lightgrey';
-                  ]]]
-            info4:
-              - '--text-color-sensor': |
-                  [[[
-                    if (states['sensor.flower_care_conductivity'].state == "unavailable" )
-                     return 'transparent'
-                    if (states['sensor.flower_care_conductivity'].state < 5)
-                     return 'dodgerblue'
-                    return 'lightgrey';
-                  ]]]
-        custom_fields:
-          info1: |
-            [[[
-              return `<ha-icon
-                icon="mdi:thermometer"
-                style="width: 20px; height: 20px; color: lightgrey;">
-                </ha-icon><span> Température : <span style="color: var(--text-color-sensor);">${states['sensor.flower_care_temperature'].state} °</span></span>`
-            ]]]
-          jauge_info1:
-            card:
-              type: custom:bar-card
-              entities:
-                - entity: sensor.flower_care_temperature
-                  color: tomato
-          info2: |
-            [[[
-              return `<ha-icon
-                icon="mdi:water"
-                style="width: 20px; height: 20px; color: lightgrey;">
-                </ha-icon><span> Humidité : <span style="color: var(--text-color-sensor);">${states['sensor.flower_care_moisture'].state} %</span></span>`
-            ]]]
-          jauge_info2:
-            card:
-              type: custom:bar-card
-              name: temp
-              entities:
-                - entity: sensor.flower_care_moisture
-                  color: dodgerblue
-          info3: |
-            [[[
-              return `<ha-icon
-                icon="mdi:brightness-5"
-                style="width: 20px; height: 20px; color: lightgrey;">
-                </ha-icon><span> Luminosité : <span style="color: var(--text-color-sensor);">${states['sensor.flower_care_illuminance'].state} lx</span></span>`
-            ]]]
-          jauge_info3:
-            card:
-              type: custom:bar-card
-              name: temp
-              entities:
-                - entity: sensor.flower_care_illuminance
-                  color: gold
-          info4: |
-            [[[
-              return `<ha-icon
-                icon="mdi:lightning-bolt"
-                style="width: 20px; height: 20px; color: lightgrey;">
-                </ha-icon><span> Fertilité : <span style="color: var(--text-color-sensor);">${states['sensor.flower_care_conductivity'].state} µS/cm</span></span>`
-            ]]]
-          jauge_info4:
-            card:
-              type: custom:bar-card
-              name: temp
-              entities:
-                - entity: sensor.flower_care_conductivity
-                  color: green
-                  max: 1000
-          graph:
-            card:
-              type: custom:mini-graph-card
-              entities:
-                - color: rgba(0,191,255,0.3)
-                  entity: sensor.flower_care_moisture
-              line_width: 1
-              lower_bound: 10
-              points_per_hour: 1
-              hours_to_show: 48
-              show:
-                fill: fade
+      - type: custom:mushroom-entity-card
+        entity: switch.pc_sapin_de_noel_switch
   - theme: Backend-selected
     title: er
     path: er
+    visible:
+      - user: 9b144cacffe2461babcefd46b46f3f61
+      - user: 07b9552c7f0c4ede8e5301f34b654e91
+      - user: c55ab7f969ff49d2bae763c5e3a363c9
     badges: []
     cards:
       - camera_view: auto
         type: picture-glance
         title: Hall
         entities: []
-        camera_image: camera.couloir
+        camera_image: camera.couloir_1
       - camera_view: auto
         type: picture-glance
         title: Hall
         entities: []
-        camera_image: camera.192_168_1_29_2
+        camera_image: camera.couloir_2
       - camera_view: auto
         type: picture-glance
         title: Cuisine
         entities: []
-        camera_image: camera.cuisine
+        camera_image: camera.cuisine_1
       - camera_view: auto
         type: picture-glance
         title: Cuisine
         entities: []
-        camera_image: camera.192_168_1_29_3
+        camera_image: camera.cuisine_2
       - camera_view: auto
         type: picture-glance
         title: Salon
         entities: []
-        camera_image: camera.salon
+        camera_image: camera.salon_1
       - camera_view: auto
         type: picture-glance
         title: Salon
         entities: []
-        camera_image: camera.192_168_1_29
+        camera_image: camera.salon_2

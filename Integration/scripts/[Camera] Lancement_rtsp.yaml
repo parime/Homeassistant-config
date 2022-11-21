@@ -5,8 +5,12 @@ lancement_rtsp:
     data: {}
     target:
       entity_id:
-      - camera.couloir
-      - camera.cuisine
-      - camera.salon
+      - camera.couloir_1
+      - camera.cuisine_1
+      - camera.salon_1
+      - camera.couloir_2
+      - camera.cuisine_2
+      - camera.salon_2
+
   mode: restart
   icon: mdi:video

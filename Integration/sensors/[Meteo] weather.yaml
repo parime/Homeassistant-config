@@ -30,6 +30,9 @@ sensors:
       weather_alert_canicule:
         friendly_name: "Alerte canicule"
         value_template: "{{ state_attr('sensor.44_weather_alert' , 'Canicule') }}"   
+      weather_alert_vague_submersion:
+        friendly_name: "Alerte vague submersion"
+        value_template: "{{ state_attr('sensor.44_weather_alert' , 'Vagues-submersion') }}"   
 
 
 
@@ -91,6 +94,7 @@ sensors:
             | replace('sunny', '☀️')
             | replace('windy-variant', '💨')
             | replace('windy', '💨')
+            | replace('Vagues-submersion', '🌊')
             | replace('exceptional', '⚠️') %}     
           {% if not state_attr('weather.maison', 'temperature') == 'Indisponible' -%}
             {% if states('weather.nantes') == 'lightning-rainy' -%}
@@ -184,6 +188,8 @@ sensors:
           ⚠️⚡️ Orages ⚡️⚠️{%- endif %}  
           {% if is_state("sensor.weather_alert_vent_violent", "Jaune") -%} 
           ⚠️💨 Vent violent 💨⚠️{%- endif %}  
+          {% if is_state("sensor.weather_alert_vague_submersion", "Jaune") -%} 
+          ⚠️🌊 Vagues-submersion 🌊⚠️{%- endif %}  
 
           {% if is_state("sensor.weather_alert_canicule", "Jaune") -%} 
           ⚠️☀️ Canicule  ☀️⚠️{%- endif %}
@@ -204,6 +210,9 @@ sensors:
           ⚠️💨 Vent violent 💨⚠️{%- endif %}  
           {% if is_state("sensor.weather_alert_pluie_inondation", "Orange") -%} 
           ⚠️🌧 Pluie / Inondation 🌧⚠️{%- endif %}
+          {% if is_state("sensor.weather_alert_vague_submersion", "Orange") -%} 
+          ⚠️🌊 Vagues-submersion 🌊⚠️{%- endif %} 
+
           {% if is_state("sensor.weather_alert_grand_froid", "Rouge") -%} 
           ⚠️🥶 Grand froid 🥶⚠️{%- endif %}  
           {% if is_state("sensor.weather_alert_neige_verglas", "Rouge") -%} 
@@ -218,6 +227,10 @@ sensors:
           ⚠️🌧 Pluie / Inondation 🌧⚠️{%- endif %}
           {% if is_state("sensor.weather_alert_canicule", "Rouge") -%} 
           ⚠️☀️ Canicule ☀️⚠️{%- endif %}
+          {% if is_state("sensor.weather_alert_vague_submersion", "Rouge") -%} 
+          ⚠️🌊 Vagues-submersion 🌊⚠️{%- endif %} 
+
+          
       weather_soleil_icon:
         friendly_name: Soleil levé couché avec icones          
         value_template: >-

@@ -1,0 +1,56 @@
+###### surveillance%- endif -%}
+platform: template
+sensors:
+  surveillance_batterie_capteur_ouverture:
+    friendly_name: Surveillance_batterie_capteur_ouverture
+    value_template: >-
+
+
+            {%- if states('sensor.door_entrer_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture porte d'entrer est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.door_entrer_battery_level')| float < 16 -%}
+               Capteur d'ouverture porte d'entrer est à {{ states('sensor.door_entrer_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+
+            {%- if states('sensor.door_placard_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture porte placard est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.door_placard_battery_level')| float < 16 -%}
+               Capteur d'ouverture porte placard est à {{ states('sensor.door_placard_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+
+            {%- if states('sensor.sensor_magnet_ch_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture chambre fille est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.sensor_magnet_ch_battery_level')| float < 16 -%}
+               Capteur d'ouverture chambre fille est à {{ states('sensor.sensor_magnet_ch_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+
+            {%- if states('sensor.windows_ch_parents_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture chambre parents est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.windows_ch_parents_battery_level')| float < 16 -%}
+               Capteur d'ouverture chambre parents est à {{ states('sensor.windows_ch_parents_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+
+            {%- if states('sensor.windows_salon_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture salon est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.windows_salon_battery_level')| float < 16 -%}
+               Capteur d'ouverture salon est à {{ states('sensor.windows_salon_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+
+            {%- if states('sensor.windows_cuisine_battery_level') == 'unavailable' -%}
+               Capteur d'ouverture Cuisine est  HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.windows_cuisine_battery_level')| float < 16 -%}
+               Capteur d'ouverture Cuisine est à {{ states('sensor.windows_cuisine_battery_level')}}%
+            {{'\n'}}{{'<br>'}}
+            {%- endif -%}
+

@@ -1,0 +1,15 @@
+- id: '1626945256885468'
+  alias: '[Alarme] Eteindre sirène'
+  description: Eteindre sirène
+  trigger:
+  - platform: device
+    device_id: d23fc104d3715a568d5bc555532fbe00
+    domain: alarm_control_panel
+    entity_id: alarm_control_panel.alarmo
+    type: disarmed
+  condition: []
+  action:
+  - service: media_player.media_stop
+    target:
+      entity_id: media_player.tout
+  mode: restart

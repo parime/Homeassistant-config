@@ -1,0 +1,22 @@
+- id: '1668975768718522530'
+  alias: Notify Salon test
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.salon_2_motion_sensor
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: camera.snapshot
+    data:
+      filename: /media/snapshot_CamSalon.jpg
+    target:
+      entity_id: camera.salon_2
+  - delay: 00:00:01
+  - service: notify.mobile_app_sm_vincent
+    data:
+      title: CamSalon  {{now().strftime('(%H:%M) [%d-%m-%Y]')}}
+      message: Mouvement detecté au Salon
+      data:
+        image: /media/snapshot_CamSalon.jpg
+        clickAction: /lovelace/camera

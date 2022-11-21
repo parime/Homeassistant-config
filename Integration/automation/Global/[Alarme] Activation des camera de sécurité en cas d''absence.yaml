@@ -1,0 +1,40 @@
+- id: '1668976693683'
+  alias: '[Alarme] Activation des camera de sécurité en cas d absence'
+  description: '[Alarme] Activation des camera de sécurité en cas d absence'
+  trigger:
+  - platform: state
+    entity_id:
+    - person.vincent
+    - person.patricia
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: person.vincent
+          state: not_home
+        - condition: state
+          entity_id: person.patricia
+          state: not_home
+      sequence:
+      - service: alarm_control_panel.alarm_arm_away
+        data: {}
+        target:
+          entity_id: alarm_control_panel.eufy
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: person.vincent
+          state: home
+        - condition: state
+          entity_id: person.patricia
+          state: home
+      sequence:
+      - service: eufy_security.alarm_off
+        data: {}
+        target:
+          entity_id: alarm_control_panel.eufy
+  mode: restart

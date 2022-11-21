@@ -1,0 +1,9 @@
+- id: '162695688785385468'
+  alias: '[Systeme] Clear TTS cache '
+  description: Clear TTS cache 
+  trigger:
+  - platform: time
+    at: '21:00:00'
+  condition: []
+  action:
+  - service: tts.clear_cache

@@ -1,0 +1,13 @@
+###### surveillance
+
+
+platform: template
+sensors:  
+  systeme_surveillance_maj:
+    friendly_name: Surveillance MAJ
+    value_template: >-  
+
+      {{ states('sensor.maj_ha') }}
+      {{ states('sensor.maj_hacs') }}
+
+

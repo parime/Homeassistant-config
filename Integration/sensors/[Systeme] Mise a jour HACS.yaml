@@ -1,0 +1,18 @@
+###### MISE A JOUR HACS ET SUPERVISOR
+platform: template
+sensors:         
+  maj_hacs:
+    friendly_name: Mise à jour de HACS
+    value_template: >-
+
+
+            {%- if states('sensor.hacs') | float > 0  %}
+                <b>Hacs :</b><br>
+
+
+                {% for repo in states.sensor.hacs.attributes.repositories -%}
+                  🔹 {{ repo.display_name }} ⚠️ {{ repo.installed_version }} ✔️ {{ repo["available_version"] }} ✔️<br>
+
+                {% endfor %}
+                {% endif %}
+

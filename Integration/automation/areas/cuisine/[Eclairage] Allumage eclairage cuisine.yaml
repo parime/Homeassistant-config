@@ -7,13 +7,31 @@
     - binary_sensor.motion_cuisine_hg_zone
     - binary_sensor.motion_cuisine_bd_zone
     - sensor.illuminance_cuisine_illuminance
+  - platform: time
+    at: '23:00:00'
+  - platform: time
+    at: 00:00:00
+  - platform: time
+    at: 01:00:00
+  - platform: time
+    at: 02:00:00
+  - platform: time
+    at: 03:00:00
+  - platform: time
+    at: 04:00:00
+  - platform: time
+    at: 05:00:00
+  - platform: time
+    at: 06:00:00
+  - platform: time
+    at: 07:00:00
   condition: []
   action:
   - choose:
     - conditions:
       - condition: time
         after: 07:00:00
-        before: '23:00:00'
+        before: '22:50:00'
         weekday:
         - mon
         - tue
@@ -53,6 +71,17 @@
         - condition: state
           entity_id: binary_sensor.motion_cuisine_hg_zone
           state: 'off'
+        - condition: time
+          after: 07:00:00
+          before: '22:50:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
       sequence:
       - service: light.turn_off
         data: {}
@@ -96,5 +125,25 @@
         data: {}
         target:
           entity_id: light.led_cuisine
+    - conditions:
+      - condition: time
+        before: 08:00:00
+        after: '22:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: light.turn_off
+        data:
+          transition: 32
+        target:
+          entity_id:
+          - light.cuisine
+          - light.led_cuisine
     default: []
   mode: restart

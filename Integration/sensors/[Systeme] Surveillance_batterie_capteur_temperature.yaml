@@ -1,0 +1,91 @@
+###### surveillance
+platform: template
+sensors:
+  surveillance_batterie_capteur_temeprature:
+    friendly_name: Surveillance_batterie_capteur_temperature
+    value_template: >-
+
+
+
+      {%- if states('sensor.weather_bureau_battery_level') == 'unavailable' -%}
+        Capteur de température Bureau est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_bureau_battery_level')| float < 16 -%}}
+        Capteur de température Bureau est à {{ states('sensor.weather_bureau_battery_level') }}%
+       {{'\n'}}{{'<br>'}}         
+      {%- endif -%}
+
+      {%- if states('sensor.weather_couloir_battery_level') == 'unavailable' -%}
+        Capteur de température Couloir est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_couloir_battery_level')| float < 16 -%}}
+        Capteur de température Couloir est à {{ states('sensor.weather_couloir_battery_level') }}
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+ 
+      {%- if states('sensor.weather_ch_filLes_battery_level') == 'unavailable' -%}
+        Capteur de température Chambre fille est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_ch_filLes_battery_level')| float < 16 -%}}
+        Capteur de température Chambre fille est à {{ states('sensor.weather_ch_filLes_battery_level') }}
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+
+      {%- if states('sensor.weather_salon_battery_level') == 'unavailable' -%}
+        Capteur de température Salon est HS 
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_salon_battery_level')| float < 16 -%}}
+        Capteur de température Salon est à {{ states('sensor.weather_salon_battery_level') }}%
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+      {%- if states('sensor.weather_cuisine_battery_level') == 'unavailable' -%}
+        Capteur de température Cuisine est HS 
+      {{- '\n' -}} , {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_cuisine_battery_level')| float < 16 -%}}
+        Capteur de température Cuisine est à {{ states('sensor.weather_cuisine_battery_level') }}% 
+      {{- '\n' -}} , {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+      {%- if states('sensor.weather_placard_battery_level') == 'unavailable' -%}
+        Capteur de température Placard est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_placard_battery_level')| float < 16 -%}}
+        Capteur de température Placard est à {{ states('sensor.weather_placard_battery_level') }}%
+       {{'\n'}}{{'<br>'}}
+      {%- endif -%}
+
+      {%- if states('sensor.weather_sdb_battery') == 'unavailable' -%}
+        Capteur de température Salle de bain est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_sdb_battery')| float < 16 -%}}
+        Capteur de température Salle de bain est à {{ states('sensor.weather_sdb_battery') }}%
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+      {%- if states('sensor.weather_toilette_battery_level') == 'unavailable' -%}
+        Capteur de température Toillete est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_toilette_battery_level')| float < 16 -%}}
+        Capteur de température Toilette est à {{ states('sensor.weather_toilette_battery_level') }}%
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+      {%- if states('sensor.weather_ch_parents_battery_level') == 'unavailable' -%}
+        Capteur de température Chambre parents est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.weather_ch_parents_battery_level')| float < 16 -%}}
+        Capteur de température Chambre parents est à {{ states('sensor.weather_ch_parents_battery_level') }}%
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+
+      {%- if states('sensor.temperature_humidity_sensor_b126_battery') == 'unavailable' -%}
+        Capteur de température Salon LCD est HS
+       {{'\n'}}{{'<br>'}} 
+      {%- elif states('sensor.temperature_humidity_sensor_b126_battery')| float < 16 -%}}
+        Capteur de température Salon LCD est à {{ states('sensor.temperature_humidity_sensor_b126_battery') }}%
+       {{'\n'}}{{'<br>'}} 
+      {%- endif -%}
+

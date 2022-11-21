@@ -1,0 +1,103 @@
+- id: '1668978522530'
+  alias: '[Eclairage] Changement de mode eclairage'
+  description: '[Eclairage] Changement de mode eclairage'
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.detecteur_de_mouvement_salon_motion
+    - binary_sensor.motion_salon_hd
+    - binary_sensor.motion_salon_bd
+    - binary_sensor.motion_salon_bg
+    - person.patricia
+    - light.salon
+  - platform: time
+    at: '18:45:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: time
+          after: 08:00:00
+          before: '18:30:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+        - condition: numeric_state
+          entity_id: sensor.illuminance_salon_illuminance
+          below: 50
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: sensor.season
+            state: autumn
+          - condition: state
+            entity_id: sensor.season
+            state: winter
+          - condition: state
+            entity_id: person.patricia
+            state: home
+        - condition: state
+          entity_id: person.patricia
+          state: home
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: binary_sensor.motion_salon_bd
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.motion_salon_bg
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.motion_salon_hd
+            state: 'on'
+          - condition: state
+            entity_id: binary_sensor.detecteur_de_mouvement_salon_motion
+            state: 'on'
+      sequence:
+      - service: input_select.select_option
+        data:
+          option: Travail
+        target:
+          entity_id: input_select.guests
+    - conditions:
+      - condition: state
+        entity_id: person.patricia
+        state: not_home
+      sequence:
+      - service: input_select.select_option
+        data:
+          option: Normal
+        target:
+          entity_id: input_select.guests
+    - conditions:
+      - condition: time
+        after: '18:30:00'
+        before: '18:50:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - service: input_select.select_option
+        data:
+          option: Normal
+        target:
+          entity_id: input_select.guests
+    - conditions:
+      - condition: state
+        entity_id: light.salon
+        state: 'off'
+      sequence:
+      - service: input_select.select_option
+        data:
+          option: Normal
+        target:
+          entity_id: input_select.guests
+  mode: restart

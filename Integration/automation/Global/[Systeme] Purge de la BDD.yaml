@@ -1,0 +1,14 @@
+- id: '515941651899841'
+  alias: '[Systeme] Purge de la base de donnée'
+  description: Purge la base de donnée lorque celle-ci dépasse 1Go
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.home_assistant_v2_db_size
+    above: '800'
+  condition: []
+  action:
+  - service: recorder.purge
+    data:
+      keep_days: 7
+      repack: true
+  mode: restart

@@ -1,0 +1,139 @@
+
+- id: '1668975696637'
+  alias: '[Alarme] Snapshot caméra'
+  description: '[Alarme] Snapshot caméra'
+  trigger:
+  - platform: state
+    entity_id:
+    - alarm_control_panel.eufy
+    to: armed_away
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.salon_1_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.salon_1_{{ now().strftime("%d-%m-%Y à %Hh-%Mmin-%Ssecondes")
+            }}.jpg
+        target:
+          entity_id: camera.salon_1
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.salon_2_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.salon_2_{{ now().strftime("%d-%m-%Y à %Hh-%Mmin-%Ssecondes")
+            }}.jpg
+        target:
+          entity_id: camera.salon_2
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.cuisine_1_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.cuisine_1_{{ now().strftime("%d-%m-%Y à
+            %Hh-%Mmin-%Ssecondes") }}.jpg
+        target:
+          entity_id: camera.cuisine_1
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.cuisine_2_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.cuisine_2_{{ now().strftime("%d-%m-%Y à
+            %Hh-%Mmin-%Ssecondes") }}.jpg
+        target:
+          entity_id: camera.cuisine_2
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.couloir_1_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.couloir_1_{{ now().strftime("%d-%m-%Y à
+            %Hh-%Mmin-%Ssecondes") }}.jpg
+        target:
+          entity_id: camera.couloir_1
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.couloir_2_motion_sensor
+        state: 'on'
+      sequence:
+      - service: camera.turn_on
+        data: {}
+        target:
+          entity_id:
+          - camera.couloir_1
+          - camera.couloir_2
+          - camera.cuisine_1
+          - camera.salon_1
+          - camera.salon_2
+          - camera.cuisine_2
+      - service: camera.snapshot
+        data:
+          filename: /media/snapshot_camera.couloir_2_{{ now().strftime("%d-%m-%Y à
+            %Hh-%Mmin-%Ssecondes") }}.jpg
+        target:
+          entity_id: camera.couloir_2
+  mode: restart

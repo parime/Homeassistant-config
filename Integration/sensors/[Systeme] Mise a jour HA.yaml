@@ -1,32 +1,22 @@
 ###### MISE A JOUR HACS ET SUPERVISOR
 platform: template
 sensors:         
-      maj:
-        friendly_name: Mise à jour 
-        value_template: >-           
-          {% if states('sensor.hacs') | float == 1 and states('binary_sensor.home_assistant_versions_update_available')  == 'off' and states('update.home_assistant_operating_system_update')  == 'off' and states('update.home_assistant_supervisor_update') == 'off' %}
-            Aucune
-          {% elif states('sensor.hacs') | float > 1 or states('binary_sensor.home_assistant_versions_update_available') == 'on' or states('update.home_assistant_operating_system_update')  == 'on' or states('update.home_assistant_supervisor_update') == 'on' -%}   
-          {%- endif -%}
-            {%- if states('binary_sensor.home_assistant_versions_update_available') == 'on' or states('update.home_assistant_operating_system_update')  == 'on' %} 
-                <b>Home Assistant :</b><br>
-               {%- if states('binary_sensor.home_assistant_versions_update_available') == 'on' %} 
-                 HA Core {{state_attr('update.home_assistant_core_update','installed_version')}} -> {{ states('sensor.home_assistant_versions') }}<br>
-               {%- endif -%}
-               {%- if states('update.home_assistant_supervisor_update') == 'on' %} 
-                 HA Supervisor {{state_attr('update.home_assistant_supervisor_update','latest_version')}}<br>
-               {%- endif -%}
-               {%- if states('update.home_assistant_operating_system_update')  == 'on' %} 
-                 HassOS {{ states('sensor.home_assistant_operating_system_version') }} → {{ states('sensor.home_assistant_operating_system_newest_version') }}<br>
-               {%- endif -%}
-            {%- endif -%}
-            {%- if states('sensor.hacs') | float > 1  %}
-                <b>Hacs :</b><br>
-                {% for repo in states.sensor.hacs.attributes.repositories -%}
-                {{ repo.display_name }} ({{ repo["available_version"] }})<br>
-                {% endfor %} 
-          {%- else -%}
-          {%- endif -%}     
+  maj_ha:
+    friendly_name: Mise à jour de HA
+    value_template: >-           
           
+          {% if states('sensor.hacs') | float > 0 or states('binary_sensor.home_assistant_versions_update_available') == 'on' or states('update.home_assistant_core_update')  == 'on' or states('update.home_assistant_supervisor_update') == 'on' -%}   
+          {%- endif -%}
+            {%- if states('binary_sensor.home_assistant_versions_update_available') == 'on' or states('update.home_assistant_core_update')  == 'on' %} 
+                <b> Mise à jour Home Assistant disponible : </b><br>
+              {%- if states('binary_sensor.home_assistant_versions_update_available') == 'on' %}
+                🔹 HA Core - Version ⚠️ {{state_attr('update.home_assistant_core_update','installed_version')}} ✔️ {{ states('sensor.home_assistant_versions') }} ✔️ <br>
+              {%- endif -%}
+              {%- if states('update.home_assistant_supervisor_update') == 'on' %} 
+                🔹 HA Supervisor - Version ⚠️ {{state_attr('update.home_assistant_supervisor_update','installed_version')}} ✔️ {{state_attr('update.home_assistant_supervisor_update','latest_version')}} ✔️ <br>
+              {%- endif -%}
+            {%- endif -%}
+
+
 
           
