@@ -1,8 +1,8 @@
 Installation de [Home Assistant](https://home-assistant.io/) sous docker hébergé sur une VM debian 11, le tout sur un hyperviseur Esxi. configuration pour un appartement T3, offrant des automatisations pour la lumière, le multimédia, la sécurité, etc...
-Je ne suis pas un expert, les codes ne sont peut-être pas écrits de la meilleure façon, n'ayant à la base aucune connaissance en développement et en Yaml, j'ai surtout modifié des configurations trouvées ici et là pour l'adapter à mon besoin, j'ai réalisé ceci avec mes petites connaissances et des informations trouvé un peu partout sur des sites, des forums et différents Github.
+Je ne suis pas un expert, les codes ne sont peut-être pas écrits de la meilleure façon, n'ayant à la base aucunes connaissances en développement et en Yaml, j'ai surtout modifié des configurations trouvées ici et là pour l'adapter à mon besoin, j'ai réalisé ceci avec mes petites connaissances et des informations trouvé un peu partout sur des sites, des forums et différents Github.
 
 
-Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'utilisable au quotidien, comme quoi même un novice avec un peu de patiente et de persévérances peu arriver à avoir quelques choses de fonctionnel.
+Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'utilisable au quotidien, comme quoi même un novice avec un peu de patience et de persévérances peu arriver à avoir quelques choses de fonctionnel.
 
 
 #### Lumières 💡
