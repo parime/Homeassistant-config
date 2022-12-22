@@ -1,3 +1,24 @@
+homeassistant:
+  country: FR
+  name: Home
+  latitude: !secret zones_maison_latitude
+  longitude: !secret zones_maison_longitude
+  unit_system: metric
+  time_zone: Europe/Paris
+  allowlist_external_dirs:
+    - /config
+    - /share
+    - /media
+
+
+ #  Panels iFrames
+panel_iframe:
+  plex:
+    title: Plex
+    url: !secret plex_url
+    icon: mdi:plex
+
+
 
 # Loads default set of integrations. Do not remove.
 default_config:
@@ -7,7 +28,7 @@ system_health:
 zodiac:
 usb:
 map:
-
+ffmpeg:
 
 automation: !include automations.yaml
 automation old: !include_dir_merge_list Integration/automation/
@@ -28,7 +49,7 @@ hassio: ~
 #permet à Home Assistant de traiter les flux vidéo et audio.
 #https://www.home-assistant.io/integrations/ffmpeg/
 
-ffmpeg:
+
 frontend:
   # We can define additional/custom themes for the frontend here.
   themes: !include_dir_merge_named Integration/themes/
@@ -66,6 +87,8 @@ http: #si cette balise n'existe pas, ajoutez la, sinon ajouter seulement la suit
     - 172.30.33.0/24
     - ::1
     - 92.128.72.55
+
+
 system_log:
   max_entries: 50
 #  ssl_certificate: /ssl//fullchain.pem
@@ -156,3 +179,6 @@ camera:
     attributes:
       - calibration_points
 
+eufy:
+  username: !secret eufy_email
+  password: !secret eufy_password

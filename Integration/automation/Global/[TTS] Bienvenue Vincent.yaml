@@ -33,20 +33,11 @@
   - service: media_player.volume_set
     target:
       entity_id:
-      - media_player.echo_salon
-      - media_player.echo_cuisine
+      - media_player.echo_couloir
+
     data:
       volume_level: 0.45
-  - service: notify.alexa_media_echo_salon
-    data:
-      data:
-        type: tts
-      message: ' {{ [   "Bienvenue à la maison Vincent", "Vincent tu es enfin à la
-        maison", "Ça semble différence sans toi. Tu mas manqué Vincent", "Tu nous as manqué, Vincent","Vincent,
-        tu nous as tellement manqué", "Vincent, Nous sommes ravis de te voir" , "Mesdames
-        et Messieurs, Le patron est à la maison, bienvenur Vincent","inclinez vous Vincent est de retour", " un dieu est parmis nous, Vincent est de retour", "le monde était pas le même sans toi vincent, heureusement tu es rentré"  ]   | random
-        }}'
-  - service: notify.alexa_media_echo_cuisine
+  - service: notify.alexa_media_2eme_echo_dot_vincent
     data:
       data:
         type: tts
@@ -58,8 +49,8 @@
   - service: media_player.volume_set
     target:
       entity_id:
-      - media_player.echo_salon
-      - media_player.echo_cuisine
+      - media_player.echo_couloir
+
     data:
       volume_level: 0.13
   mode: single

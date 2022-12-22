@@ -1,18 +1,18 @@
 ###### surveillance
 platform: template
 sensors:
-  surveillance_aspirateur:
-    friendly_name: surveillance_aspirateur
-    value_template: >-
+   surveillance_aspirateur:
+      friendly_name: surveillance_aspirateur
+      value_template: >-
 
 
 
-      {%- if states('sensor.roborock_battery') == 'unavailable' -%}
-         L'aspirateur est HS
-      {{'\n'}}{{'<br>'}} 
-      {%- elif states('sensor.roborock_battery')| float < 16 -%}
-         L'aspirateur est à {{ states('sensor.roborock_battery') }}%
-      {{'\n'}}{{'<br>'}} 
-      {%- endif -%}
+         {%- if states('sensor.roborock_battery') == 'unavailable' -%}
+            L'aspirateur est HS
+         {{'\n'}}{{'<br>'}} 
+         {%- elif states('sensor.roborock_battery')| float < 16 -%}
+            L'aspirateur est à {{ states('sensor.roborock_battery') }}%
+         {{'\n'}}{{'<br>'}} 
+         {%- endif -%}
 
 

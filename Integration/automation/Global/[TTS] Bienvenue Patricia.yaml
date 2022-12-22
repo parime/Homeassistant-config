@@ -33,19 +33,10 @@
   - service: media_player.volume_set
     target:
       entity_id:
-      - media_player.echo_salon
-      - media_player.echo_cuisine
+      - media_player.2eme_echo_dot_vincent
     data:
       volume_level: 0.45
-  - service: notify.alexa_media_echo_salon
-    data:
-      data:
-        type: tts
-      message: ' {{ [   "Bienvenue à la maison Patricia", "Patricia tu es enfin à
-        la maison", "Ça semble différence sans toi. Tu mas manqué", "Tu nous as manqué","Patricia,
-        tu nous as tellement manqué", "Patricia, Nous sommes ravis de te voir"   ]   |
-        random }}'
-  - service: notify.alexa_media_echo_cuisine
+  - service: notify.alexa_media_2eme_echo_dot_vincent
     data:
       data:
         type: tts
@@ -54,10 +45,8 @@
         tu nous as tellement manqué", "Patricia, Nous sommes ravis de te voir"   ]   |
         random }}'
   - service: media_player.volume_set
-    target:
-      entity_id:
-      - media_player.echo_salon
-      - media_player.echo_cuisine
     data:
       volume_level: 0.13
+    target:
+      entity_id: media_player.echo_couloir
   mode: single

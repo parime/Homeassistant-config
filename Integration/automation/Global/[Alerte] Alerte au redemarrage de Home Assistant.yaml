@@ -6,11 +6,6 @@
     platform: homeassistant
   condition: []
   action:
-  - device_id: 6d1ef54059db73bec1730b6122da1de2
-    domain: mobile_app
-    type: notify
-    title: ⚠️ Reboot de Home Assistant ⚠️
-    message: ⚠️ Home Assitant a redémarré ! ⚠️
   - service: notify.mobile_app_sm_vincent
     data:
       title: ⚠️ Reboot de Home Assistant ⚠️

@@ -10,6 +10,7 @@
       - media_player.echo_chambre_filles
       - media_player.maison
       - media_player.echo_chambre_parentale
+      - media_player.echo_couloir
     data:
       volume_level: 1
   - repeat:

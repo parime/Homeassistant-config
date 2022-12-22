@@ -1,5 +1,5 @@
 - id: '1668975768718522530'
-  alias: Notify Salon test
+  alias: '[Alarme] Envoi notification camera'
   trigger:
   - platform: state
     entity_id: binary_sensor.salon_2_motion_sensor

@@ -1,0 +1,56 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_camera:
+        friendly_name: Surveillance camera
+        value_template: >-    
+
+            {%- if states('sensor.couloir_1_battery') == 'unavailable' -%}
+                Caméra couloir HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.couloir_1_battery')| float < 16 -%}
+                Caméra couloir est à {{ states('sensor.couloir_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.cuisine_1_battery') == 'unavailable' -%}
+                Caméra cuisine HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.cuisine_1_battery')| float < 16 -%}
+                Caméra cuisine est à {{ states('sensor.cuisine_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.salon_1_battery') == 'unavailable' -%}
+                Caméra salon HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.salon_1_battery')| float < 16 -%}
+                Caméra salon est à {{ states('sensor.salon_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.couloir_2_battery') == 'unavailable' -%}
+                Caméra couloir HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.couloir_2_battery')| float < 16 -%}
+                Caméra couloir est à {{ states('sensor.couloir_2_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.cuisine_2_battery') == 'unavailable' -%}
+                Caméra cuisine HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.cuisine_2_battery')| float < 16 -%}
+                Caméra cuisine est à {{ states('sensor.cuisine_2_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.salon_2_battery') == 'unavailable' -%}
+                Caméra salon HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.salon_2_battery')| float < 16 -%}
+                Caméra salon est à {{ states('sensor.salon_2_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+

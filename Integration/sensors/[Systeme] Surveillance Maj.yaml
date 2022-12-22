@@ -11,3 +11,5 @@ sensors:
       {{ states('sensor.maj_hacs') }}
 
 
+
+

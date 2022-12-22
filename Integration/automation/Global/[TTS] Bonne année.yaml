@@ -1,0 +1,29 @@
+- id: 164738724retg1187
+  alias: '[TTS] Bonne année'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.date_simple_v2
+    to: 1 Janvier
+  - platform: time
+    at: 00:00:00
+  condition:
+  - condition: time
+    after: '23:59:00'
+    before: 00:01:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
+  action:
+  - service: notify.alexa_media_echo_salon
+    data:
+      data:
+        type: tts
+      message: Bonne Année
+  mode: restart

@@ -7,14 +7,10 @@ sensors:
         friendly_name: Surveillance systeme sidebar
         value_template: >-  
 
-
           {{ states('sensor.surveillance_camera') }}
           {{ states('sensor.surveillance_batterie_capteur_mouvement') }}          
           {{ states('sensor.surveillance_batterie_capteur_temeprature') }}
-  
-
-
-          
           {{ states('sensor.surveillance_batterie_capteur_ouverture') }}
           {{ states('sensor.surveillance_aspirateur') }}
-
+          {{ states('sensor.surveillance_hue') }}
+          {{ states('sensor.surveillance_capteur_luminosite') }}

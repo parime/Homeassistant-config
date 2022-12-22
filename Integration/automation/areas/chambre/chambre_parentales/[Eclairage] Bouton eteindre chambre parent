@@ -1,17 +1,20 @@
-
-- id: '1663449834946'
+- id: '16634uy49834946'
   alias: 'Bouton éteindre chambre parentale '
   description: ''
   trigger:
-  - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
-    domain: zha
-    platform: device
-    type: remote_button_double_press
-    subtype: remote_button_double_press
-  condition: []
+    - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
+      domain: zha
+      platform: device
+      type: remote_button_short_press
+      subtype: remote_button_short_press
+  condition:
+    - condition: state
+      entity_id: light.chambre_parentale_2
+      state: 'on'
   action:
   - service: light.turn_off
     data: {}
     target:
-      entity_id: light.chambre_parentale_2
+    entity_id: light.chambre_parentale_2
   mode: single
+

@@ -9,6 +9,7 @@ arret_alarme_2:
       - media_player.echo_chambre_parentale
       - media_player.echo_chambre_filles
       - media_player.echo_sdb
+      - media_player.echo_couloir
       - media_player.salon
     data: {}
   - service: script.turn_off
@@ -29,6 +30,7 @@ arret_alarme_2:
       - media_player.echo_cuisine
       - media_player.echo_chambre_parentale
       - media_player.echo_chambre_filles
+      - media_player.echo_couloir
       - media_player.maison
   mode: restart
   icon: mdi:ear-hearing-off

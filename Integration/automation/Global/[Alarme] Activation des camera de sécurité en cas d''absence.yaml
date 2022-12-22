@@ -33,7 +33,7 @@
           entity_id: person.patricia
           state: home
       sequence:
-      - service: eufy_security.alarm_off
+      - service: alarm_control_panel.alarm_arm_home
         data: {}
         target:
           entity_id: alarm_control_panel.eufy

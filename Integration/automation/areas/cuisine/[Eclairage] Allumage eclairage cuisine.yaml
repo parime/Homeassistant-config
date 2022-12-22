@@ -8,6 +8,8 @@
     - binary_sensor.motion_cuisine_bd_zone
     - sensor.illuminance_cuisine_illuminance
   - platform: time
+    at: '22:00:00'
+  - platform: time
     at: '23:00:00'
   - platform: time
     at: 00:00:00
@@ -73,7 +75,7 @@
           state: 'off'
         - condition: time
           after: 07:00:00
-          before: '22:50:00'
+          before: '21:30:00'
           weekday:
           - mon
           - tue
@@ -143,7 +145,127 @@
           transition: 32
         target:
           entity_id:
+          - light.led_cuisine
+          - light.cuisine
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: time
+          after: '21:55:00'
+          before: '22:01:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: '22:55:00'
+          before: '23:05:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: '23:55:00'
+          before: 00:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 00:55:00
+          before: 01:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 01:55:00
+          before: 02:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - sat
+          - fri
+          - sun
+        - condition: time
+          after: 02:55:00
+          before: 03:05:00
+          weekday:
+          - tue
+          - mon
+          - thu
+          - wed
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 03:55:00
+          before: 04:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 04:55:00
+          before: 05:05:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          after: 05:55:00
+          before: 06:05:00
+          weekday:
+          - mon
+          - wed
+          - tue
+          - thu
+          - fri
+          - sat
+          - sun
+        - condition: time
+          before: 07:05:00
+          after: 06:55:00
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+      sequence:
+      - service: light.turn_off
+        target:
+          entity_id:
           - light.cuisine
           - light.led_cuisine
+        data: {}
     default: []
   mode: restart

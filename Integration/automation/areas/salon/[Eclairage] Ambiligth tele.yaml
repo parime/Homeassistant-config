@@ -1,0 +1,15 @@
+- id: '1669584117322'
+  alias: '[Eclairage] Ambiligth télé'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.50pus7805_12
+    to: playing
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.50pus7805_12_ambilight_hue_2
+  mode: single

@@ -1,11 +1,9 @@
 ###### surveillance
 platform: template
 sensors:
-  surveillance_batterie_capteur_mouvement:
-    friendly_name: surveillance_batterie_capteur_mouvement
-    value_template: >-
-
-
+   surveillance_batterie_capteur_mouvement:
+      friendly_name: surveillance_batterie_capteur_mouvement
+      value_template: >-
 
             {%- if states('sensor.motion_couloir_bd_battery_level') == 'unavailable' -%}
                Capteur de mouvement couloir bas droit est  HS
@@ -72,13 +70,20 @@ sensors:
             {%- endif -%}
 
             {%- if states('sensor.lumi_lumi_sensor_motion_aq2_7ed7e507_battery_level') == 'unavailable' -%}
-              Le capteur de mouvement salle de bain haut gauche est  HS
+               Le capteur de mouvement salle de bain haut gauche est  HS
             {{'\n'}}{{'<br>'}} 
             {%- elif states('sensor.lumi_lumi_sensor_motion_aq2_7ed7e507_battery_level') | float < 16 -%}
                Capteur de mouvement salle de bain haut gauche est à {{ states('sensor.lumi_lumi_sensor_motion_aq2_7ed7e507_battery_level') }}%
             {{'\n'}}{{'<br>'}} 
             {%- endif -%}
 
+            {%- if states('sensor.detecteur_de_mouvement_salon_battery_level') == 'unavailable' -%}
+               Capteur de mouvement salon hue est HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.detecteur_de_mouvement_salon_battery_level') | float < 16 -%}
+               Capteur de mouvement salon hue est à {{ states('sensor.detecteur_de_mouvement_salon_battery_level') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
 
 
 

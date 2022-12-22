@@ -7,10 +7,8 @@
     - binary_sensor.motion_couloir_bd_zone
     - binary_sensor.motion_couloir_hg_zone
     - binary_sensor.door_entrer
-  condition:
-  - condition: time
-    after: '18:30:00'
-    before: 06:59:00
+    - sensor.illuminance_salon_illuminance
+  condition: []
   action:
   - choose:
     - conditions:
@@ -24,8 +22,35 @@
           state: 'on'
         - condition: not
           conditions:
-          - condition: and
+          - condition: or
             conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 15 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 16 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 17 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 18 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 19 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 20 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 21 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 22 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 23 Décembre
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 24 Décembre
@@ -39,24 +64,24 @@
               entity_id: sensor.date_simple_v2
               state: 31 Octobre
             - condition: state
-              entity_id: sensor.date_simple_v2
-              state: 11 Novembre
-          - condition: time
-            after: '18:00:00'
-            before: '22:00:00'
-            weekday:
-            - sun
-            - sat
-            - fri
-            - thu
-            - wed
-            - tue
-            - mon
+              entity_id: binary_sensor.door_entrer
+              state: 'on'
+      - condition: time
+        after: '16:50:00'
+        before: '19:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       sequence:
       - service: automation.turn_on
         data: {}
         target:
-          entity_id: automation.rainbow_strip_led
+          entity_id: automation.eclairage_rainbow_couloir
     - conditions:
       - condition: and
         conditions:
@@ -66,13 +91,20 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'off'
-
+        - condition: state
+          entity_id: binary_sensor.door_entrer
+          state: 'off'
       sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
       - service: automation.turn_off
         data: {}
         target:
           entity_id:
-          - automation.rainbow_strip_led
+          - automation.eclairage_rainbow_couloir
           - automation.eclairage_couloir_fete_national
           - automation.automation_0
           - automation.eclairage_couloir_halloween
@@ -90,7 +122,33 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
-
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 15 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 16 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 17 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 18 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 19 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 20 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 21 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 22 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 23 Décembre
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 24 Décembre
@@ -99,7 +157,7 @@
           state: 25 Décembre
         - condition: not
           conditions:
-          - condition: and
+          - condition: or
             conditions:
             - condition: state
               entity_id: sensor.date_simple_v2
@@ -108,19 +166,19 @@
               entity_id: sensor.date_simple_v2
               state: 31 Octobre
             - condition: state
-              entity_id: sensor.date_simple_v2
-              state: 11 Novembre
-        - condition: time
-          after: '18:00:00'
-          before: '22:00:00'
-          weekday:
-          - sun
-          - sat
-          - fri
-          - thu
-          - wed
-          - tue
-          - mon
+              entity_id: binary_sensor.door_entrer
+              state: 'on'
+      - condition: time
+        after: '16:50:00'
+        before: '19:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       sequence:
       - service: automation.turn_on
         data: {}
@@ -135,17 +193,111 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
-
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 15 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 16 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 17 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 18 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 19 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 20 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 21 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 22 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 23 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 24 Décembre
+        - condition: state
+          entity_id: sensor.date_simple_v2
+          state: 25 Décembre
+        - condition: not
+          conditions:
+          - condition: or
+            conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 14 Juillet
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 31 Octobre
+            - condition: state
+              entity_id: binary_sensor.door_entrer
+              state: 'on'
+      - condition: time
+        after: 07:40:00
+        before: 09:40:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: automation.turn_on
+        data: {}
+        target:
+          entity_id: automation.automation_0
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 14 Juillet
-        - condition: state
-          entity_id: sensor.date_simple_v2
-          state: 11 Novembre
         - condition: not
           conditions:
-          - condition: and
+          - condition: or
             conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 15 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 16 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 17 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 18 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 19 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 20 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 21 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 22 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 23 Décembre
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 24 Décembre
@@ -155,17 +307,20 @@
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 31 Octobre
+            - condition: state
+              entity_id: binary_sensor.door_entrer
+              state: 'on'
       - condition: time
-        after: '18:00:00'
-        before: '22:00:00'
+        after: '16:50:00'
+        before: '19:00:00'
         weekday:
-        - sun
-        - sat
-        - fri
-        - thu
-        - wed
-        - tue
         - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       sequence:
       - service: automation.turn_on
         data: {}
@@ -180,14 +335,40 @@
         - condition: state
           entity_id: binary_sensor.motion_couloir_hg_zone
           state: 'on'
-
         - condition: state
           entity_id: sensor.date_simple_v2
           state: 31 Octobre
         - condition: not
           conditions:
-          - condition: and
+          - condition: or
             conditions:
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 15 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 16 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 17 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 18 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 19 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 20 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 21 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 22 Décembre
+            - condition: state
+              entity_id: sensor.date_simple_v2
+              state: 23 Décembre
             - condition: state
               entity_id: sensor.date_simple_v2
               state: 24 Décembre
@@ -198,44 +379,141 @@
               entity_id: sensor.date_simple_v2
               state: 14 Juillet
             - condition: state
-              entity_id: sensor.date_simple_v2
-              state: 11 Novembre
+              entity_id: binary_sensor.door_entrer
+              state: 'on'
       - condition: time
-        after: '18:00:00'
-        before: '22:00:00'
+        after: '16:50:00'
+        before: '19:00:00'
         weekday:
-        - sun
-        - sat
-        - fri
-        - thu
-        - wed
-        - tue
         - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       sequence:
       - service: automation.turn_on
         data: {}
         target:
           entity_id: automation.eclairage_couloir_halloween
     - conditions:
+      - condition: numeric_state
+        entity_id: sensor.illuminance_salon_illuminance
+        above: '110'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id:
+          - automation.eclairage_rainbow_couloir
+          - automation.eclairage_couloir_fete_national
+          - automation.automation_0
+          - automation.eclairage_couloir_halloween
+      - service: light.turn_off
+        data:
+          transition: 16
+        target:
+          area_id: couloir
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.door_entrer
+        state: 'on'
       - condition: time
-        after: '22:00:00'
-        before: '6:00:00'
+        after: '18:30:00'
+        before: 09:40:00
         weekday:
-        - sun
-        - sat
-        - fri
-        - thu
-        - wed
-        - tue
         - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       sequence:
       - service: light.turn_on
         data:
           brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
             %} 50 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 40
             {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
-            %} 10 {% else %} 5 {% endif%}'
+            %} 30 {% else %} 15 {% endif%}'
         target:
-          entity_id: light.led_couloir_on_off
+          entity_id:
+          - light.entrer
+          - light.led_couloir_on_off
+          - light.couloir
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'on'
+      - condition: time
+        after: '19:00:02'
+        before: 09:40:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      - condition: state
+        entity_id: binary_sensor.door_entrer
+        state: 'off'
+      sequence:
+      - service: light.turn_on
+        target:
+          entity_id:
+          - light.led_couloir_on_off
+        data:
+          brightness_pct: '{% if (now().hour < 8) %} 35 {% elif (now().hour < 10)
+            %} 40 {% elif (now().hour < 21) %} 60 {% elif (now().hour < 22) %} 40
+            {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
+            %} 10 {% else %} 5 {% endif%}'
+          xy_color:
+          - 0.396
+          - 0.443
+          transition: 35
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_bd_zone
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.motion_couloir_hg_zone
+          state: 'off'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: automation.turn_off
+        data: {}
+        target:
+          entity_id:
+          - automation.eclairage_rainbow_couloir
+          - automation.eclairage_couloir_fete_national
+          - automation.automation_0
+          - automation.eclairage_couloir_halloween
+      - service: light.turn_off
+        data:
+          transition: 16
+        target:
+          entity_id:
+          - light.led_couloir_on_off
+          - light.entrer
+          - light.couloir
     default: []
   mode: restart

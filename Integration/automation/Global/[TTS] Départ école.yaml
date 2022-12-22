@@ -27,10 +27,9 @@
       volume_level: 0.45
     target:
       entity_id:
-      - media_player.echo_salon
-      - media_player.echo_sdb
-      - media_player.echo_cuisine
-  - service: notify.alexa_media_echo_cuisine
+      - media_player.echo_couloir
+
+  - service: notify.alexa_media_2eme_echo_dot_vincent
     data:
       data:
         type: tts
@@ -38,28 +37,11 @@
         "C''est l''heure du départ des troupes pour l''école!     Soyons fort!",   "Ce
         n''est pas parce que nous nous quittons     maintenant, que nous ne nous retrouverons
         pas mieux ce soir."   ]   | random }}'
-  - service: notify.alexa_media_echo_sdb
-    data:
-      data:
-        type: tts
-      message: ' {{ [ "Il est 8h15, on prend son sac à dos et on commence sa     journée!",    "C''est
-        l''heure du départ des troupes pour l''école!     Soyons fort!",     "Ce n''est
-        pas parce que nous nous quittons     maintenant, que nous ne nous retrouverons
-        pas mieux ce soir."  ]   | random }}'
-  - service: notify.alexa_media_echo_salon
-    data:
-      data:
-        type: tts
-      message: ' {{ [  "Il est 8h15, on prend son sac à dos et on commence sa     journée!",   "C''est
-        l''heure du départ des troupes pour l''école!     Soyons fort!",    "Ce n''est
-        pas parce que nous nous quittons maintenant, que nous ne nous retrouverons
-        pas mieux ce soir."  ]   | random }}'
+
   - service: media_player.volume_set
     data:
       volume_level: 0.25
     target:
       entity_id:
-      - media_player.echo_salon
-      - media_player.echo_sdb
-      - media_player.echo_cuisine
+      - media_player.echo_couloir
   mode: single

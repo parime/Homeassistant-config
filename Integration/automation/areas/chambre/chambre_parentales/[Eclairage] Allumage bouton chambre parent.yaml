@@ -1,5 +1,5 @@
 - id: '1663449751771'
-  alias: "[Eclairage] Allumage bouton chambre parent"
+  alias: '[Eclairage] Allumage bouton chambre parent'
   description: ''
   trigger:
   - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
@@ -7,7 +7,10 @@
     platform: device
     type: remote_button_short_press
     subtype: remote_button_short_press
-  condition: []
+  condition:
+  - condition: state
+    entity_id: light.chambre_parentale_2
+    state: 'off'
   action:
   - service: light.turn_on
     data: {}

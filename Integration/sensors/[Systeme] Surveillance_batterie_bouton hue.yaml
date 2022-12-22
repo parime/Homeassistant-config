@@ -1,0 +1,127 @@
+###### surveillance
+platform: template
+sensors:  
+    surveillance_hue:
+        friendly_name: Surveillance hue
+        value_template: >-    
+
+            {%- if states('sensor.hue_wall_switch_module_1_battery') == 'unavailable' -%}
+                hue wall chambre fille HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_1_battery')| float < 16 -%}
+                hue wall chambre fille est à {{ states('sensor.hue_wall_switch_module_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_2_battery') == 'unavailable' -%}
+                hue wall chambre parent HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_2_battery')| float < 16 -%}
+                hue wall chambre parent est à {{ states('sensor.hue_wall_switch_module_2_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_7_battery') == 'unavailable' -%}
+                hue wall couloir 1 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_7_battery')| float < 16 -%}
+                hue wall couloir 1 est à {{ states('sensor.hue_wall_switch_module_7_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_8_battery') == 'unavailable' -%}
+                hue wall couloir 2 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_8_battery')| float < 16 -%}
+                hue wall couloir 2 est à {{ states('sensor.hue_wall_switch_module_8_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_5_battery') == 'unavailable' -%}
+                hue wall cuisine 1 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_5_battery')| float < 16 -%}
+                hue wall cuisine 1 est à {{ states('sensor.hue_wall_switch_module_5_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_6_battery') == 'unavailable' -%}
+                hue wall cuisine 2 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_6_battery')| float < 16 -%}
+                hue wall cuisine 2 est à {{ states('sensor.hue_wall_switch_module_6_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_3_battery') == 'unavailable' -%}
+                hue wall salon 1 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_3_battery')| float < 16 -%}
+                hue wall salon 1 est à {{ states('sensor.hue_wall_switch_module_3_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_4_battery') == 'unavailable' -%}
+                hue wall salon 2 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_4_battery')| float < 16 -%}
+                hue wall salon 2 est à {{ states('sensor.hue_wall_switch_module_4_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_1_battery_2') == 'unavailable' -%}
+                hue wall couloir 3 HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_1_battery_2')| float < 16 -%}
+                hue wall couloir 3 est à {{ states('sensor.hue_wall_switch_module_1_battery_2') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_wall_switch_module_2_battery_2') == 'unavailable' -%}
+                hue wall placard HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_wall_switch_module_2_battery_2')| float < 16 -%}
+                hue wall placard est à {{ states('sensor.hue_wall_switch_module_2_battery_2') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_dimmer_switch_1_battery_2') == 'unavailable' -%}
+                Hue dimmer chambres parentale HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_dimmer_switch_1_battery_2')| float < 16 -%}
+                Hue dimmer chambres parentale est à {{ states('sensor.hue_dimmer_switch_1_battery_2') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_dimmer_switch_1_battery') == 'unavailable' -%}
+                Hue dimmer salon HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_dimmer_switch_1_battery')| float < 16 -%}
+                Hue dimmer salon est à {{ states('sensor.hue_dimmer_switch_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.hue_smart_button_1_battery') == 'unavailable' -%}
+                Hue Smart couloir HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.hue_smart_button_1_battery')| float < 16 -%}
+                Hue Smart couloir est à {{ states('sensor.hue_smart_button_1_battery') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+            {%- if states('sensor.bouton_cuisine_battery_level') == 'unavailable' -%}
+                Bouton ikea cuisine HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.bouton_cuisine_battery_level')| float < 16 -%}
+                Bouton ikea cuisine est à {{ states('sensor.bouton_cuisine_battery_level') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
+
+
+            {%- if states('sensor.interrupteur_ch_parent_battery_level') == 'unavailable' -%}
+                Bouton aquara chambres parentale HS
+            {{'\n'}}{{'<br>'}} 
+            {%- elif states('sensor.interrupteur_ch_parent_battery_level')| float < 16 -%}
+                Bouton aquara chambres parentale est à {{ states('sensor.interrupteur_ch_parent_battery_level') }}%
+            {{'\n'}}{{'<br>'}} 
+            {%- endif -%}
