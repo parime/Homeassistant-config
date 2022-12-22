@@ -7,16 +7,16 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 
 #### Lumières 💡
 
-- **[Hue E27 White and Color Ambiance](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-pack-de-1-e27/8719514328204)** salon (x3)
-- **[Hue E27 White](https://www.philips-hue.com/fr-fr/p/hue-white-pack-de-1-e27/8719514329843)**  chambre 1 (x1), chambre 2 (x1), entrée (x1), WC (x1), cuisine (x1), hall (x1), Placard (x1)
+- **[Hue E27 White and Color Ambiance](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-pack-de-1-e27/8719514328204)** <sup>[Zigbee]</sup> salon (x3)
+- **[Hue E27 White](https://www.philips-hue.com/fr-fr/p/hue-white-pack-de-1-e27/8719514329843)** <sup>[Zigbee]</sup> chambre 1 (x1), chambre 2 (x1), entrée (x1), WC (x1), cuisine (x1), hall (x1), Placard (x1)
 - **[Hue Play](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-hue-play-pack-d-extension/7820330P7)** salon (x2).
-- **[Ruban LED RGB 2m](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** cusine (x1)
+- **[Ruban LED RGB 2m](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** <sup>[Zigbee]</sup> cusine (x1)
 - **[Ruban LED RGB 5m hue Lightstrips](https://www.amazon.fr/Philips-LightStrips-connectique-compatible-Bluetooth/dp/B088RX9CSZ/ref=sr_1_5?crid=17BYN0YNGI5AN&keywords=hue%2Blightstrip&qid=1671735585&sprefix=hue%2Bli%2Caps%2C91&sr=8-5&th=1)** hall (x1)
 - **[Ruban LED RGB 5m étanche](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** SdB (x1)
 
 #### Noel 🎄🎅
-- **[Twinkly Strings – Guirlande lumineuse à led](https://www.amazon.fr/gp/product/B08F2JDWX5/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)** sapin salon (x1)
-- **[Twinkly Music – Capteur de Son](https://www.amazon.fr/gp/product/B087CTR5VW/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)** salon (x3)
+- **[Twinkly Strings – Guirlande lumineuse à led](https://www.amazon.fr/gp/product/B08F2JDWX5/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)** <sup>[Wifi]</sup>sapin salon (x1)
+- **[Twinkly Music – Capteur de Son](https://www.amazon.fr/gp/product/B087CTR5VW/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)** <sup>[Wifi]</sup> salon (x3)
 
 
 #### Détécteurs 📡
