@@ -1,4 +1,4 @@
-Installation de [Home Assistant](https://home-assistant.io/) sous docker hébergé sur une VM debian 11, le tout sur un hyperviseur Esxi. configuration pour un appartement T3, offrant des automatisations pour la lumière, le multimédia, la sécurité, etc...
+Installation de [Home Assistant](https://home-assistant.io/) sous docker hébergé sur une VM debian 11, le tout sur un NAS Qnap. configuration pour un appartement T3, offrant des automatisations pour la lumière, le multimédia, la sécurité, etc...
 Je ne suis pas un expert, les codes ne sont peut-être pas écrits de la meilleure façon, n'ayant à la base aucunes connaissances en développement et en Yaml, j'ai surtout modifié des configurations trouvées ici et là pour l'adapter à mon besoin, j'ai réalisé ceci avec mes petites connaissances et des informations trouvé un peu partout sur des sites, des forums et différents Github.
 
 
@@ -9,16 +9,21 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 
 - **[Hue E27 White and Color Ambiance](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-pack-de-1-e27/8719514328204)** salon (x3)
 - **[Hue E27 White](https://www.philips-hue.com/fr-fr/p/hue-white-pack-de-1-e27/8719514329843)**  chambre 1 (x1), chambre 2 (x1), entrée (x1), WC (x1), cuisine (x1), hall (x1), Placard (x1)
-- **[Hue Play](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-hue-play-pack-d-extension/7820330P7)** salon (x1).
+- **[Hue Play](https://www.philips-hue.com/fr-fr/p/hue-white-and-color-ambiance-hue-play-pack-d-extension/7820330P7)** salon (x2).
 - **[Ruban LED RGB 2m](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** cusine (x1)
-- **[Ruban LED RGB 5m](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** hall (x1)
+- **[Ruban LED RGB 5m hue Lightstrips](https://www.amazon.fr/Philips-LightStrips-connectique-compatible-Bluetooth/dp/B088RX9CSZ/ref=sr_1_5?crid=17BYN0YNGI5AN&keywords=hue%2Blightstrip&qid=1671735585&sprefix=hue%2Bli%2Caps%2C91&sr=8-5&th=1)** hall (x1)
 - **[Ruban LED RGB 5m étanche](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** SdB (x1)
+
+#### Noel 🎄🎅
+- **[Twinkly Strings – Guirlande lumineuse à led](https://www.amazon.fr/gp/product/B08F2JDWX5/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)** sapin salon (x1)
+- **[Twinkly Music – Capteur de Son](https://www.amazon.fr/gp/product/B087CTR5VW/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)** salon (x3)
+
 
 #### Détécteurs 📡
 
 - **[Xiaomi Aqara door & window contact sensor](https://www.amazon.fr/Aqara-XIAOMI-MCCGQ11LM-Ensemble-Capteur/dp/B07P9K6HBZ/ref=sr_1_5?crid=KW4W9BT65HNU&keywords=capteur+de+porte+xiaomi&qid=1644229999&sprefix=capteur+de+porte+xiaomi%2Caps%2C292&sr=8-5)** <sup>[Zigbee]</sup> détection d'ouverture de porte et fenêtres (x6). 
 - **[Xiaomi MiJia human body movement sensor](https://www.amazon.fr/Aqara-RTCGQ11LM-D%C3%A9tecteur-Automatique-compatible/dp/B07D1CRRVF/ref=sr_1_6?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=4A2UXBSNVBKD&keywords=capteur+de+mouvement+xiaomi&qid=1644147334&sprefix=capteur+de+mouvement+xiaomi%2Caps%2C51&sr=8-6)** <sup>[Zigbee]</sup> détection de mouvements (x9).
-- **[Hue Détecteur de Mouvement Motion Sensor](https://www.amazon.fr/Philips-D%C3%A9tecteur-Mouvement-Motion-Sensor/dp/B09CV78GV1/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=E0BNPR9KKMZM&keywords=hue+motion&qid=1644104262&sprefix=hue+motion%2Caps%2C54&sr=8-5)** <sup>[Zigbee]</sup> détection de mouvements (x1). 
+- **[Hue Détecteur de Mouvement Motion Sensor](https://www.amazon.fr/Philips-D%C3%A9tecteur-Mouvement-Motion-Sensor/dp/B09CV78GV1/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=E0BNPR9KKMZM&keywords=hue+motion&qid=1644104262&sprefix=hue+motion%2Caps%2C54&sr=8-5)** <sup>[Zigbee]</sup> détection de mouvements (x3). 
 - **[Xiaomi Aqara Capteur de Température et d'Humidité](https://www.amazon.fr/Aqara-Temperatur-Luftfeuchtigkeits-Luftdrucksensor-Homekit/dp/B07D37FKGY/ref=sr_1_6?crid=LMMOX7F8DMAO&keywords=aquara+xiaomi+temperature&qid=1644104335&sprefix=aquara+%2Caps%2C61&sr=8-6)** <sup>[Zigbee]</sup> Capteur de température et humidité (x8). 
 - **[Xiaomi Capteur de luminosité](https://www.amazon.fr/Capteur-luminosit%C3%A9-Zigbee-3-0-Xiaomi/dp/B094MQC8V1/ref=sr_1_12?crid=OCWAI6ZJ4CHS&keywords=capteur+de+luminosit%C3%A9&qid=1644104676&sprefix=capteur+de+lu%2Caps%2C61&sr=8-12)** <sup>[Zigbee]</sup> Capteur de luminosité (x2). 
 - **[Xiaomi Aqara Capteur de Vibration](https://www.amazon.fr/Capteur-vibration-sans-Aqara-DJT11LM/dp/B07PJT939B/ref=sr_1_20?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2ZK09VLWZS8IC&keywords=aqara+temperature+lcd&qid=1644104538&sprefix=aquara+temperature+lcd%2Caps%2C44&sr=8-20)** <sup>[Zigbee]</sup> Capteur de température et humidité (x2). 
@@ -30,12 +35,12 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 - **[PlayStation 4](https://www.amazon.fr/PS4-Slim-500-Go-noir/dp/B07HNR4ZZD/ref=sr_1_2?keywords=ps4&qid=1644104989&sr=8-2)** <sup>[ethernet]</sup> pour le contrôle local et vocal (on, off,...). **A venir!!**
 - **[Nintendo switch](https://www.amazon.fr/Nintendo-Switch-avec-paire-Rouge/dp/B07WKNQ8JT/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2KVX793P5L1NQ&keywords=switch&qid=1644105032&sprefix=switch%2Caps%2C87&sr=8-5)** <sup>[Wifi]</sup> pour le contrôle local et vocal (on, off,...). **A venir!!**
 - **[Plex](https://www.plex.tv/fr/)** <sup>[emulated]</sup> Pour la lecture de films et séries
-- **[Alexa Echot Dot  (4e génération) avec horloge](https://www.amazon.fr/dp/B084J4KZ8J/ref=s9_acsd_al_bw_c2_x_2_i?pf_rd_m=A1X6FK5RDHNB96&pf_rd_s=merchandised-search-2&pf_rd_r=HP2Q3A3PY0QKZGX4FAH9&pf_rd_t=101&pf_rd_p=8df8ac55-eecf-4218-9fea-480a9c01e548&pf_rd_i=15428386031)** <sup>[WiFi]</sup> pour jouer de la musique dans les chambres et tout contrôler dans la maison (x2).
+- **[Alexa Echot Dot  (4e génération) avec horloge](https://www.amazon.fr/dp/B084J4KZ8J/ref=s9_acsd_al_bw_c2_x_2_i?pf_rd_m=A1X6FK5RDHNB96&pf_rd_s=merchandised-search-2&pf_rd_r=HP2Q3A3PY0QKZGX4FAH9&pf_rd_t=101&pf_rd_p=8df8ac55-eecf-4218-9fea-480a9c01e548&pf_rd_i=15428386031)** <sup>[WiFi]</sup> pour jouer de la musique dans les chambres et tout contrôler dans la maison (x3).
 - **[Alexa Echo Dot (4e génération), Enceinte connectée avec Alexa, Anthracite](https://www.amazon.fr/dp/B084DWG2VQ/ref=pav_d_fromAsin_B07PHPXHQS_toAsin_B084DWG2VQ)** <sup>[WiFi]</sup> pour jouer de la musique dans le salon, la cuisine, la salle de bain et tout contrôler dans la maison (x3).
 
 #### Prises 🔌
 
-- **[Prises connectées](https://www.amazon.fr/Connect%C3%A9e-intelligente-compatible-SmartThings-Surveillance/dp/B08ZY72GS6/ref=sr_1_21?crid=HKBNDJ0M7HU0&keywords=prise+connecter+alexa&qid=1644103013&s=hi&sprefix=prise+connecter%2Cdiy%2C52&sr=1-21)** <sup>[WiFi]</sup> pour contrôler et relever la consommation de mes appareils électroniques non inteligent(x5).
+- **[Prises connectées](https://www.amazon.fr/dalimentation-intelligente-Application-t%C3%A9l%C3%A9commande-Fonctionne/dp/B09L4M7L8R/ref=sr_1_48?keywords=prise+zigbee&qid=1671736047&sr=8-48)** <sup>[ZigBee]</sup> pour contrôler et relever la consommation de mes appareils électroniques non inteligent(x5).
 - **[Prises connectées avec USB et veilleuse](https://www.amazon.fr/Maxcio-Connect%C3%A9e-Intelligente-Compatible-Contr%C3%B4le/dp/B07GX8YDXZ)** <sup>[WiFi]</sup> pour contrôler et relever la consommation de mes appareils électroniques non inteligent(x2).
 
 #### Télécommande et Bouton 🎛️
@@ -58,7 +63,6 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 #### Hubs
 
 - **[Hue Hub](https://www.amazon.fr/Philips-Hue-Pont-Connexion-Fonctionne/dp/B09CV9F3KR/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=9IQ2ZU96JD83&keywords=hue+hub&qid=1644105522&sprefix=hue+hub%2Caps%2C58&sr=8-5)** <sup>[WiFi]</sup> pont de connexion pour l'ensemble des équipements HUE (x1).
-- **[Xiaomi gateway v3](https://www.amazon.fr/Multi-mode-Automation-surveillance-intelligents-Compatible/dp/B083K87JC3/ref=sr_1_1?crid=136YAQSI05IUO&keywords=xiaomi+gateway+v3&qid=1644105580&sprefix=xiaomi+gate%2Caps%2C62&sr=8-1)** <sup>[Zigbee et bluetooth]</sup> pont de connexion zigbee et bluetooth (x1). **Bientôt supprimé**
 - **[Combee II](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SJ6VTYF0X44E&keywords=conbee+2&qid=1644105724&sprefix=combee2%2Caps%2C64&sr=8-1)** <sup>[Zigbee]</sup> pont de connexion zigbee (x1). 
 
 #### Mes intégrations
@@ -112,9 +116,6 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 - **[Nintendo switch](https://www.amazon.fr/Nintendo-Switch-avec-paire-Rouge/dp/B07WKNQ8JT/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2KVX793P5L1NQ&keywords=switch&qid=1644105032&sprefix=switch%2Caps%2C87&sr=8-5)** <sup>[Wifi]</sup> pour le contrôle local et vocal (on, off,...). **A venir!!**
 
 - **Boite aux lettres** <sup>[Zigbee]</sup> pour le contrôle du courrier et des colis. **A venir!!**
-
-- **Refacto et commenter les fichiers yaml**
-- **Passage sur docker-swarm**
 
 
 #### <a name="screenshots thème clair">Screenshots thème clair</a>
