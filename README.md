@@ -1,4 +1,4 @@
-Installation de [Home Assistant](https://home-assistant.io/) sous docker hébergé sur une VM debian 11, le tout sur un NAS Qnap. configuration pour un appartement T3, offrant des automatisations pour la lumière, le multimédia, la sécurité, etc...
+Installation de [Home Assistant](https://home-assistant.io/) sous docker hébergé sur un NAS Qnap. configuration pour un appartement T3, offrant des automatisations pour la lumière, le multimédia, la sécurité, etc...
 Je ne suis pas un expert, les codes ne sont peut-être pas écrits de la meilleure façon, n'ayant à la base aucunes connaissances en développement et en Yaml, j'ai surtout modifié des configurations trouvées ici et là pour l'adapter à mon besoin, j'ai réalisé ceci avec mes petites connaissances et des informations trouvé un peu partout sur des sites, des forums et différents Github.
 
 
@@ -15,7 +15,8 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 - **[Ruban LED RGB 5m étanche](https://fr.aliexpress.com/item/1005001629851565.html?spm=a2g0o.productlist.0.0.9a6641dcvSloLh&algo_pvid=11b74916-a0cf-4171-b561-42ae37cb1f9b&algo_exp_id=11b74916-a0cf-4171-b561-42ae37cb1f9b-7&pdp_ext_f=%7B%22sku_id%22%3A%2212000020734049678%22%7D&pdp_pi=-1%3B26.06%3B-1%3B-1%40salePrice%3BEUR%3Bsearch-mainSearch)** SdB (x1)
 
 #### Noel 🎄🎅
-- **[Twinkly Strings – Guirlande lumineuse à led](https://www.amazon.fr/gp/product/B08F2JDWX5/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)** <sup>[Wifi]</sup>sapin salon (x1)
+- **[Twinkly Strings – Guirlande lumineuse à led - 100 LEDs-](https://www.amazon.fr/gp/product/B08F2JDWX5/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1)** <sup>[Wifi]</sup>sapin (x2)
+- **[Twinkly Strings – Guirlande lumineuse à led - 250 LEDs-](https://www.amazon.fr/Twinkly-Guirlande-Connect%C3%A9e-LED-Personnalisable/dp/B07V2977XG/ref=sr_1_1?keywords=Twinkly+Strings&qid=1674947240&sr=8-1)** <sup>[Wifi]</sup>sapin (x1)
 - **[Twinkly Music – Capteur de Son](https://www.amazon.fr/gp/product/B087CTR5VW/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)** <sup>[Wifi]</sup> salon (x3)
 
 
@@ -24,6 +25,7 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 - **[Xiaomi Aqara door & window contact sensor](https://www.amazon.fr/Aqara-XIAOMI-MCCGQ11LM-Ensemble-Capteur/dp/B07P9K6HBZ/ref=sr_1_5?crid=KW4W9BT65HNU&keywords=capteur+de+porte+xiaomi&qid=1644229999&sprefix=capteur+de+porte+xiaomi%2Caps%2C292&sr=8-5)** <sup>[Zigbee]</sup> détection d'ouverture de porte et fenêtres (x6). 
 - **[Xiaomi MiJia human body movement sensor](https://www.amazon.fr/Aqara-RTCGQ11LM-D%C3%A9tecteur-Automatique-compatible/dp/B07D1CRRVF/ref=sr_1_6?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=4A2UXBSNVBKD&keywords=capteur+de+mouvement+xiaomi&qid=1644147334&sprefix=capteur+de+mouvement+xiaomi%2Caps%2C51&sr=8-6)** <sup>[Zigbee]</sup> détection de mouvements (x9).
 - **[Hue Détecteur de Mouvement Motion Sensor](https://www.amazon.fr/Philips-D%C3%A9tecteur-Mouvement-Motion-Sensor/dp/B09CV78GV1/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=E0BNPR9KKMZM&keywords=hue+motion&qid=1644104262&sprefix=hue+motion%2Caps%2C54&sr=8-5)** <sup>[Zigbee]</sup> détection de mouvements (x3). 
+- **[Fibaro Détecteur de Mouvement Motion Sensor](https://www.amazon.fr/Fibaro-Homekit-D%C3%A9tecteur-de-Mouvement/dp/B01N0SG36A/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1SN8UYUI386ZX&keywords=motion+sensor+fibaro&qid=1674947438&sprefix=motion+sensor+fibaro%2Caps%2C71&sr=8-5)** <sup>[Zwave]</sup> détection de mouvements (x7). ( En remplacement d'une partie des capteurs Aquara, pas encore installé) 
 - **[Xiaomi Aqara Capteur de Température et d'Humidité](https://www.amazon.fr/Aqara-Temperatur-Luftfeuchtigkeits-Luftdrucksensor-Homekit/dp/B07D37FKGY/ref=sr_1_6?crid=LMMOX7F8DMAO&keywords=aquara+xiaomi+temperature&qid=1644104335&sprefix=aquara+%2Caps%2C61&sr=8-6)** <sup>[Zigbee]</sup> Capteur de température et humidité (x8). 
 - **[Xiaomi Capteur de luminosité](https://www.amazon.fr/Capteur-luminosit%C3%A9-Zigbee-3-0-Xiaomi/dp/B094MQC8V1/ref=sr_1_12?crid=OCWAI6ZJ4CHS&keywords=capteur+de+luminosit%C3%A9&qid=1644104676&sprefix=capteur+de+lu%2Caps%2C61&sr=8-12)** <sup>[Zigbee]</sup> Capteur de luminosité (x2). 
 - **[Xiaomi Aqara Capteur de Vibration](https://www.amazon.fr/Capteur-vibration-sans-Aqara-DJT11LM/dp/B07PJT939B/ref=sr_1_20?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2ZK09VLWZS8IC&keywords=aqara+temperature+lcd&qid=1644104538&sprefix=aquara+temperature+lcd%2Caps%2C44&sr=8-20)** <sup>[Zigbee]</sup> Capteur de température et humidité (x2). 
@@ -48,12 +50,12 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 - **[Xiaomi Aqara wireless switch](https://www.amazon.fr/Aqara-Yiaomi-Filer-Mini-Schalter-Homekit/dp/B07D19YXND/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=20S5C0EN646DQ&keywords=bouton+xiaomi&qid=1644103315&sprefix=bouton+xiaomi%2Caps%2C48&sr=8-2)** <sup>[Zigbee]</sup>  bouton sans fils (x4). 
 - **[IKEA TRADFRI remote control](https://www.fibaro.com/fr/products/motion-sensor/)** <sup>[Zigbee]</sup> Télécommande pour allumer, éteindre, augmenter ou diminuer l’intensité lumineuse (x1). 
 - **[HUE bouton intelligent](https://www.amazon.fr/Philips-t%C3%A9l%C3%A9commande-intelligent-connect%C3%A9-variateur/dp/B07SQZYYKL/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SXYSCHRZAOR1&keywords=hue+bouton&qid=1644104030&sprefix=hue+bouton%2Caps%2C59&sr=8-5)** <sup>[Zigbee]</sup>  bouton sans fils (x1). 
-- **[HUE Dim switch](https://www.amazon.fr/Philips-Switch-T%C3%A9l%C3%A9commande-variateur-lumi%C3%A8re/dp/B08PKMT2DV/ref=sr_1_6?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SXYSCHRZAOR1&keywords=hue+bouton&qid=1644104095&sprefix=hue+bouton%2Caps%2C59&sr=8-6)** <sup>[Zigbee]</sup> Télécommande pour allumer, éteindre, augmenter ou diminuer l’intensité lumineuse (x1).
+- **[HUE Dim switch](https://www.amazon.fr/Philips-Switch-T%C3%A9l%C3%A9commande-variateur-lumi%C3%A8re/dp/B08PKMT2DV/ref=sr_1_6?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SXYSCHRZAOR1&keywords=hue+bouton&qid=1644104095&sprefix=hue+bouton%2Caps%2C59&sr=8-6)** <sup>[Zigbee]</sup> Télécommande pour allumer, éteindre, augmenter ou diminuer l’intensité lumineuse (x3).
 - **[HUE wall switch](https://www.amazon.fr/Philips-Lighting-929003017102-Module-dinterrupteur/dp/B09C62L43D/ref=sr_1_3?crid=T3NPS4IUCZLM&keywords=hue+wall+switch&qid=1644104141&sprefix=hue+wall%2Caps%2C53&sr=8-3)** <sup>[Zigbee]</sup> Domotiser des intérupteurs muraux standard (x10).
 
 #### Camera et sirène 📽️
 
-- **[Xiaomi 360- 1080p](https://www.amazon.fr/Xiaomi-Cam%C3%A9ra-s%C3%A9curit%C3%A9-connectivit%C3%A9-int%C3%A9rieur/dp/B08T99ZJGW/ref=sr_1_23?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3BWR89J9CSK9T&keywords=xiaomi+camera&qid=1644103542&sprefix=xiaomi+camera%2Caps%2C60&sr=8-23)** <sup>[WiFi]</sup> pour surveiller le chat et la maison en notre absence (x1).
+- **[eufy security Caméra de Surveillance](https://www.amazon.fr/eufy-T88323D2-eufycam-2C-3/dp/B08PDG8L95/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=F60FM3L310DA&keywords=eufy&qid=1674947612&sprefix=eufy%2Caps%2C84&sr=8-5)** <sup>[WiFi]</sup> pour surveiller le chat et la maison en notre absence (x1 base et 6 caméra).
 - **[Sirene LSC Smart Connect](https://www.action.com/fr-fr/p/sirene-intelligente-lsc-smart-connect/)** <sup>[WiFi]</sup> Avertisseur sonore en cas d'intrusion dans la maison en notre absence (x1).
 
 #### Aspirateur
@@ -64,6 +66,7 @@ Tout n'est pas encore terminé, mais je commence à avoir quelques choses d'util
 
 - **[Hue Hub](https://www.amazon.fr/Philips-Hue-Pont-Connexion-Fonctionne/dp/B09CV9F3KR/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=9IQ2ZU96JD83&keywords=hue+hub&qid=1644105522&sprefix=hue+hub%2Caps%2C58&sr=8-5)** <sup>[WiFi]</sup> pont de connexion pour l'ensemble des équipements HUE (x1).
 - **[Combee II](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3SJ6VTYF0X44E&keywords=conbee+2&qid=1644105724&sprefix=combee2%2Caps%2C64&sr=8-1)** <sup>[Zigbee]</sup> pont de connexion zigbee (x1). 
+- **[Contrôleur Z-Wave Plus Z-Stick GEN5](https://www.amazon.fr/Contr%C3%B4leur-Z-Wave-Plus-Z-Stick-GEN5/dp/B00YETCNOE/ref=sr_1_2_mod_primary_new?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=39GRPN7XJ5EYC&keywords=zwave&qid=1674947722&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=zwave%2Caps%2C80&sr=8-2)** <sup>[Zwave]</sup> pont de connexion zwave (x1). 
 
 #### Mes intégrations
 
