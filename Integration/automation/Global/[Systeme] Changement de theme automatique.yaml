@@ -14,7 +14,7 @@
     - service: frontend.set_theme
       data:
 # Remplacez-le par le nom de votre thème clair
-        name: clear
+        name: parimeclear
 
 - alias: "[Theme] Thème sombre après le coucher du soleil"
   initial_state: on 
@@ -25,7 +25,7 @@
     - service: frontend.set_theme
       data:
 # Remplacez-le par le nom de votre thème sombre
-        name: slate
+        name: parimedark
 
 - alias: '[Theme] Thème clair après redémarrage en journée'
   initial_state: on 
@@ -40,7 +40,7 @@
     service: frontend.set_theme
     data:
 # Remplacez-le par le nom de votre thème clair
-      name: clear
+      name: parimeclear
 
 - alias: '[Theme] Thème sombre après redémarrage dans la nuit'
   initial_state: on 
@@ -55,4 +55,4 @@
     service: frontend.set_theme
     data:
 # Remplacez-le par le nom de votre thème sombre
-      name: slate
+      name: parimedark

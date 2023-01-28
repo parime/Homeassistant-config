@@ -99,3 +99,6 @@
         data:
           volume_level: 0.3
     default: []
+
+
+  mode: single

@@ -29,14 +29,14 @@
       entity_id:
       - media_player.echo_couloir
 
-  - service: notify.alexa_media_2eme_echo_dot_vincent
+  - service: notify.alexa_media_echo_couloir
     data:
       data:
         type: tts
-      message: ' {{ [ "Il est 8h15, on prend son sac à dos et on commence sa     journée!",
-        "C''est l''heure du départ des troupes pour l''école!     Soyons fort!",   "Ce
+      message: ' {{ [ "Il est 8h30, on prend son sac à dos et on commence sa journée!",
+        "C''est l''heure du départ des troupes pour l''école!     Soyez fort!",   "Ce
         n''est pas parce que nous nous quittons     maintenant, que nous ne nous retrouverons
-        pas mieux ce soir."   ]   | random }}'
+        pas mieux ce soir.","he hi he ho on rentre du boulot, ah non on y va"   ]   | random }}'
 
   - service: media_player.volume_set
     data:

@@ -5,12 +5,10 @@
   - platform: state
     entity_id:
     - sensor.date_simple_v2
-    to: 1 Janvier
-  - platform: time
-    at: 00:00:00
+    to: 31 Decembre
   condition:
   - condition: time
-    after: '23:59:00'
+    after: '23:59:59'
     before: 00:01:00
     weekday:
     - mon
@@ -25,5 +23,5 @@
     data:
       data:
         type: tts
-      message: Bonne Année
+      message: Bonne Année et bonne santé à tous  !!
   mode: restart

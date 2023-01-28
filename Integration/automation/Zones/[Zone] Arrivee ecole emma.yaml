@@ -1,0 +1,20 @@
+- id: '1622065873756'
+  alias: '[Zone] Arrivé école emma '
+  description: 'École emma '
+  trigger:
+  - platform: zone
+    entity_id: person.emma
+    zone: zone.ecole_emma
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_vincent
+    data:
+      message: Emma arrive à l'école
+      title: Ecole Emma
+  - service: notify.mobile_app_sm_a536b
+    data:
+      message: Ecole Emma
+      title: Emma arrive à l'école
+
+  mode: single

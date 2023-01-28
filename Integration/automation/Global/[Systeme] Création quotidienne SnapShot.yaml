@@ -16,7 +16,7 @@
     after: '20:00'
     before: '22:30'
   action:
-  - service: hassio.backup_full
+  - service: backup.create
     data:
       name: Sauvegarde Automatique {{now().strftime('%Y-%m-%d')}} HA version {{ states('sensor.hass_version_installed') }}
   initial_state: 'on'

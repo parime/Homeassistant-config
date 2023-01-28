@@ -1,78 +1,73 @@
-- id: '1652350453770'
-  alias: '[Eclairage] Led du lit horaires'
-  description: ''
+- id: '164206748459065'
+  alias: '[Eclairage] Allumage LED photo'
+  description: '[Eclairage] Allumage LED photo'
   trigger:
-  - platform: time
-    at: 09:45:00
-  - platform: time
-    at: '22:40:00'
-  - platform: time
-    at: 08:20:00
-  - platform: time
-    at: '19:00:00'
+  - platform: time_pattern
+    hours: '07'
+    minutes: '41'
+  - platform: time_pattern
+    hours: '09'
+    minutes: '30'
+  - platform: time_pattern
+    hours: '18'
+    minutes: '45'
+  - platform: time_pattern
+    hours: '23'
+    minutes: '15'
   condition: []
   action:
   - choose:
     - conditions:
-      - condition: or
-        conditions:
-        - condition: time
-          after: 09:40:00
-          before: 09:55:00
-          weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
-          - sat
-          - sun
-        - condition: time
-          after: '22:35:00'
-          before: '22:45:00'
-          weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
-          - sat
-          - sun
+      - condition: time
+        after: 07:40
+        before: 07:44
       sequence:
+      - service: switch.turn_on
+        target:
+          entity_id: switch.led_photo
+        data: {}
+    - conditions:
+      - condition: time
+        after: 09:29
+        before: 09:35
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.led_photo
+        data: {}
+    - conditions:
+      - condition: time
+        after: '18:42'
+        before: '18:50'
+      sequence:
+      - service: switch.turn_on
+        target:
+          entity_id:
+          - switch.led_photo
+          - switch.switch_lumiere_ambiance
+        data: {}
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: 
+            - light.hue_go_1
+            - light.guirlande_boule
+    - conditions:
+      - condition: time
+        after: '23:10'
+        before: '23:22'
+      sequence:
+      - service: switch.turn_off
+        target:
+          entity_id:
+          - switch.led_photo
+          - switch.switch_lumiere_ambiance
+        data: {}
       - service: light.turn_off
         data: {}
         target:
-          entity_id: light.led_lit
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: time
-          after: 08:15:00
-          before: 08:25:00
-        - condition: time
-          after: '18:55:00'
-          before: '19:10:00'
-          weekday:
-          - mon
-          - tue
-          - wed
-          - thu
-          - fri
-          - sat
-          - sun
-      - condition: or
-        conditions:
-        - condition: state
-          entity_id: person.vincent
-          state: home
-        - condition: state
-          entity_id: person.patricia
-          state: home
-      sequence:
-      - service: light.turn_on
-        data:
-          brightness_pct: 26
-        target:
-          entity_id: light.led_lit
+          entity_id: 
+            - light.hue_go_1
+            - light.guirlande_boule
     default: []
-  mode: restart
+  mode: single

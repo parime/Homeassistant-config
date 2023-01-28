@@ -1,5 +1,6 @@
-- id: '1674421883607'
-  alias: '[Eclairage]  Eclairage chambre parent aquara'
+
+- id: '16735652152143585'
+  alias: '[Eclairage] Led du lit bouton aquara'
   description: ''
   trigger:
   - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
@@ -12,20 +13,22 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: light.chambre_parentale
+        entity_id: light.led_lit
         state: 'on'
       sequence:
       - service: light.turn_off
         data: {}
         target:
-          entity_id: light.chambre_parentale
+          entity_id: light.led_lit
     - conditions:
       - condition: state
         entity_id: light.chambre_parentale
         state: 'off'
       sequence:
       - service: light.turn_on
-        data: {}
+        data:
+          brightness: 10
+          effect: Rainbow
         target:
-          entity_id: light.chambre_parentale
+          entity_id: light.led_lit
   mode: restart
