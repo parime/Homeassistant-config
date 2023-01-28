@@ -1,30 +1,24 @@
 homeassistant:
-
   country: FR
 #  name: Home
 #  latitude: !secret zones_home_latitude
 #  longitude: !secret zones_home_longitude
     # Impacts weather/sunrise data (altitude above sea level in meters)
 #  elevation: 75
-
   unit_system: metric
   time_zone: Europe/Paris
   allowlist_external_dirs:
     - /config
- 
- #  Panels iFrames
+  #  Panels iFrames
 panel_iframe:
   plex:
     title: Plex
     url: !secret plex_url
     icon: mdi:plex
-
-
 # Loads default set of integrations. Do not remove.
 default_config:
 sun:
 bluetooth:
-
 system_health:
 zodiac:
 usb:
@@ -44,42 +38,31 @@ input_number: !include_dir_merge_named Integration/input_numbers
 input_select: !include_dir_merge_named Integration/input_select
 group: !include_dir_merge_named Integration/group/
 zone: !include Integration/zone/zones.yaml
-
 # Cela active le panneau Superviseur dans l'interface Home Assistant
 #hassio: ~
 #permet à Home Assistant de traiter les flux vidéo et audio.
 #https://www.home-assistant.io/integrations/ffmpeg/
-
-
 frontend:
   # We can define additional/custom themes for the frontend here.
   themes: !include_dir_merge_named Integration/themes/
   extra_module_url:
-    - /local/card-mod.js
-    
+    - /local/card-mod.js 
 # Text to speech
 tts:
   - platform: google_translate
-
     # Set the default voice language.
     language: "fr"
-
     # Cache voice files to a local storage.
     cache: true
-
     # Path to a location for caching the tts files.
     cache_dir: /tmp/tts
-
     # Time to hold (in seconds) the voice data inside memory for fast play
     # on a media player. (min 60, max 57600)
     time_memory: 300
-
     service_name: google_say
 
 http: #si cette balise n'existe pas, ajoutez la, sinon ajouter seulement la suite (pas de duplication)
   server_port: 8123
-
-
   use_x_forwarded_for: true
   trusted_proxies:
     - 127.0.0.1
@@ -90,8 +73,6 @@ http: #si cette balise n'existe pas, ajoutez la, sinon ajouter seulement la suit
     - 172.30.33.0/24
     - ::1
     - 92.128.72.55
-
-
 system_log:
   max_entries: 50
 #  ssl_certificate: /ssl//fullchain.pem
@@ -102,7 +83,6 @@ system_log:
 #Le composaant `history` (traduit en `historique` dans l'interface)
 # va suivre ce qui se passe dans Home Assistant et permet aux utilisateurs
 # d'explorer les enregistrements.
-
 history:
   include:
     domains:
@@ -112,16 +92,13 @@ history:
       - light
       - binary_sensor
       - sun
-
 logger:
   default: warning
-
   filters:
     homeassistant:
       # This can happen during restart having Ingress tabs open.
       # I really don't care about it.
       - "Error doing job: Task exception was never retrieved"
-
     homeassistant.loader:
       # Really? Cool... I know... I installed them...
       - "We found a custom integration"

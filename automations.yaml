@@ -1,0 +1,12 @@
+- id: '1674944057655'
+  alias: '[Theme] Thème sombre après le coucher du soleil'
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - service: frontend.reload_themes
+    data: {}
+  mode: single
+  initial_state: true
