@@ -1,5 +1,5 @@
-- id: '1663449751771'
-  alias: '[Eclairage] Allumage bouton chambre parent'
+- id: '1674421883607'
+  alias: '[Eclairage]  Eclairage chambre parent aquara'
   description: ''
   trigger:
   - device_id: 44e37ae4c1c1769c42981c5a4a432cdd
@@ -7,13 +7,25 @@
     platform: device
     type: remote_button_short_press
     subtype: remote_button_short_press
-  condition:
-  - condition: state
-    entity_id: light.chambre_parentale_2
-    state: 'off'
+  condition: []
   action:
-  - service: light.turn_on
-    data: {}
-    target:
-      entity_id: light.chambre_parentale_2
-  mode: single
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.chambre_parentale
+        state: 'on'
+      sequence:
+      - service: light.turn_off
+        data: {}
+        target:
+          entity_id: light.chambre_parentale
+    - conditions:
+      - condition: state
+        entity_id: light.chambre_parentale
+        state: 'off'
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.chambre_parentale
+  mode: restart

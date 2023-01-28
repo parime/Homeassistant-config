@@ -7,6 +7,15 @@
     - binary_sensor.motion_cuisine_hg_zone
     - binary_sensor.motion_cuisine_bd_zone
     - sensor.illuminance_cuisine_illuminance
+
+  - platform: time
+    at: '19:00:00'
+  - platform: time
+    at: '20:00:00'
+
+  - platform: time
+    at: '21:00:00'
+
   - platform: time
     at: '22:00:00'
   - platform: time
@@ -57,7 +66,7 @@
       - service: light.turn_on
         data:
           brightness_pct: '{% if (now().hour < 8) %} 10 {% elif (now().hour < 10)
-            %} 20 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 30
+            %} 80 {% elif (now().hour < 21) %} 100 {% elif (now().hour < 22) %} 30
             {% elif (now().hour < 23) or ((now().hour == 23) and (now().minute < 45))
             %} 10 {% else %} 0 {% endif%}'
         target:
@@ -75,7 +84,7 @@
           state: 'off'
         - condition: time
           after: 07:00:00
-          before: '21:30:00'
+          before: '19:30:00'
           weekday:
           - mon
           - tue
@@ -150,6 +159,35 @@
     - conditions:
       - condition: or
         conditions:
+
+        - condition: time
+          after: '19:55:00'
+          before: '20:01:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+
+
+
+        - condition: time
+          after: '20:55:00'
+          before: '21:01:00'
+          weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+
+
+
         - condition: time
           after: '21:55:00'
           before: '22:01:00'

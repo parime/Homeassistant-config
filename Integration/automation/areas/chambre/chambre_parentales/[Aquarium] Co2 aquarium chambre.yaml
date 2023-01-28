@@ -1,0 +1,47 @@
+- id: '165270jhv3552515'
+  alias: '[Aquarium] Co2 aquarium chambre'
+  description: ''
+  trigger:
+  - platform: time
+    at: '15:30:00'
+  - platform: time
+    at: '19:40:00'
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: time
+        after: '15:00:00'
+        before: '16:00:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.co2_aquarium_chambre_switch
+    - conditions:
+      - condition: time
+        after: '19:30:00'
+        before: '19:50:00'
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      sequence:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.co2_aquarium_chambre_switch
+    default: []
+  mode: single

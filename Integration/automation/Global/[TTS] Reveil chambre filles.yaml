@@ -30,7 +30,7 @@
           type: tts
       message: '" {{ [  "Il est l’heure de se réveiller les enfants. Il faut se réveiller.",  "Il         est
         l or! L or de se réveiller! Il est l or",   "Bonjour mes amours,         il
-        est temps de se lever.",  "Bien grandir, ça commence dès le matin !"  ]         |
+        est temps de se lever.",  "Bien grandir, ça commence dès le matin !",  "Allez, hop debout"   ]         |
         random }}"'
   - service: media_player.volume_set
     data:

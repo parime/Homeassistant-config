@@ -2,25 +2,28 @@
   alias: Notification - TooGoodToGo
   trigger:
   - platform: numeric_state
-    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_boucherie_volaille_16eur
+    entity_id: sensor.toogoodtogo_hyper_u_la_chapelle_sur_erdre_panier_boucherie_volaille_16eur
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_e_leclerc_drive_nantes_paridis_produits_frais
+    entity_id: sensor.toogoodtogo_e_leclerc_drive_nantes_paridis_produits_frais
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_promocash_nantes_grand_panier
+    entity_id: sensor.toogoodtogo_promocash_reze_petit_panier
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_promocash_nantes_panier_gros_format
+    entity_id: sensor.toogoodtogo_promocash_reze_grand_panier
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_charcuterie_traiteur_12eur
+    entity_id: sensor.toogoodtogo_promocash_reze_panier_gros_format
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_hyper_u_la_chapelle_sur_erdre_panier_mixte_18eur
+    entity_id: ensor.toogoodtogo_hyper_u_la_chapelle_sur_erdre_panier_charcuterie_traiteur_12eur
     above: '0'
   - platform: numeric_state
-    entity_id: sensor.tgtg_chronodrive_orvault_panier_mixte
+    entity_id: sensor.toogoodtogo_hyper_u_la_chapelle_sur_erdre_panier_mixte_18eur
+    above: '0'
+  - platform: numeric_state
+    entity_id: sensor.toogoodtogo_chronodrive_orvault_panier_mixte
     above: '0'
   condition: []
   action:

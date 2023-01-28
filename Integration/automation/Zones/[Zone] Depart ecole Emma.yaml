@@ -1,0 +1,20 @@
+- id: '1650818342610254'
+  alias: '[Zone] Depart ecole Emma '
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.emma
+    zone: zone.ecole_emma
+    event: leave
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_vincent
+    data:
+      title: Emma localisation
+      message: Emma part de l'école
+
+  - service: notify.mobile_app_sm_a536b
+    data:
+      title: Emma localisation
+      message: Emma part de l'école
+  mode: single

@@ -9,4 +9,4 @@ sensors:
                            'waxing_crescent': 'Premier croissant', 'waxing_gibbous': 'Gibbeuse croissante'} %}
           {% set phase = states('sensor.moon') %}
           {{ phases[phase] if phase in phases.keys() else 'Error' }}
-    entity_picture_template: /local/lovelace/images/moon_phases/{{ states('sensor.moon') }}.png  
+    entity_picture_template: /local/lovelace/images/icon/moon_phases/{{ states('sensor.moon') }}.png  

@@ -18,6 +18,15 @@ slate:
   divider-color: 'rgba(0, 0, 0, .12)'
   table-row-background-color: '#292929'
   table-row-alternative-background-color: '#292929'
+  icon-rouge: '#ff5722'
+  icon-bleu: '#0c8bc4' 
+  icon-vert: '#8bc34a'   
+  background-icon-rouge: '#543228'
+  background-icon-bleu: '#224352' 
+  background-icon-vert: '#3d4830'
+
+
+
   # Nav Menu
   paper-listbox-color: '#777777'
   paper-listbox-background-color: '#141414'

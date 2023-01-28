@@ -3,7 +3,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 09:45:00
+    at: 09:05:00
   - platform: time
     at: '22:40:00'
   - platform: time
@@ -17,8 +17,8 @@
       - condition: or
         conditions:
         - condition: time
-          after: 09:40:00
-          before: 09:55:00
+          after: 09:00:00
+          before: 09:06:00
           weekday:
           - mon
           - tue

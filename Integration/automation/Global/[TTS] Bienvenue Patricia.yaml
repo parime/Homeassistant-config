@@ -33,10 +33,10 @@
   - service: media_player.volume_set
     target:
       entity_id:
-      - media_player.2eme_echo_dot_vincent
+      - media_player.echo_couloir
     data:
       volume_level: 0.45
-  - service: notify.alexa_media_2eme_echo_dot_vincent
+  - service: notify.alexa_media_echo_couloir
     data:
       data:
         type: tts

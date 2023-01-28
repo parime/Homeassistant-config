@@ -22,52 +22,44 @@
         after: 07:20
         before: 07:40
       sequence:
-      - service: switch.turn_on
-        data: {}
-        target:
-          entity_id: switch.pc_sapin_de_noel_switch
       - service: light.turn_on
         data: {}
         target:
-          entity_id: light.led_sapin
+          entity_id: 
+            - light.led_sapin
+            - light.guirlande_2
     - conditions:
       - condition: time
         after: 08:55
         before: 09:05
       sequence:
-      - service: switch.turn_off
-        target:
-          entity_id: switch.pc_sapin_de_noel_switch
-        data: {}
       - service: light.turn_off
         data: {}
         target:
-          entity_id: light.led_sapin
+          entity_id: 
+            - light.led_sapin
+            - light.guirlande_2
     - conditions:
       - condition: time
         after: '16:40'
         before: '16:50'
       sequence:
-      - service: switch.turn_on
-        target:
-          entity_id: switch.pc_sapin_de_noel_switch
-        data: {}
       - service: light.turn_on
         data: {}
         target:
-          entity_id: light.led_sapin
+          entity_id: 
+            - light.led_sapin
+            - light.guirlande_2
     - conditions:
       - condition: time
         after: '21:55'
         before: '22:12'
       sequence:
-      - service: switch.turn_off
-        target:
-          entity_id: switch.pc_sapin_de_noel_switch
-        data: {}
       - service: light.turn_off
         data: {}
         target:
-          entity_id: light.led_sapin
+          entity_id: 
+            - light.led_sapin
+            - light.guirlande_2
     default: []
   mode: single

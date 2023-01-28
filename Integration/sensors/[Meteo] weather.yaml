@@ -39,15 +39,6 @@ sensors:
 
       weather_conditions:
         value_template: >-
-          {% set temperature = states('sensor.weather_temperature') | round %}
-          {% set precip = states('sensor.nantes_rain_chance') | round %}
-          {% set snow = states('sensor.nantes_snow_chance') | round %}
-          {% set temp = states('sensor.weather_temperature') | round %}
-          {% set icon = states('sensor.weather_icon')  %}
-          {% set ciel = states('sensor.weather_conditions_ciel')  %}
-          {% set pluie = states('sensor.weather_conditions_pluie')  %}
-          {% set vent = states('sensor.weather_conditions_vent')  %}
-          {% set uv = states('sensor.weather_conditions_uv')  %}
           {% set weather_state = states('weather.nantes') 
             | replace('rainy', 'Pluvieux')
             | replace('partlycloudy', 'Partiellement nuageux')
@@ -69,9 +60,9 @@ sensors:
             {% if states('weather.nantes') == 'lightning-rainy' -%}
               Pluies orageuses
             {% elif states.sensor.nantes_rain_chance.state | float > 0 -%}
-              {{ weather_state }}, {{ temp }}
+              {{ weather_state }}
             {% else -%}
-              {{ weather_state }}, {{ temp }}
+              {{ weather_state }}
             {% endif -%}
           {% else -%}
             Pas d'info...
@@ -104,30 +95,32 @@ sensors:
             {% endif -%}
           {% else -%}
           {% endif -%}
+
       weather_conditions_pluie:
         value_template: >-          
           {% set precip = states('sensor.nantes_rain_chance') | round %}
           {% if states.sensor.nantes_rain_chance.state | float > 0 -%}
-           ☔{{ precip }}%
+           {{ precip }}
           {% else -%}
-           ☔{{ precip }}%
+           {{ precip }}
           {% endif -%}    
           
       weather_conditions_neige:
         value_template: >-          
           {% set snow = states('sensor.nantes_snow_chance') | round %}
           {% if states.sensor.nantes_snow_chance.state | float > 0 -%}
-            ☃ {{ snow }}%
+            {{ snow }}
           {% else -%}
+            {{ snow }}
           {% endif -%}  
           
       weather_conditions_ciel:
         value_template: >-        
           {% set ciel = states('sensor.nantes_cloud_cover') | round -%}
           {% if states.sensor.nantes_cloud_cover.state | float > 10 -%}
-            ☁️{{ ciel }}%
+            {{ ciel }}
           {% else -%}
-           ☁️{{ ciel }}%
+           {{ ciel }}
           {% endif -%}          
       weather_vent:
         friendly_name: "Weather vent"
@@ -138,17 +131,20 @@ sensors:
         value_template: >-        
           {% set vent = states('sensor.weather_vent') | round -%}
           {% if states.sensor.weather_vent.state | float > 20 -%}
-            💨{{ vent }}Km/h
+            {{ vent }}
           {% else -%}
+            {{ vent }}
           {% endif -%}
           
       weather_conditions_uv:
         value_template: >-        
           {% set uv = states('sensor.nantes_uv') | round -%}
           {% if states.sensor.nantes_uv.state | float > 5 -%}
-            😎{{ uv }}
+            {{ uv }}
           {% else -%}
+            {{ uv }}
           {% endif -%}  
+
       weather_alerte_no_couleur:
         friendly_name: Alerte météo couleur
         value_template: >-
@@ -230,7 +226,15 @@ sensors:
           {% if is_state("sensor.weather_alert_vague_submersion", "Rouge") -%} 
           ⚠️🌊 Vagues-submersion 🌊⚠️{%- endif %} 
 
-          
+      weather_soleil:
+        friendly_name: Soleil levé couché         
+        value_template: >-
+          {% if is_state("sun.sun", "above_horizon") -%}
+            Couché {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }} - ️L️evé {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}
+          {% else %}
+            ️L️evé {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }} - Couché {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }}
+          {% endif %}
+
       weather_soleil_icon:
         friendly_name: Soleil levé couché avec icones          
         value_template: >-
@@ -247,20 +251,40 @@ sensors:
           {% else %}
             {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}
           {% endif %}
+ 
       weather_leve_soleil:
         friendly_name: Soleil levé           
         value_template: >-
             {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}  
-          
+ 
+
+      weather_soleil_v2:
+        friendly_name: Soleil levé couché           
+        value_template: >-
+          {% if is_state("sun.sun", "above_horizon") -%}
+            {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }}  
+          {% else %}
+            {{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-Hh%M") }}
+          {% endif %}
+
       weather_couche_soleil:
         friendly_name: Soleil couché           
         value_template: >-
             {{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-Hh%M") }} 
-      
+
+
+      weather_temp_min_max:
+        friendly_name: Température max du jour
+        value_template: "{{ states.weather.maison.attributes.forecast[0].templow|float|round(0) }}° / {{ states.weather.maison.attributes.forecast[0].temperature|float|round(2) }}°" 
+        
+
       temperature_maximal_du_jour:
         friendly_name: Température max du jour
         value_template: "{{ states.weather.nantes.attributes.forecast[0].temperature|float|round(2) }}°"  
 
+      weather_temp_max_v2:
+        friendly_name: Température max du jour
+        value_template: "{{ states.weather.maison.attributes.forecast[0].temperature|float|round(2) }}" 
         
       temperature_minmal_du_jour:
         friendly_name: Température min du jour
@@ -275,3 +299,47 @@ sensors:
           {% else %}
             off
           {% endif %}
+
+      windforce:
+        friendly_name: Wind force
+        icon_template: " mdi:weather-windy"
+        value_template:  >-
+          {% set wind = state_attr('weather.nantes', 'wind_speed')|float %}
+          {%  set wind_round = wind|round(1) %}
+          {% if wind <= 1 %}Bft: 0, Calm
+          {% elif wind <= 5 %}Bft: 1, Très légère brise
+          {% elif wind <= 11 %}Bft: 2, Légère brise
+          {% elif wind <= 20 %}Bft: 3, Petite brise
+          {% elif wind <= 28 %}Bft: 4, Brise modéré
+          {% elif wind <= 39 %}Bft: 5, Bonne brise
+          {% elif wind <= 50 %}Bft: 6, Vent frais
+          {% elif wind <= 62 %}Bft: 7, Grand frais
+          {% elif wind <= 75 %}Bft: 8, Coup de vent
+          {% elif wind <= 89 %}Bft: 9, Fort coup de vent
+          {% elif wind <= 103 %}Bft: 10, Tempête,
+          {% elif wind <= 117 %}Bft: 11, Violente tempête
+          {% else %} > 117 %}Bft: 12, Ouragan
+          {%- endif %}
+
+
+
+      speedwindforce:
+        friendly_name: speed Wind force
+        icon_template: " mdi:weather-windy"
+        value_template:  >-
+          {% set wind = state_attr('weather.nantes', 'wind_speed')|float %}
+          {%  set wind_round = wind|round(1) %}
+          {% if wind <= 1 %}Bft: 0, Calm, {{wind_round}} m/s
+          {% elif wind <= 5 %}Bft: 1, Très légère brise, {{wind_round}} m/s
+          {% elif wind <= 11 %}Bft: 2, Légère brise, {{wind_round}} m/s
+          {% elif wind <= 20 %}Bft: 3, Petite brise, {{wind_round}} m/s
+          {% elif wind <= 28 %}Bft: 4, Brise modéré, {{wind_round}} m/s
+          {% elif wind <= 39 %}Bft: 5, Bonne brise, {{wind_round}} m/s
+          {% elif wind <= 50 %}Bft: 6, Vent frais, {{wind_round}} m/s
+          {% elif wind <= 62 %}Bft: 7, Grand frais, {{wind_round}} m/s
+          {% elif wind <= 75 %}Bft: 8, Coup de vent, {{wind_round}} m/s
+          {% elif wind <= 89 %}Bft: 9, Fort coup de vent, {{wind_round}} m/s
+          {% elif wind <= 103 %}Bft: 10, Tempête, {{wind_round}} m/s
+          {% elif wind <= 117 %}Bft: 11, Violente tempête, {{wind_round}} m/s
+          {% else %} > 117 %}Bft: 12, Ouragan , {{wind_round}} m/s
+          {%- endif %}

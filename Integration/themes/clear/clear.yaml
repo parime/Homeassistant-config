@@ -23,12 +23,20 @@ clear:
   text-color: '#636B75'                                                           # Grey text
   text-medium-color: '#8c96a5'                                                    # Medium grey text
   text-light-color: '#BAC0C6'                                                     # Light grey text
-  accent-color: '#00a1ff'                                                         # Blue
+  accent-color: '#00a1ff'
+  icon-rouge: '#ea5223'
+  icon-bleu: '#2196f3' 
+  icon-vert: '#b9db93'   
+  background-icon-rouge: '#ffddd3'
+  background-icon-bleu: '#d3eafd' 
+  background-icon-vert: '#e8f3db'                                                            # Blue
   background-color: '#F7F8F9'                                                     # Light grey background
   background-color-2: '#F4F5F6'                                                   # Light grey background
-  background-card-color: 'rgba(255,255,255,1.0)'                                  # White background
-  border-color: '#E8E8E8'                                                         # Light grey border
+                                   # White background
 
+  divider-color: 'rgba(0, 0, 0, .12)'
+  table-row-background-color: '#292929'
+  table-row-alternative-background-color: '#292929'
   # Header
   primary-color: 'var(--text-color)'                                              # Background
   text-primary-color: '#BAC0C6'                                                      # Text
@@ -38,8 +46,7 @@ clear:
 
   # UI
   paper-card-header-color: 'var(--text-color)'                                    # Title in settings
-  primary-background-color: 'var(--background-color)'                             # Background color (also title background in left menu)
-
+  
   # Card
   paper-card-background-color: 'var(--background-card-color)'                     # Background
   dark-primary-color: 'var(--text-color)'
@@ -49,8 +56,7 @@ clear:
   secondary-text-color: 'var(--text-medium-color)'
   disabled-text-color: 'var(--text-light-color)'
   paper-dialog-button-color: 'var(--text-color)'
-  secondary-background-color: 'var(--background-color-2)'                         # Background more info title
-
+  
   # Icons
   paper-item-icon-color: 'var(--text-light-color)'                                # Off
   paper-item-icon-active-color: 'var(--accent-color)'                             # On
